@@ -1,6 +1,11 @@
 <div class="col-md-4">
   <ul class="nav nav-sidebar">{% for post in site.posts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}</ul>
+  {% capture currentyear %}{{post.date | date: "%B %Y"}}{% endcapture %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}</ul></li>{% endunless %}
+    <li><a>{{ currentyear }}</a>
+    <ul class="nav">{% capture year %}{{currentyear}}{% endcapture %}
+  {% endif %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}{% if site.posts.size != 0 %}</ul></li>{% endif %}</ul>
 </div>
