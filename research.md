@@ -13,6 +13,10 @@ am studying under the direction
 of <a href="http://www.jasoncantarella.com">Jason
 Cantarella</a>.
 
+Recently I have been trying to describe the space of arbitrary closed
+(3-dimensional) closed polygons which are constrained by slabs (think
+proteins between the lipid layers of a cell wall).
+
 ## Previous Research
 
 In the summer of 2010, I took part in an REU where we tried to answer
