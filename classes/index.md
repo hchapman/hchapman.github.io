@@ -1,5 +1,7 @@
 ---
 layout: teaching
+title: Teaching
+
 ---
 
 ## Teaching
