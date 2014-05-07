@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class='name-header'>
+    <!-- Start header -->
+    <h1 class="nameheader">Harrison Chapman</h1>
+    <h3>
+      Graduate Student, Department of Mathematics
+    </h3>
+    <h4>University of Georgia</h4><br />
+    <!-- End header -->
+
+  </div>
+
+  <div class="tabs">
+    <div class="tab-container">
+      <ul class="nav nav-tabs nav-primary">
+        <li class="{% if page.about %}active{% endif %}">
+          <a href="/">About</a>
+        </li>
+        <li class="{% if page.url contains '/classes/' %}active{% endif %}">
+          <a href="/classes">Teaching</a>
+        </li>
+        <li class="{% if page.research %}active{% endif %}">
+          <a href="/research">Research</a>
+        </li>
+        <li class="{% if page.projects %}active{% endif %}">
+          <a href="/projects">Projects</a>
+        </li>
+      </ul>
+    </div>
+  </div>

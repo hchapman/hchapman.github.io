@@ -1,0 +1,9 @@
+{% assign classes = include.items %}
+
+<ul class="nav">{% for class in classes %}
+  {% assign class_url = class | prepend:"/classes/" | append:"/" %}
+  {% if class_url == page.url %}{% assign c = "current" %}
+  {% else %}{% assign c = "" %}{% endif %}
+  {% for p in site.pages %}{% if p.url == class_url %}<li class="{{ c }}">
+    <a href="{{ site.url }}{{ p.url }}">{{ p.title }}</a></li>{% endif %}{% endfor %}
+{% endfor %}</ul>
