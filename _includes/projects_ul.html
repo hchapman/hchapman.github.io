@@ -1,0 +1,5 @@
+{% assign projects = include.items %}
+
+<ul class="nav">{% for p in projects %}
+  <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+{% endfor %}</ul>
