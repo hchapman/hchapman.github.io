@@ -233,3 +233,93 @@ While `acquire`, `disown`, `append`, `own`, `next`, `this`, and
 options are class members or methods which (should) link appropriately
 into the C library code. For example, the component's member `vertices`
 grabs the polygon's vertices *as a Python list*!
+
+### Extending the interface; a sample
+
+The interface as it stands is far from complete, and as plCurve is
+further developed it will need to be further expanded. Fortunately,
+this is really *not too bad* with the aid of SWIG, and in many cases
+it should be almost trivial. Let's run through an example.
+
+Recently, the C `plc_classify` method has changed (to not rely upon
+ancient Fortran code) and, among other things now requires a `gsl_rng`
+argument. We'd like to add `classify` as a method of a `PlCurve` in
+Python, so we've added the following lines into the
+block for the `plc_type`:
+
+{% highlight cpp %}
+struct plc_type {
+  ...
+  %typemap(in, numinputs=0) int *nposs (int temp) {
+    $1 = &temp;
+  }
+  %typemap(argout) int *nposs {
+    PyObject *knottype, *np, *o3;
+
+    np = PyInt_FromLong(*$1);
+    if(!PyTuple_Check($result)) {
+      knottype = $result;
+      $result = PyTuple_New(1);
+      PyTuple_SetItem($result,0,knottype);
+    }
+    o3 = PyTuple_New(1);
+    PyTuple_SetItem(o3,0,np);
+    knottype = $result;
+    $result = PySequence_Concat(knottype,o3);
+    Py_DECREF(knottype);
+    Py_DECREF(o3);
+  }
+  ...
+  %extend {
+    ...
+      %newobject classify;
+      plc_knottype *classify(gsl_rng *r, int *nposs)
+      { return plc_classify(r, $self, nposs); }
+    ...
+  }
+  ...
+}
+{% endhighlight %}
+
+Remember that the `%extend` directive tells SWIG to add class methods
+and members to what it ends up calling a `plc_type` (it's a
+`PlCurve`); let's inspect the bit we've added in there. Notice that
+`plc_classify` takes three inputs; a `gsl_rng *`, a `plc_type *`, and
+an `int *`. So our wrapper asks for a `gsl_rng *` and an `int *` but
+knows to pass a pointer to the actual `plc_type` object by passing
+`$self` to the C code. It's important to notice now that the `int *`
+isn't really an *input* for the C code: It's an additional output!
+While Python does not have "integer pointer" capabilities, Python
+functions *can* easily return multiple entities as a tuple. This is
+what the `%typemap` bits above handle: An in typemap tells SWIG not to
+ask Python for this integer pointer and instead creates one
+itself. The out typemap then combines both the function's actual
+return value and the integer pointer faux return into a tuple which
+Python can grok.
+
+The last C subtlety to notice here is that `plc_classify` returns a
+pointer to a `plc_knottype` object; a C programmer understands that
+this usually means that the function `malloc`s some memory for the
+`plc_knottype` object and that we (the end user) must be sure to
+`free` it when we are done. This is what the
+[`%newobject` SWIG directive](http://www.swig.org/Doc2.0/SWIGDocumentation.html#Customization_ownership)
+is for: Once we tell SWIG that a new object is created by this
+function, it will know how to appropriately garbage collect the memory
+created in C when the Python references are obsolete. This both
+prevents against memory leaks and allows us to be Pythonic with Python
+(and not have to micromanage every little bit of the C library in our
+scripts!).
+
+**As of 2014-05-11**, `plc_classify` does nothing (or even
+segfaults!). This is not the interface or Python's fault: the function
+`ccode_from_pd_code` is presently just not implemented!
+{: .alert .alert-warning}
+
+Something hidden here is that presently, the SWIG interface file also
+contains instructions which turn `plc_knottype`s into Python objects!
+If you had added a function to the interface without this, your method
+should still work: SWIG would return you an object which points to the
+C data which you could use in other interfaced C functions without
+issue. In order to access the data inside of this pointer object
+though, you'd need to expand the interface to know more about this
+new type.
