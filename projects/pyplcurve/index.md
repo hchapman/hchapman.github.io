@@ -26,7 +26,7 @@ python interface, installation should be little extra work: It's
 possible that Python does not know about the prefix into which plCurve
 installs itself.
 
-<div class="alert alert-warning" markdown="1">
+<div class="panel panel-info"><div class="panel-body" markdown="1">
 **If the following python commands don't work**,
 you'll have to update your `PYTHONPATH` environment variable. First
 you'll need to know the prefix to which plCurve installed: If you've
@@ -34,18 +34,18 @@ added your own prefix argument to the `./configure` directive for
 plCurve's build then you know this already. Otherwise it's probably
 `/usr/local`. Add the following bit to your bash init file
 (`.bash_profile` if you're on a Mac or `.bashrc` if you're on Linux)
-making the obvious substitutions necessary:
+making the obvious substitutions necessary:<br>
 
 {% highlight bash %}
 export PYTHONPATH=$PYTHONPATH:/your/prefix/goes/here
 {% endhighlight %}
-</div>
+</div></div>
 
 Let's get started! First, it's probably best to make sure the library
 loads without issue. Boot up your python console (you *are* using
 iPython by now, correct?) and try the following invocation:
 
-{% highlight python %}
+{% highlight pycon %}
 >>> import libplcurve.plcurve as pl
 {% endhighlight %}
 
@@ -63,55 +63,173 @@ Strand (closed) with 50 vertices
 [(-0.0004563321077621033, 0.021037011726962707, 0.014543772633901534),
  (-0.005370435696012072, -0.014320318855877902, -0.02145299992122479),
  (0.01234355180147441, -0.026678638073560575, -0.035588446667361995),
- (0.015245201414151085, -0.02824458536107748, -0.04352145676206311),
- (0.04243358128901287, -0.03324041525684046, -0.025901716432752415),
- (0.05548542451034284, -0.04784950299020514, -0.03265161273413497),
- (0.06293640523657504, -0.03831578690877126, -0.027213009306397255),
- (0.02689745386839848, -0.07167113930326834, -0.009661470104033322),
- (0.04297053715218202, -0.09868383930217214, 0.020422119519980995),
- (0.03137114333714629, -0.07955652107371664, -0.0022785361692426696),
- (0.06557900902931851, -0.08227837860098783, -0.018914187511663762),
- (0.025184373033173543, -0.14644435240863268, -0.05291901986609074),
- (0.03222461917191498, -0.1533581641920067, -0.05563426720537346),
- (0.018841661187818468, -0.15339525874308862, -0.08049890639913444),
- (0.010674219460005378, -0.1485299041197447, -0.08501058436613838),
- (-0.08885043703954969, -0.15884797238526746, -0.0687637706594122),
- (-0.02986730028012529, -0.1583064397232082, -0.10359805732093363),
- (-0.01655713424596489, -0.14415609353301415, -0.10997926271035742),
- (-0.01877010470953074, -0.13904030220350122, -0.12609634997270153),
- (-0.07632587313001023, -0.09945957724381602, -0.16215599232117076),
- (-0.10350744692853861, -0.08787291290840568, -0.1732278095696705),
- (-0.0900053828607245, -0.09881219708220132, -0.18168867201920855),
- (-0.10516172804026279, -0.12486755084650661, -0.17827536565316401),
- (-0.12692620103776298, -0.09687091964142099, -0.15608107844718327),
- (-0.14995133830763616, -0.06339609182641584, -0.12774639003310448),
- (-0.15136599359955025, -0.07493749337003894, -0.1071198294453214),
- (-0.1669222484810409, -0.0426551526345334, -0.09247089254270732),
- (-0.1869568450152335, -0.03697004643633226, -0.0846398139555534),
- (-0.14242091836089216, -0.025158667716323503, -0.04905154874809891),
- (-0.15167209607722426, -0.02942620191477411, -0.09253417658801863),
- (-0.12473725183221221, -0.0033202480583072597, -0.0550670844735758),
- (-0.1128194075452032, -0.017771389474376148, -0.0241820179023248),
- (-0.0707262675910516, -0.027298652666042512, -0.01658614148769008),
- (-0.04413542587454557, -0.0035586228318521887, -0.044545676837433365),
- (0.07883512427662534, 0.017222414188145553, 0.03252814510923639),
- (0.023572294346668465, -0.006615790534753474, 0.006422816618563254),
- (0.03402647497025785, -0.022079331836069145, 0.008629437543765345),
- (0.03889380893001273, -1.1264658111961173e-05, 0.019628455505774946),
- (0.03339432287388408, -0.02614609825056697, 0.018293001157069996),
- (0.023377369429396645, -0.01228633679279447, 0.05561231439537387),
- (0.011597741176438794, -0.05581617049776729, 0.05109904998177565),
- (0.0033548000192036246, -0.05882502360468439, 0.07648577713065545),
- (0.010883492528239315, -0.05474672349899434, 0.03935503791174105),
- (0.008117658158942304, -0.042837197561432505, 0.04337341975299045),
- (0.012804426518817826, -0.04074319403143046, 0.006655316323921606),
- (0.048632685782966645, -0.019243038929706344, 0.042273521308967964),
- (0.04856953616694286, -0.01149084922516155, 0.05020020398732295),
+ ... 44 vertices omitted ...
  (0.0331081347427131, -0.009773608676877385, 0.039538580797402204),
  (0.022598041131123285, -0.01600633031308516, -0.0412711435883152),
  (-1.3183898417423734e-16, -6.938893903907228e-18, 2.3592239273284576e-16)]
 {% endhighlight %}
 
-If that worked, you should consider your environment prepared!
+If that worked, you should consider your environment prepared! Even
+better, the arm ends back at the origin, so things are as they should
+be. Let's go a bit deeper into how to use the library.
 
-### Using the python interface
+### Understanding the example
+
+In the last section, we of course started with the ever-important
+*importing* of the library. We named it `pl` then just because it is
+*bad practice* to import all globals of python libraries but short
+since we're presumably going to be calling it a lot! The choice is
+yours, but be wary of this. So, if you're going to be using plCurve in
+Python, this should probably be somewhere near the top of the code.
+
+{% highlight python %}
+import libplcurve.plcurve as pl
+{% endhighlight %}
+
+In the first example that we worked above, we generated a random
+polygon. Other reasons aside, it's certainly easier to get an
+*interesting* (non-contrived) polygon without too much effort by
+drawing it randomly. Let's break down the example.
+
+{% highlight python %}
+r = pl.RandomGenerator()
+{% endhighlight %}
+
+This line initializes a `gsl_rng` object in C as we can see in the SWIG interface code
+
+{% highlight cpp %}
+%rename(RandomGenerator) gsl_rng;
+typedef struct {
+  ...
+  %extend {
+    gsl_rng() {
+      gsl_rng *r;
+      const gsl_rng_type *T;
+
+      gsl_rng_env_setup();
+      T = gsl_rng_default;
+      r = gsl_rng_alloc(T);
+
+      return r;
+    }
+    ~gsl_rng() {
+      gsl_rng_free($self);
+    }
+
+    void set(unsigned long int s);
+    ...
+  }
+} gsl_rng;
+{% endhighlight %}
+
+which "extends" `gsl_rng` to act more like an honest class with a
+standard constructor and destructor. Additionally, SWIG notices that
+the declaration of the method `set` has the same signature (with first
+argument a pointer to a `gsl_rng`) as the
+[library function `gsl_rng_set`](http://www.gnu.org/software/gsl/manual/html_node/Random-number-generator-initialization.html#Random-number-generator-initialization)
+and cleverly links the two *with no additional effort*. So if we had
+wanted to set a specific seed in our sample experiment above, we could
+have added the line (in Python)
+
+{% highlight python %}
+r.set(1234)
+{% endhighlight %}
+
+before we pulled the random polygon. But how did we create the random
+polygon? Similarly to how the interface wraps the `gsl_rng` struct as
+a class, the majority of the interface specification wraps the
+`plc_type` (a.k.a `plCurve`, this might get a little confusing) struct
+(and friends) as a class (with some additional Python directives).
+
+{% highlight cpp %}
+%rename(PlCurve) plc_type;
+struct plc_type {
+  %rename(num_components) nc;
+  int         nc;                              /* Number of components */
+  ...
+  // SWIG extensions
+  %extend {
+    // Virtual class members
+    //
+    const varray components;
+
+    // Constructors and destructor
+    //
+    plc_type(const int components,
+             const int * const nv,
+             const bool * const open,
+             const int * const cc)
+    { return plc_new(components, nv, open, cc); }
+    plc_type(const plCurve * const L) { return plc_copy(L); }
+    ~plc_type() {
+      plc_free($self);
+    }
+    ...
+    // Random PlCurve creators
+    //
+    %newobject random_closed_polygon;
+    static plCurve *random_closed_polygon(gsl_rng *r, int nEdges)
+    { return plc_random_closed_polygon(r, nEdges); }
+    ...
+  }
+};
+{% endhighlight %}
+
+This snippet shows, among other things, that the `PlCurve` class which
+Python sees is a wrapper around the `plc_type` that C knows about. It
+has a standard constructor, copy constructor, and destructor. It has
+loads of methods, namely the static `random_closed_polygon` which
+we've used in the example code. Its first argument is a `gsl_rng *`,
+so we passed in the `RandomGenerator` object that we had---SWIG
+handles the rest. `int`s are easy, but it's not too hard (with a
+little extra work) to pass even more complicated Python objects to C
+naturally.
+
+Once we've created the random polygon, we access its component (which
+SWIG also knows how to wrap thanks to the interface file) and checked
+its vertices. If you're using iPython with its *extremely* useful
+smart tab completion, this is a great opportunity to explore a component object:
+
+{% highlight pycon %}
+>>> cmp = plc.components[0]
+>>> cmp.[[tab key]]
+cmp.acquire       cmp.disown        cmp.num_colors    cmp.this
+cmp.append        cmp.is_open       cmp.num_vertices  cmp.thisown
+cmp.colors        cmp.next          cmp.own           cmp.vertices
+>>> plc.[[tab key]]
+plc.G                              plc.perturb
+plc.MR_curvature                   plc.pfm
+plc.acquire                        plc.pointset_diameter
+plc.add_component                  plc.project
+plc.append                         plc.quant
+plc.center_of_mass                 plc.random_closed_plane_polygon
+plc.check_constraint               plc.random_closed_polygon
+plc.components                     plc.random_equilateral_closed_polygon
+plc.constrain_to_line              plc.random_equilateral_open_polygon
+plc.constrain_to_plane             plc.random_open_plane_polygon
+plc.convert_to_spline              plc.random_open_polygon
+plc.cp_num                         plc.random_rotate
+plc.cst                            plc.remove_all_constraints
+plc.delete_arc                     plc.remove_constraint
+plc.disown                         plc.resize_colorbuf
+plc.double_vertices                plc.rotate
+plc.drop_component                 plc.s
+plc.fix_constraints                plc.scale
+plc.fix_wrap                       plc.set_fixed
+plc.from_file                      plc.subarc_length
+plc.gyradius                       plc.this
+plc.loop_closure                   plc.thisown
+plc.mean_squared_chordlengths      plc.translate
+plc.mean_tangent                   plc.turning_angle
+plc.next                           plc.unconstrain
+plc.num_components                 plc.vertex_num
+plc.num_edges                      plc.vt_num
+plc.num_vertices                   plc.write
+plc.own
+{% endhighlight %}
+
+While `acquire`, `disown`, `append`, `own`, `next`, `this`, and
+`thisown` are remnants of the SWIGObject base class, the rest of the
+options are class members or methods which (should) link appropriately
+into the C library code. For example, the component's member `vertices`
+grabs the polygon's vertices *as a Python list*!
