@@ -1,8 +1,12 @@
 - name: Current
   projects:
+    - title: plCurve-python
+      url: "/projects/pyplcurve/"
     - title: Javier
     - title: Reverb
       url: "https://github.com/hchapman/reverb"
+    - title: libpulse-android
+      url: "https://github.com/hchapman/libpulse-android"
 
 - name: Older
   projects:
