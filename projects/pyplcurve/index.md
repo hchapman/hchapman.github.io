@@ -17,13 +17,8 @@ which uses pyopengl and pyside Qt bindings: [plcview.py](demos/plcview.py).
 
 ### Installing plCurve-python
 
-**As of 2014-05-10**, you can find SWIG support lurking in the latest
-revision but as the plCurve structure changed a slight bit (namely the
-knot identification code was reworked significantly) without updating
-how the SWIG interface plugs in. I have a version which has the build
-commands uncommented and removes the old interface code which had
-building fail.
-{: .alert .alert-warning}
+**As of 2014-05-11**, SWIG build support is enabled (and required I
+think, oops!) in SVN master.  {: .alert .alert-success}
 
 So long as you have a version of plCurve which is set up to build the
 python interface, installation should be little extra work: It's
