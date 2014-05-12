@@ -10,6 +10,10 @@ The Python interface to
 [plCurve](http://www.jasoncantarella.com/wordpress/software/plcurve/)
 is implemented with the aid of SWIG.
 
+### Demos &amp; Examples
+
+There is a (hastily written) example of a plCurve visualizer in Python
+which uses pyopengl and pyside Qt bindings: [plcview.py](demos/plcview.py).
 
 ### Installing plCurve-python
 
