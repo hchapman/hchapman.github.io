@@ -2,7 +2,7 @@ relative_permalinks: false
 highlighter: pygments
 markdown: kramdown
 permalink: pretty
-include: projects/pyplcurve/docs/html/_static, projects/pyplcurve/docs/html/_sources
+include: [projects/pyplcurve/docs/html/_static, projects/pyplcurve/docs/html/_sources]
 
 defaults:
   -
