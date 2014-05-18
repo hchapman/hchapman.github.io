@@ -1,5 +1,3 @@
-docs
-
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -34,3 +32,4 @@ nbproject
 .svn
 .CVS
 .idea
+_site
