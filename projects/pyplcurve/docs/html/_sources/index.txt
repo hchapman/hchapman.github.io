@@ -11,7 +11,9 @@ Contents:
 .. toctree::
    :maxdepth: 4
 
-   api/modules
+   api/plcurve
+   api/pd
+   api/tsmcmc
 
 Indices and tables
 ==================

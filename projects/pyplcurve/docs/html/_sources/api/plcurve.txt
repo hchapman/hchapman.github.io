@@ -1,8 +1,5 @@
-libplcurve package
-==================
-
-libplcurve.plcurve module
--------------------------
+plcurve: Polygonal Links
+------------------------
 
 .. currentmodule:: libplcurve.plcurve
 
@@ -22,7 +19,7 @@ The PlCurve class
           first_component = plc[0]
           also_first_component = plc.components[0]
 
-      + Deletion of component by index with `del`: ::
+      + Deletion of component by index with ``del``: ::
 
           del plc[0]
 
@@ -145,6 +142,10 @@ The PlCurve class
       Calculate the diameter of the PlCurve, thinking of vertices as set of
       points in \\(\\mathbb{R}^3\\).
 
+   .. autoattribute:: center_of_mass
+
+   .. autoattribute:: gyradius
+
    **Geometric operation methods**
 
    .. automethod:: scale
@@ -170,6 +171,10 @@ The PlCurve class
    **Topology methods**
 
    .. automethod:: classify
+
+   .. automethod:: homfly
+
+   .. automethod:: as_pd
 
 The Strand class
 ''''''''''''''''
