@@ -403,14 +403,6 @@ to the total arclength of the curve (last vertex, last component)</p>
 <dd><p>Return how far a constraint is from being satisfied (sup norm).</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="libplcurve.plcurve.PlCurve.mean_squared_chordlengths">
-<tt class="descname">mean_squared_chordlengths</tt><big>(</big><em>int cp</em>, <em>int * skips</em>, <em>int nskips</em><big>)</big> &rarr; double<a class="headerlink" href="#libplcurve.plcurve.PlCurve.mean_squared_chordlengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the average (squared) chordlengths of component <tt class="docutils literal"><span class="pre">cp</span></tt> at the
-array of skips given by <tt class="docutils literal"><span class="pre">nskips</span></tt>.  Wraps if closed and doesn&#8217;t wrap
-if not.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="libplcurve.plcurve.PlCurve.pointset_diameter">
 <tt class="descname">pointset_diameter</tt><a class="headerlink" href="#libplcurve.plcurve.PlCurve.pointset_diameter" title="Permalink to this definition">¶</a></dt>
@@ -519,7 +511,7 @@ a closed curve). If the component is open, it is split in two.</p>
 
 <dl class="method">
 <dt id="libplcurve.plcurve.Strand.get_vertex">
-<tt class="descname">get_vertex</tt><big>(</big><em>int i</em><big>)</big> &rarr; plc_vector const<a class="headerlink" href="#libplcurve.plcurve.Strand.get_vertex" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_vertex</tt><big>(</big><em>int i</em><big>)</big> &rarr; plc_vector const *<a class="headerlink" href="#libplcurve.plcurve.Strand.get_vertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
