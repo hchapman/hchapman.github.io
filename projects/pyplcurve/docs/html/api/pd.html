@@ -71,6 +71,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tsmcmc.html">tsmcmc: Interface to plcRandomPolygon.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libpl/pdcode.html">pdcode: PlanarDiagrams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libpl/pdcode.html#the-planardiagram-class">The PlanarDiagram class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libpl/pdcode.html#building-block-classes">Building block classes</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -123,12 +128,6 @@
 <tt class="descname">component_and_pos</tt><big>(</big><em>pd_idx_t edge</em><big>)</big><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.component_and_pos" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.components">
-<tt class="descname">components</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.components" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.components</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="libplcurve.pd.PlanarDiagram.comps_ok">
 <tt class="descname">comps_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.comps_ok" title="Permalink to this definition">¶</a></dt>
@@ -144,28 +143,10 @@
 <tt class="descname">cross_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.cross_ok" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.crossings">
-<tt class="descname">crossings</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.crossings" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.crossings</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.edges">
-<tt class="descname">edges</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.edges" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.edges</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="libplcurve.pd.PlanarDiagram.edges_ok">
 <tt class="descname">edges_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.edges_ok" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.faces">
-<tt class="descname">faces</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.faces" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.faces</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="libplcurve.pd.PlanarDiagram.faces_ok">
@@ -205,12 +186,6 @@
 <tt class="descname">get_crossing</tt><big>(</big><em>pd_idx_t i</em><big>)</big> &rarr; Crossing<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.get_crossing" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.hash">
-<tt class="descname">hash</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.hash" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.hash</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="libplcurve.pd.PlanarDiagram.homfly">
 <tt class="descname">homfly</tt><big>(</big><big>)</big> &rarr; char *<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.homfly" title="Permalink to this definition">¶</a></dt>
@@ -225,30 +200,6 @@
 <dt id="libplcurve.pd.PlanarDiagram.isomorphic">
 <tt class="descname">isomorphic</tt><big>(</big><em>PlanarDiagram to</em><big>)</big> &rarr; bool<a class="headerlink" href="#libplcurve.pd.PlanarDiagram.isomorphic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.ncomps">
-<tt class="descname">ncomps</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.ncomps" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.ncomps</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.ncross">
-<tt class="descname">ncross</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.ncross" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.ncross</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.nedges">
-<tt class="descname">nedges</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.nedges" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.nedges</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="libplcurve.pd.PlanarDiagram.nfaces">
-<tt class="descname">nfaces</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.nfaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>pd_code_struct.nfaces</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="libplcurve.pd.PlanarDiagram.printf">
@@ -300,16 +251,70 @@
 <tt class="descname">set_crossing</tt><big>(</big><em>pd_idx_t i</em>, <em>Crossing cross</em><big>)</big><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.set_crossing" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="libplcurve.pd.PlanarDiagram.write">
+<tt class="descname">write</tt><big>(</big><em>FILE * f</em><big>)</big><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.components">
+<tt class="descname">components</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.components" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.components</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.crossings">
+<tt class="descname">crossings</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.crossings" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.crossings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.edges">
+<tt class="descname">edges</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.edges</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.faces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.hash">
+<tt class="descname">hash</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.hash</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.ncomps">
+<tt class="descname">ncomps</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.ncomps" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.ncomps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.ncross">
+<tt class="descname">ncross</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.ncross" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.ncross</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.nedges">
+<tt class="descname">nedges</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.nedges" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.nedges</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libplcurve.pd.PlanarDiagram.nfaces">
+<tt class="descname">nfaces</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.nfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>pd_code_struct.nfaces</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="libplcurve.pd.PlanarDiagram.uid">
 <tt class="descname">uid</tt><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.uid" title="Permalink to this definition">¶</a></dt>
 <dd><p>pd_code_struct.uid</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="libplcurve.pd.PlanarDiagram.write">
-<tt class="descname">write</tt><big>(</big><em>FILE * f</em><big>)</big><a class="headerlink" href="#libplcurve.pd.PlanarDiagram.write" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -386,16 +391,16 @@
 <dt id="libplcurve.pd.Face">
 <em class="property">class </em><tt class="descclassname">libplcurve.pd.</tt><tt class="descname">Face</tt><a class="headerlink" href="#libplcurve.pd.Face" title="Permalink to this definition">¶</a></dt>
 <dd><p>::pd_face_struct</p>
+<dl class="method">
+<dt id="libplcurve.pd.Face.get_vertex">
+<tt class="descname">get_vertex</tt><big>(</big><em>int i</em><big>)</big> &rarr; PyObject const *<a class="headerlink" href="#libplcurve.pd.Face.get_vertex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="libplcurve.pd.Face.edge">
 <tt class="descname">edge</tt><a class="headerlink" href="#libplcurve.pd.Face.edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>pd_face_struct.edge</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="libplcurve.pd.Face.get_vertex">
-<tt class="descname">get_vertex</tt><big>(</big><em>int i</em><big>)</big> &rarr; PyObject const *<a class="headerlink" href="#libplcurve.pd.Face.get_vertex" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="libplcurve.pd.Face.nedges">

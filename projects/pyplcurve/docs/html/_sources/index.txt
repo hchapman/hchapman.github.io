@@ -14,6 +14,7 @@ Contents:
    api/plcurve
    api/pd
    api/tsmcmc
+   libpl/pdcode
 
 Indices and tables
 ==================

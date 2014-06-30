@@ -29,6 +29,7 @@
 
   
     <link rel="top" title="plCurve 7.3 documentation" href="../index.html"/>
+        <link rel="next" title="pdcode: PlanarDiagrams" href="../libpl/pdcode.html"/>
         <link rel="prev" title="pd: PlanarDiagrams" href="pd.html"/> 
 
   
@@ -70,6 +71,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">tsmcmc: Interface to plcRandomPolygon.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libpl/pdcode.html">pdcode: PlanarDiagrams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libpl/pdcode.html#the-planardiagram-class">The PlanarDiagram class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libpl/pdcode.html#building-block-classes">Building block classes</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -166,6 +172,16 @@ triangulation.</p>
 <dt id="libplcurve.tsmcmc.RunParams">
 <em class="property">class </em><tt class="descclassname">libplcurve.tsmcmc.</tt><tt class="descname">RunParams</tt><a class="headerlink" href="#libplcurve.tsmcmc.RunParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>::tsmcmc_run_parameters_struct</p>
+<dl class="method">
+<dt id="libplcurve.tsmcmc.RunParams.default_confined">
+<tt class="descname">default_confined</tt><big>(</big><big>)</big> &rarr; RunParams<a class="headerlink" href="#libplcurve.tsmcmc.RunParams.default_confined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libplcurve.tsmcmc.RunParams.default_unconfined">
+<tt class="descname">default_unconfined</tt><big>(</big><big>)</big> &rarr; RunParams<a class="headerlink" href="#libplcurve.tsmcmc.RunParams.default_unconfined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="libplcurve.tsmcmc.RunParams.beta">
 <tt class="descname">beta</tt><a class="headerlink" href="#libplcurve.tsmcmc.RunParams.beta" title="Permalink to this definition">¶</a></dt>
@@ -177,16 +193,6 @@ triangulation.</p>
 <tt class="descname">burn_in</tt><a class="headerlink" href="#libplcurve.tsmcmc.RunParams.burn_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>tsmcmc_run_parameters_struct.burn_in</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="libplcurve.tsmcmc.RunParams.default_confined">
-<tt class="descname">default_confined</tt><big>(</big><big>)</big> &rarr; RunParams<a class="headerlink" href="#libplcurve.tsmcmc.RunParams.default_confined" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="libplcurve.tsmcmc.RunParams.default_unconfined">
-<tt class="descname">default_unconfined</tt><big>(</big><big>)</big> &rarr; RunParams<a class="headerlink" href="#libplcurve.tsmcmc.RunParams.default_unconfined" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="libplcurve.tsmcmc.RunParams.delta">
@@ -308,6 +314,11 @@ triangulation.</p>
 <dt id="libplcurve.tsmcmc.Triangulation">
 <em class="property">class </em><tt class="descclassname">libplcurve.tsmcmc.</tt><tt class="descname">Triangulation</tt><a class="headerlink" href="#libplcurve.tsmcmc.Triangulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>::triangulation_struct</p>
+<dl class="method">
+<dt id="libplcurve.tsmcmc.Triangulation.new_fan">
+<tt class="descname">new_fan</tt><big>(</big><em>int nedges</em><big>)</big> &rarr; Triangulation<a class="headerlink" href="#libplcurve.tsmcmc.Triangulation.new_fan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="libplcurve.tsmcmc.Triangulation.diags">
 <tt class="descname">diags</tt><a class="headerlink" href="#libplcurve.tsmcmc.Triangulation.diags" title="Permalink to this definition">¶</a></dt>
@@ -332,11 +343,6 @@ triangulation.</p>
 <dd><p>triangulation_struct.nedges</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="libplcurve.tsmcmc.Triangulation.new_fan">
-<tt class="descname">new_fan</tt><big>(</big><em>int nedges</em><big>)</big> &rarr; Triangulation<a class="headerlink" href="#libplcurve.tsmcmc.Triangulation.new_fan" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
 <dt id="libplcurve.tsmcmc.Triangulation.ntri">
 <tt class="descname">ntri</tt><a class="headerlink" href="#libplcurve.tsmcmc.Triangulation.ntri" title="Permalink to this definition">¶</a></dt>
@@ -358,6 +364,8 @@ triangulation.</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../libpl/pdcode.html" class="btn btn-neutral float-right" title="pdcode: PlanarDiagrams"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pd.html" class="btn btn-neutral" title="pd: PlanarDiagrams"><span class="fa fa-arrow-circle-left"></span> Previous</a>
