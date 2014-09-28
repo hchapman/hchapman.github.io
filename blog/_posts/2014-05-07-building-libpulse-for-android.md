@@ -1,6 +1,6 @@
 ---
 title: Building libpulse for Android, an odyssey
-author: hchapman
+author: Harrison
 layout: blog_post
 ---
 

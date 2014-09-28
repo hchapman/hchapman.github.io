@@ -1,13 +1,20 @@
 .nameheader {
-    font-family: "Brawler", Georgia, Times, serif;
+  font-family: "Brawler", Georgia, Times, serif;
 }
 
 .primary-content h2, .primary-content h3 {
-    font-family: "Brawler", Times, serif;
+  font-family: "Brawler", Times, serif;
 }
 
 .disclaimer,.copyright {
-    color: #aaa;
-    font-size: 80%;
-    margin: 0px;
+  color: #aaa;
+  font-size: 80%;
+  margin: 0px;
+}
+
+h2 + div.blog-whowhen {
+  color: #aaa;
+  font-size: 80%;
+  margin-top: -5px;
+  margin-bottom: 5px;
 }
