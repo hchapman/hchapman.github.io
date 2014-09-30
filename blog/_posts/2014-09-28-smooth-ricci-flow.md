@@ -58,29 +58,23 @@ curvature $$+1$$, the plane $$\mathbb E^2$$ with constant curvature
 $$0$$, or the hyperbolic plane $$\mathbb H^2$$ with constant curvature
 $$-1$$.
 
-The *Ricci flow* deforms the metric $$\mathbf g$$ on a smooth surface
-$$S$$ along a path $$\mathbf g(t)$$ (with $$\mathbf g =: \mathbf g(0)$$)
+The *normalized Ricci flow* deforms the metric $$\mathbf g$$ on a smooth surface
+$$S$$ along a path $$\mathbf g(t)$$ (with $$\mathbf g =: \mathbf
+g(0)$$) conformally (so that $$\mathbf g(t) = e^{2u(t)}\mathbf g$$)
 according to curvature $$K(t)$$ as
 
-$$ \frac {dg_{ij}(t)}{dt} = -2K(t)g_{ij}(t). $$
+$$ \frac{du(t)}{dt} = \frac{2\pi \chi(S)}{A(0)} -K(t), $$
 
-If we assume that our path through metrics looks like $$\mathbf g(t) =
-e^{2u(t)}\mathbf g$$ (where $$u(t)$$ is a smooth path of scalar
-functions $$S \to \mathbb R$$), this expression becomes
-
-$$ \frac {dg_{ij}(t)}{dt} = 2\frac{du(t)}{dt}e^{2u(t)}g_{ij} = -2K(t)e^{2u(t)}g_{ij} $$
-
-and simplifies to
-
-$$ \frac{du(t)}{dt} = -K(t). $$
-
-Theorems by R. Hamilton (1988) and B. Chow (1991) show that the Ricci flow
-converges to the uniformization metric $$\mathbf g(\infty)$$ for
+Where $$A(0)$$ is the initial area of the surface (and so the first
+term is the uniform curvature to which the surface will converge).
+Theorems by R. Hamilton (1988) and B. Chow (1991) show that the Ricci
+flow converges to the uniformization metric $$\mathbf g(\infty)$$ for
 closed surfaces of any Euler characteristic. Additionally, given a
-target curvature $$\overline{K}$$, there is a modified Ricci flow which
-converges on a metric with the desired curvature;
+target curvature $$\overline{K}$$, there is a modified Ricci flow
+which converges on a metric with any desired (admissible, by
+Gauss-Bonnet) curvature;
 
-$$ \frac{du(t)}{dt} = -(\overline{K} - K). $$
+$$ \frac{du(t)}{dt} = \overline{K} - K. $$
 
 In a near-future post, we'll see what ideas from the smooth case that
 we can apply to a 2-simplicial complex (a "discrete" surface).
