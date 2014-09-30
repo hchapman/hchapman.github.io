@@ -74,7 +74,7 @@ and simplifies to
 
 $$ \frac{du(t)}{dt} = -K(t). $$
 
-Theorems by Hamilton (1988) and Chow (1991) show that the Ricci flow
+Theorems by R. Hamilton (1988) and B. Chow (1991) show that the Ricci flow
 converges to the uniformization metric $$\mathbf g(\infty)$$ for
 closed surfaces of any Euler characteristic. Additionally, given a
 target curvature $$\overline{K}$$, there is a modified Ricci flow which
