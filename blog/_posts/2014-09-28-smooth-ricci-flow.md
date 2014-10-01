@@ -10,7 +10,7 @@ it's probably worth summing up what I've learned so far. Let's first
 look at the more classical background--that deals with smooth surfaces
 rather than "discrete" surfaces. As we'll see, Ricci flow "smooths"
 the metric of a surface out. Notably, Ricci flow (in
-3-dimensions) was used by Perelmen in his proof of the Poincar&eacute;
+3-dimensions) was used by Perelman in his proof of the Poincar&eacute;
 conjuecture.
 
 Let $$(S, \mathbf g)$$ be a real surface with Riemannian metric
