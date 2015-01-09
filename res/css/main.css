@@ -18,3 +18,7 @@ h2 + div.blog-whowhen {
   margin-top: -5px;
   margin-bottom: 5px;
 }
+
+.center {
+  text-align: center;
+}
