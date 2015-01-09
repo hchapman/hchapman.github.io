@@ -29,7 +29,7 @@
 
   
     <link rel="top" title="plCurve 7.3 documentation" href="../index.html"/>
-        <link rel="prev" title="tsmcmc: Interface to plcRandomPolygon.h" href="../api/tsmcmc.html"/> 
+        <link rel="prev" title="Welcome to plCurve’s documentation!" href="../index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -57,19 +57,6 @@
         
         
             <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../api/plcurve.html">plcurve: Polygonal Links</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../api/plcurve.html#the-plcurve-class">The PlCurve class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/plcurve.html#the-strand-class">The Strand class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/plcurve.html#the-randomgenerator-gsl-rng-interface-class">The RandomGenerator (gsl_rng interface) class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/plcurve.html#auxiliary-classes">Auxiliary classes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pd.html">pd: PlanarDiagrams</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../api/pd.html#the-planardiagram-class">The PlanarDiagram class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/pd.html#building-block-classes">Building block classes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../api/tsmcmc.html">tsmcmc: Interface to plcRandomPolygon.h</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">pdcode: PlanarDiagrams</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-planardiagram-class">The PlanarDiagram class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-block-classes">Building block classes</a></li>
@@ -126,6 +113,28 @@ written in Mathematica&#8217;s KnotTheory format.</p>
 <p>There are multiple class methods which create new <tt class="docutils literal"><span class="pre">PlanarDiagram</span></tt>s
 of basic examples; their docstrings contain some specific information.</p>
 <dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.R1_loop_deletion">
+<tt class="descname">R1_loop_deletion</tt><big>(</big><em>crossing_or_index</em><big>)</big> &rarr; result pdcode<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.R1_loop_deletion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an (in-place) Reidemeister 1 loop deletion which
+removes the input crossing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.R2_bigon_elimination">
+<tt class="descname">R2_bigon_elimination</tt><big>(</big><em>crossing_or_index</em>, <em>crossing_or_index</em><big>)</big><a class="headerlink" href="#libpl.pdcode.PlanarDiagram.R2_bigon_elimination" title="Permalink to this definition">¶</a></dt>
+<dd><p>-&gt; (Upper pdcode, [Lower pdcode])</p>
+<p>Performs a Reidemeister 2 bigon elimination removing the bigon
+with vertices the two inputs. This is <strong>not an in-place operation</strong>
+as there may be more than one PlanarDiagram as a result of the move.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.as_spherogram">
+<tt class="descname">as_spherogram</tt><big>(</big><big>)</big> &rarr; spherogram.Link<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.as_spherogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Spherogram Link object representing this PlanarDiagram</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="libpl.pdcode.PlanarDiagram.components_ok">
 <tt class="descname">components_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.components_ok" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the component data agrees with crossing data.</p>
@@ -145,6 +154,26 @@ PD codes are regenerated. This checks that the crossing
 data is sane.</p>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="libpl.pdcode.PlanarDiagram.db_knot">
+<em class="property">static </em><tt class="descname">db_knot</tt><big>(</big><em>ncross</em>, <em>index</em><span class="optional">[</span>, <em>alternating=None</em><span class="optional">]</span><big>)</big> &rarr; new PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.db_knot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches the Rolfsen table of knot types and returns a new
+PlanarDiagram which is isotopic. Raises KeyError if the specified
+knot is not found.</p>
+<p>The variable <tt class="docutils literal"><span class="pre">alternating</span></tt> defaults to None. If the crossing
+number is high enough that knots are distinguished by
+&#8216;Alternating&#8217; or &#8216;NonAlternating,&#8217; be sure to set
+<tt class="docutils literal"><span class="pre">alternating</span></tt> to True or False respectively.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="libpl.pdcode.PlanarDiagram.db_link">
+<em class="property">static </em><tt class="descname">db_link</tt><big>(</big><em>ncross</em>, <em>index</em><span class="optional">[</span>, <em>alternating=True</em><span class="optional">]</span><big>)</big> &rarr; new PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.db_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches the Thistlethwaite table of link types and returns a new
+PlanarDiagram which is isotopic. Raises KeyError if the specified
+link is not found.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="libpl.pdcode.PlanarDiagram.edges_ok">
 <tt class="descname">edges_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.edges_ok" title="Permalink to this definition">¶</a></dt>
@@ -157,10 +186,38 @@ data is sane.</p>
 <dd><p>Check that the face data agrees with crossing data.</p>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="libpl.pdcode.PlanarDiagram.from_plink">
+<em class="property">static </em><tt class="descname">from_plink</tt><big>(</big><em>editor</em><big>)</big> &rarr; new PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.from_plink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new PlanarDiagram from a plink LinkEditor object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.get_R1_loops">
+<tt class="descname">get_R1_loops</tt><big>(</big><big>)</big> &rarr; generator of Faces<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.get_R1_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of loops which are viable candidates
+for Reidemeister 1 moves.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.get_R2_bigons">
+<tt class="descname">get_R2_bigons</tt><big>(</big><big>)</big> &rarr; generator of Faces<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.get_R2_bigons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of bigons which are viable candidates
+for Reidemeister 2 moves.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.get_R3_triangles">
+<tt class="descname">get_R3_triangles</tt><big>(</big><big>)</big> &rarr; generator of (Face, Edge) pairs<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.get_R3_triangles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of trigons which are viable
+candidates for Reidemeister 3 moves, with the strand
+that would move.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="libpl.pdcode.PlanarDiagram.homfly">
-<tt class="descname">homfly</tt><big>(</big><big>)</big> &rarr; str<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.homfly" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the HOMFLY polynomial for this diagram (returned as string).</p>
+<tt class="descname">homfly</tt><big>(</big><span class="optional">[</span><em>as_string=False</em><span class="optional">]</span><big>)</big> &rarr; HOMFLYPolynomial<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.homfly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the HOMFLY polynomial for this diagram.</p>
 </dd></dl>
 
 <dl class="method">
@@ -172,9 +229,26 @@ data is sane.</p>
 <dl class="method">
 <dt id="libpl.pdcode.PlanarDiagram.isomorphic">
 <tt class="descname">isomorphic</tt><big>(</big><em>PlanarDiagram other_pd</em><big>)</big> &rarr; bool<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.isomorphic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns whether or not this pdcode is isomorphic to the input
-pdcode <tt class="docutils literal"><span class="pre">other_pd</span></tt>. This is equivalent to <tt class="docutils literal"><span class="pre">pd</span> <span class="pre">==</span> <span class="pre">other</span></tt> or
-<tt class="docutils literal"><span class="pre">not</span> <span class="pre">pd</span> <span class="pre">!=</span> <span class="pre">other</span></tt>.</p>
+<dd><p>Returns whether or not this pdcode shadow is isomorphic to the
+input pdcode <tt class="docutils literal"><span class="pre">other_pd</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.isotopic">
+<tt class="descname">isotopic</tt><big>(</big><em>PlanarDiagram other_pd</em><big>)</big> &rarr; bool<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this pdcode is diagram-isotopic to the
+input pdcode <tt class="docutils literal"><span class="pre">other_pd</span></tt>. This is equivalent to <tt class="docutils literal"><span class="pre">pd</span> <span class="pre">==</span>
+<span class="pre">other</span></tt> or <tt class="docutils literal"><span class="pre">not</span> <span class="pre">pd</span> <span class="pre">!=</span> <span class="pre">other</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.neighbors">
+<tt class="descname">neighbors</tt><big>(</big><big>)</big> &rarr; generator of tuples of PlanarDiagrams<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of knot-isomorphic PlanarDiagrams by
+identifying and performing knot moves which preserve
+isomorphism (i.e. Reidemeister moves). The generator yields
+<em>tuples</em> of PlanarDiagrams, in case the move untangled a link
+into two separate diagrams.</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -262,6 +336,17 @@ comps, faces, and crossings</p>
 \(n\)-link chain.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.simplify">
+<tt class="descname">simplify</tt><big>(</big><em>seed=None</em><big>)</big> &rarr; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an isomorphic PlanarDiagram whose crossing number
+software knows not how to decrease (i.e. this would
+<strong>ideally</strong> return a diagram of this knot with minimal number
+of crossings).</p>
+<p>If <tt class="docutils literal"><span class="pre">seed</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt>, pick a random move instead of
+using any order (using the integer seed provided).</p>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="libpl.pdcode.PlanarDiagram.torus_knot">
 <em class="property">static </em><tt class="descname">torus_knot</tt><big>(</big><em>p</em>, <em>q</em><big>)</big> &rarr; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.torus_knot" title="Permalink to this definition">¶</a></dt>
@@ -274,6 +359,15 @@ comps, faces, and crossings</p>
 <em class="property">static </em><tt class="descname">twist_knot</tt><big>(</big><em>n_twists</em><big>)</big> &rarr; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.twist_knot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.PlanarDiagram" title="libpl.pdcode.PlanarDiagram"><tt class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></tt></a> which represents a
 twist knot with \(n\) twists.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.unique_code">
+<tt class="descname">unique_code</tt><big>(</big><big>)</big> &rarr; str<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.unique_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a &#8216;pdcode-ish&#8217; string which uniquely identifies this
+planar diagram. If another planar diagram is not isomorphic to
+this, their <tt class="docutils literal"><span class="pre">unique_code()</span></tt>s will differ, but two isomorphic
+planar diagrams may have different <tt class="docutils literal"><span class="pre">unique_code()</span></tt>s.</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -382,6 +476,10 @@ designed for hash collisions.</p>
 <dt id="libpl.pdcode.Edge">
 <em class="property">class </em><tt class="descclassname">libpl.pdcode.</tt><tt class="descname">Edge</tt><a class="headerlink" href="#libpl.pdcode.Edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>An oriented edge, joining two verts tail -&gt; head</p>
+<p>Once you are finished setting any of the properties <tt class="docutils literal"><span class="pre">head</span></tt>,
+<tt class="docutils literal"><span class="pre">headpos</span></tt>, <tt class="docutils literal"><span class="pre">tail</span></tt>, and <tt class="docutils literal"><span class="pre">tailpos</span></tt>, you <strong>must</strong> call
+<a class="reference internal" href="#libpl.pdcode.PlanarDiagram.regenerate" title="libpl.pdcode.PlanarDiagram.regenerate"><tt class="xref py py-meth docutils literal"><span class="pre">PlanarDiagram.regenerate()</span></tt></a> on the parent so that sanity
+can be checked and faces and components regenerated.</p>
 <dl class="method">
 <dt id="libpl.pdcode.Edge.component_index_pos">
 <tt class="descname">component_index_pos</tt><big>(</big><em>) -&gt; (component index</em>, <em>edge pos</em><big>)</big><a class="headerlink" href="#libpl.pdcode.Edge.component_index_pos" title="Permalink to this definition">¶</a></dt>
@@ -507,7 +605,22 @@ of the faces, use <a class="reference internal" href="#libpl.pdcode.Edge.face_in
 <dl class="class">
 <dt id="libpl.pdcode.Crossing">
 <em class="property">class </em><tt class="descclassname">libpl.pdcode.</tt><tt class="descname">Crossing</tt><a class="headerlink" href="#libpl.pdcode.Crossing" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>A crossing, which holds four edges in positions and an orientation.</p>
+<p>Crossing data is the <strong>most important</strong> piece of data in a
+PlanarDiagram. A full diagram object can be built from crossing
+data alone (although orientations of components may differ).</p>
+<p>Once you are finished setting any of the properties <tt class="docutils literal"><span class="pre">head</span></tt>,
+<tt class="docutils literal"><span class="pre">headpos</span></tt>, <tt class="docutils literal"><span class="pre">tail</span></tt>, and <tt class="docutils literal"><span class="pre">tailpos</span></tt>, you <strong>must</strong> call
+<a class="reference internal" href="#libpl.pdcode.PlanarDiagram.regenerate" title="libpl.pdcode.PlanarDiagram.regenerate"><tt class="xref py py-meth docutils literal"><span class="pre">PlanarDiagram.regenerate()</span></tt></a> on the parent so that sanity
+can be checked and faces and components regenerated.</p>
+<dl class="method">
+<dt id="libpl.pdcode.Crossing.get_faces">
+<tt class="descname">get_faces</tt><big>(</big><big>)</big> &rarr; tuple of Faces<a class="headerlink" href="#libpl.pdcode.Crossing.get_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the faces on which this crossing is a vertex, in
+clockwise order.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="libpl.pdcode.Crossing.overstrand">
 <tt class="descname">overstrand</tt><big>(</big><em>self) -&gt; (Edge incoming</em>, <em>Edge outgoing</em><big>)</big><a class="headerlink" href="#libpl.pdcode.Crossing.overstrand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return Edge objects which are the incoming and outgoing edges
@@ -565,6 +678,12 @@ this crossing.</p>
 <dd><p>A tuple of the indices of the edges which connect to this crossing.</p>
 <p>If you want objects instead of indices, access this <tt class="docutils literal"><span class="pre">Crossing</span></tt>
 like a sequence instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.Crossing.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#libpl.pdcode.Crossing.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the indices of the faces around this vertex, in clockwise order.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -652,6 +771,13 @@ like a sequence instead (e.g. <tt class="docutils literal"><span class="pre">fac
 are in counterclockwise order around the face.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="libpl.pdcode.Face.vertices">
+<tt class="descname">vertices</tt><a class="headerlink" href="#libpl.pdcode.Face.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the crossing <em>indices</em> around this face in counterclockwise
+order.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -664,7 +790,7 @@ are in counterclockwise order around the face.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../api/tsmcmc.html" class="btn btn-neutral" title="tsmcmc: Interface to plcRandomPolygon.h"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral" title="Welcome to plCurve’s documentation!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
