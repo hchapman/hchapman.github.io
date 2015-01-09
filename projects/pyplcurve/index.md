@@ -112,19 +112,22 @@ int main(int argc, char** argv) {
 
     K = pd_build_unknot(7);
 
-    Py_Initialize();
-    import_libpl__pdcode();
+    Py_Initialize(); // Init the Python interpreter
+    import_libpl__pdcode(); // Import the pdcode module
 
     printf("Testing pd_simplify on 7-crossing unknot...\n");
     printf("Original diagram had %d crossings\n", K->ncross);
 
-    results = pd_simplify(K, &ndias);
+    results = pd_simplify(K, &ndias); // Call Cython API routine
     for (i=0; i<ndias; i++) {
         printf("Result diagram %d has %d crossings\n",
                i+1, results[i]->ncross);
+        pd_code_free(&results[i]); // Free the result when done
     }
+    free(results); // Free the array of results
 
-    Py_Finalize();
+    pd_code_free(&K); // Free the original pd_code_t when done
+    Py_Finalize(); // Finalize the Python interpreter
     return 0;
 }
 {% endhighlight %}
@@ -134,4 +137,4 @@ there are the calls to Python which
 
 1. *Line 15*: Start the interpreter
 2. *Line 16*: Import the `libpl.pdcode` module
-3. *Line 27*: Close out the interpreter
+3. *Line 29*: Close out the interpreter
