@@ -60,6 +60,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">pdcode: PlanarDiagrams</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-planardiagram-class">The PlanarDiagram class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-block-classes">Building block classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-classes">Utility classes</a></li>
 </ul>
 </li>
 </ul>
@@ -132,6 +133,7 @@ as there may be more than one PlanarDiagram as a result of the move.</p>
 <dt id="libpl.pdcode.PlanarDiagram.as_spherogram">
 <tt class="descname">as_spherogram</tt><big>(</big><big>)</big> &rarr; spherogram.Link<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.as_spherogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a Spherogram Link object representing this PlanarDiagram</p>
+<p>Requires: <tt class="docutils literal"><span class="pre">spherogram</span></tt></p>
 </dd></dl>
 
 <dl class="method">
@@ -184,6 +186,16 @@ link is not found.</p>
 <dt id="libpl.pdcode.PlanarDiagram.faces_ok">
 <tt class="descname">faces_ok</tt><big>(</big><big>)</big> &rarr; bool<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.faces_ok" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the face data agrees with crossing data.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="libpl.pdcode.PlanarDiagram.from_dt_code">
+<em class="property">static </em><tt class="descname">from_dt_code</tt><big>(</big><big>)</big> &rarr; new PlanarDiagram<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.from_dt_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new PlanarDiagram from a DT code (Dowker-Thistlethwaite).
+Requires Spherogram</p>
+<p>Warning: Currently depends on from_pdcode, which has bugs with
+components of length 2</p>
+<p>Requires: <tt class="docutils literal"><span class="pre">spherogram</span></tt></p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -345,6 +357,14 @@ software knows not how to decrease (i.e. this would
 of crossings).</p>
 <p>If <tt class="docutils literal"><span class="pre">seed</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt>, pick a random move instead of
 using any order (using the integer seed provided).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.PlanarDiagram.snappy_manifold">
+<tt class="descname">snappy_manifold</tt><big>(</big><big>)</big> &rarr; snappy.Manifold<a class="headerlink" href="#libpl.pdcode.PlanarDiagram.snappy_manifold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SnapPy Manifold object which represents this knot/link&#8217;s
+complement in $S^3$.</p>
+<p>Requires: <cite>snappy</cite>, <cite>spherogram</cite></p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -779,6 +799,20 @@ order.</p>
 </dd></dl>
 
 </dd></dl>
+
+</div>
+<div class="section" id="utility-classes">
+<h2>Utility classes<a class="headerlink" href="#utility-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.pdcode.HOMFLYPolynomial">
+<em class="property">class </em><tt class="descclassname">libpl.pdcode.</tt><tt class="descname">HOMFLYPolynomial</tt><a class="headerlink" href="#libpl.pdcode.HOMFLYPolynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>An [immutable] HOMFLY polynomial object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="libpl.pdcode.HOMFLYTerm">
+<em class="property">class </em><tt class="descclassname">libpl.pdcode.</tt><tt class="descname">HOMFLYTerm</tt><a class="headerlink" href="#libpl.pdcode.HOMFLYTerm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 </div>
