@@ -1,0 +1,185 @@
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+%\usepackage[T1]{fontenc}
+%\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{Harrison Chapman}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{http://hchapman.github.io/static/CV.pdf}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {economics, statistics, mathematics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Other possible font commands include:
+% \ttfamily for teletype,
+% \sffamily for sans serif,
+% \bfseries for bold,
+% \scshape for small caps,
+% \normalsize, \large, \Large, \LARGE sizes.
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+% Place name at left
+{\huge \name}\\
+{\large\sc Curriculum Vitae}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+  \href{http://www.uga.edu/}{University of Georgia} \\
+  Department of Mathematics \\
+  Boyd Graduate Studies Research Center \\
+  Athens, GA 30602
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+    Phone: & (706) 542-2619 \\
+    Email: & \href{mailto:hchapman@uga.edu}{\tt hchapman@uga.edu} \\
+    Homepage: & \href{http://hchapman.github.io/}{\tt http://hchapman.github.io/} \\
+  \end{tabular}
+\end{minipage}
+
+\section*{Education}
+
+\begin{itemize}
+  \item B.A.\ Mathematics and Computer Science, Bowdoin College,
+    2011.\\
+    - \quad Cum laude \\
+    - \quad Honors in Mathematics (advisor: Thomas Pietraho)
+  \item M.S.\ Mathematics, University of Georgia, expected August 2015.
+  \item Ph.D.\ Mathematics, University of Georgia, 4th year, all but dissertation, expected May
+    2017.\\
+   - \quad Advisor: Jason Cantarella.
+\end{itemize}
+
+\section*{Teaching}
+
+\begin{enumerate}
+\item Graduate assistant, Online
+  Precalculus (MATH1113E), University System of Georgia. (Fall 2014--)
+\item Recitation instructor, Analytic Geometry and Calculus
+  (MATH2200), University of Georgia (Fall 2011, Spring 2012, Fall 2014)
+\item Instructor, Calculus for Science and Engineering I (MATH2250), University of Georgia (Spring 2014)
+\item Instructor, Precalculus (MATH1113), University of Georgia (Fall 2013)
+\end{enumerate}
+
+\section*{Publications}
+
+\begin{enumerate}
+\item Random Knot Diagrams.\\
+with J. Cantarella, M. Mastin. In preparation.
+\item A Group-theoretic Approach to Human Solving Strategies in
+  Sudoku.\\
+with M. Rupert (Mentor: E. Arnold). \textit{Colonial Academic Alliance
+  Undergraduate Research Journal} (2012) vol 3, article 3.
+\item On orbital varieties of type A. \\
+Advisor: T. Pietraho. \textit{Honors thesis}, (2011). Bowdoin College.
+\end{enumerate}
+
+\section*{Talks}
+
+\begin{enumerate}
+\item University of Georgia, Graduate Student Seminar, February
+  2015.\\
+\textit{Virtual Knot Theory}.
+\item University of Georgia, Geometry Seminar, January 2014.\\
+\textit{Random Planar Diagrams}.
+\item University of Georgia, Graduate Student Topology Seminar,
+  November 2014.\\
+\textit{The Poincar\'e homolgy sphere as the link of a singularity}.
+\item University of Georgia, Research Group on
+  Minimal Surfaces, November 2014.\\
+\textit{Discrete Ricci Flow}.
+\item University of Georgia, Mock AMS Conference, June 2014.\\
+\textit{The Tropical Grassmannian}.
+\item University of Georgia, Mock AMS Conference, June 2013.\\
+\textit{Hope for slackers: Playing games to prove theorems}.
+\item University of Georgia, Mock AMS Conference, June 2012.\\
+\textit{The Classification of Surfaces}.
+\item University of Georgia, VIGRE Research Group on Minkowski's
+  Geometry of Numbers, March 2012.\\
+\textit{Vinogradov's generalization of a theorem of Aubry-Thue}.
+\item AMS Joint Meetings, January 2011.\\
+AMS-MAA-SIAM Special Session on Research in Mathematics by
+Undergraduates and Students in Post-Baccalaureate Programs.\\
+\textit{Packets, Solving Symmetries, and Sudoku}.
+\item The Ohio State University, Young Mathematicians Conference,
+  August 2010.\\
+\textit{Packets, Solving Symmetries, and Sudoku}.
+\end{enumerate}
+
+\bigskip
+
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+    \href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
