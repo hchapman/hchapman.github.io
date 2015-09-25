@@ -1,5 +1,7 @@
 #### Recent seminar talks
 + *Asymptotic laws for knot diagrams*. \\
+  Simon Fraser University Discrete Math Seminar, September 2015.
++ *Asymptotic laws for knot diagrams*. \\
   UGA Geometry Seminar, September 2015.
 + *How to count (a quick glance at analytic combinatorics)*. \\
   UGA Graduate Student Seminar, September 2015.
