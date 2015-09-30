@@ -1,5 +1,7 @@
 #### Recent seminar talks
 + *Asymptotic laws for knot diagrams*. \\
+  University of British Columbia Discrete Math Seminar, September 2015.
++ *Asymptotic laws for knot diagrams*. \\
   Simon Fraser University Discrete Math Seminar, September 2015.
 + *Asymptotic laws for knot diagrams*. \\
   UGA Geometry Seminar, September 2015.
