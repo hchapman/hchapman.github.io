@@ -17,6 +17,8 @@
   Special Session on Topological Combinatorics, \\
   AMS Fall Southeastern Sectionals 2015, \\
   University of Memphis, October 2015.
++ Symplectic and Algebraic Geometry in the Statistical Physics of Polymers, \\
+  Simons Center for Geometry and Physics, SUNY Stony Brook, October 2015.
 + CanaDAM 2015, \\
   University of Saskatchewan, June 2015.
 + Graduate summer school in applied combinatorics, \\
