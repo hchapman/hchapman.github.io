@@ -1,4 +1,6 @@
 #### Recent seminar talks
++ *The quantum harmonic oscillator*. \\
+  UGA Geometry Seminar, October 2015.
 + *Asymptotic laws for knot diagrams*. \\
   University of British Columbia Discrete Math Seminar, September 2015.
 + *Asymptotic laws for knot diagrams*. \\
@@ -13,7 +15,11 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
-+ *Asymptotic laws for knot diagrams*. \\
++ *Asymptotics of random knot diagrams*. \\
+  Special Session on Algebraic and Combinatorial Structures in Knot Theory, \\
+  AMS Fall Western Sectionals 2015, \\
+  CSU Fullerton, October 2015.
++ *Asymptotics of random knot diagrams*. \\
   Special Session on Topological Combinatorics, \\
   AMS Fall Southeastern Sectionals 2015, \\
   University of Memphis, October 2015.

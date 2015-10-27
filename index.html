@@ -20,7 +20,7 @@ about: true
     {% capture talks  %}{% include_relative talks.md %}{% endcapture %}
     {{ talks | markdownify }}
 
-    <h2 class="content">Other Interests</h2>
+    {% comment %}<h2 class="content">Other Interests</h2>
     <p>I like to cook, but I'm not very good at it. It is often difficult
       to get motivated to cook when so much else is
       happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
@@ -34,7 +34,7 @@ about: true
       everything for me. I'm afraid though that once everything's
       perfectly automated, I'll have nothing left to do... Sometimes I
       publish my programs. There's more on this in
-      the <a href="/projects">projects tab</a>.</p>
+      the <a href="/projects">projects tab</a>.</p>{% endcomment %}
 
   </div>
 

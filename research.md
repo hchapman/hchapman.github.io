@@ -8,13 +8,10 @@ research: true
 
 ## Current Research
 
-My research interests primarily lie within Topology and Geometry. I
-am studying under the direction
-of <a href="http://www.jasoncantarella.com">Jason
-Cantarella</a>.
-
-Recently, we have been studying knots in the combinatorial view of
-knot diagrams. We have a few papers in preparation.
+My research interests have tended towards the intersection of
+combinatorics, topology and geometry, with a primary focus on knots. I
+am studying under the direction of <a
+href="http://www.jasoncantarella.com">Jason Cantarella</a>.
 
 ## Previous Research
 
