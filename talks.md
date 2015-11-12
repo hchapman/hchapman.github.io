@@ -1,4 +1,6 @@
 #### Recent seminar talks
++ *Asymptotic laws for knot diagrams*. \\
+  Tulane University Geometry Seminar, October 2015.
 + *The quantum harmonic oscillator*. \\
   UGA Geometry Seminar, October 2015.
 + *Asymptotic laws for knot diagrams*. \\
