@@ -17,6 +17,14 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
++ *A robotics-based calculus class*. \\
+  MAA Session on Mathematical Modeling in the Undergraduate Classroom,
+  Joint Mathematics Meetings 2016, \\
+  Seattle, Washington, January 2016.
++ *Asymptotic laws for knot diagrams*. \\
+  AMS Session on General Topics, \\
+  Joint Mathematics Meetings 2016, \\
+  Seattle, Washington, January 2016.
 + *Asymptotics of random knot diagrams*. \\
   Special Session on Algebraic and Combinatorial Structures in Knot Theory, \\
   AMS Fall Western Sectionals 2015, \\

@@ -1,0 +1,79 @@
+\documentclass[12pt]{article} \usepackage{amsmath}
+
+\pagestyle{empty} %<== DELETE IF YOUR TEST HAS MORE THAN ONE PAGE
+% (this page style suppresses page numbers.)
+\usepackage{hyperref}
+
+% Adjust the margins:
+\addtolength{\textwidth}{1.75in} \addtolength{\textheight}{1.75in}
+\addtolength{\topmargin}{-.95in} \addtolength{\hoffset}{-.95in}
+\setlength{\parskip}{1em}
+
+
+% puts in a horizontal rule the width of the text with space before
+% and after.
+\newcommand{\sep}{\ifhmode\par\fi\vskip6pt\hrule\vskip6pt}
+
+% A new environment for a test problem.
+\newcounter{problem} \newenvironment{problem} { \stepcounter{problem}%
+  \filbreak%
+  \sep
+  \noindent\arabic{problem}.
+} { \filbreak }
+
+
+
+\begin{document}
+\begin{center}
+  \textbf{WEBWORK--GETTING STARTED}
+\end{center}
+For this class, we are using a web-based homework system called WebWork. The login link is
+\begin{center}
+  \url{https://webwork.math.uga.edu/webwork2/Math2250\_Chapman\_S16}
+\end{center}
+You may have to tell your browser to accept a certificate in order to
+access this page. Your username is your MyID from your official UGA
+email address (so if you are bigdawg2011@uga.edu, then your username
+is bigdawg2011). Your initial password is a variant of your 810
+number, formatted like a social security number WITH DASHES. So it
+should look like 810-12-3456. Note that this drops the last digit that
+you see on your Student ID cards. You should change your password
+after you login for the first time.
+
+WebWork may be different from your previous experiences with math
+homework. Until the assignment is due, you can try the problems as
+many times as you like, and the system will tell you whether or not
+you have the right answer. This lets you correct your work
+immediately.
+
+After the assignment's due date, the system will show you the correct
+answer for each problem when you try it (but your answers will not be
+scored). The funny thing about WebWork is that due dates are absolute;
+i.e., \textbf{THERE ARE NO EXTENSIONS ON HOMEWORK.}
+
+You are welcome to work together on WebWork problems, but be warned:
+the problems are a little different for each student, so copying other
+folks' answers won't work. When you first login to WebWork, you'll see
+three buttons on the left. Use the ``Change Email" button to enter
+your preferred email address and the ``Change Password" button to
+change your password. Then, try ``Begin Problem Sets" to see how the
+system works. You can select a set and print it out in PDF format to
+work out the problems on paper if you prefer. Your problems will be
+the same when you login again to enter the answers. Additionally,
+there is a WeBWorK Intro under problem sets; this is a tutorial on how
+WebWork works, and it is encouraged you complete it.
+
+When typing things into WebWork, note that the system will use the
+order of operations. Exponentiation comes first, multiplication and
+division second, and addition and subtraction last. You can overrule
+this sequence with parentheses. Expressions in parentheses are
+evaluated first. Redundant parentheses are legal and possible. For
+example, if your expression is $$\dfrac{a+b}{c-d}$$ you need to enter
+into WebWork $$(a+b)/(c-d)$$
+
+To this end, the ``Preview Answers" button is useful to make sure you
+have typed your answer in correctly. When you click ``Submit Answer"
+WebWork will tell you whether or not the answer you typed is correct.
+
+
+\end{document}

@@ -5,41 +5,7 @@ about: true
 ---
 
 <div class="row">
-  <div class="col-md-7">
-    <br>
-    <div class='thumbnail'>
-      <img src="/res/img/withknuth.jpg" class="self_picture">
-      <div class="caption">
-        <h6>With Dr. Donald Knuth (on left)</h6>
-        Bowdoin College, February 2011 (This picture is getting old
-        but I look about the same, less the heavy Maine-winter coat.)
-      </div>
-    </div>
-
-    <h2 class="content">Recent Talks &amp; Conferences</h2>
-    {% capture talks  %}{% include_relative talks.md %}{% endcapture %}
-    {{ talks | markdownify }}
-
-    {% comment %}<h2 class="content">Other Interests</h2>
-    <p>I like to cook, but I'm not very good at it. It is often difficult
-      to get motivated to cook when so much else is
-      happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
-      logic can be tough to beat some times</a>.</p>
-    <p>Music is great. So much so that I was webmaster & IT
-      guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
-      (although I never DJ'ed my own show...). We've
-      <a href="http://wuog.org/">seized the airwaves from the UGA
-      student radio WUOG</a> a few times now.</p>
-    <p>I <em>am all about</em> learning how to get computers to do
-      everything for me. I'm afraid though that once everything's
-      perfectly automated, I'll have nothing left to do... Sometimes I
-      publish my programs. There's more on this in
-      the <a href="/projects">projects tab</a>.</p>{% endcomment %}
-
-  </div>
-
-
-  <div class="col-md-5">
+  <div class="col-sm-5 col-sm-push-7">
     <h2 class="content">Curriculum Vitae</h2>
     <p><a href="./static/CV.pdf">My CV is available here.</a></p>
     <h2 class="content">About Me</h2>
@@ -57,13 +23,13 @@ about: true
 
     <h2 class="content">Teaching</h2>
     <p>During the Fall 2015 semester, I'm teaching Precalculus (Math
-    1113), and working for the Writing Intenive Program (WIP) as a TA
-    for Jason Cantarella's lab-focused robot Calculus 2250 course.</p>
+      1113), and working for the Writing Intenive Program (WIP) as a TA
+      for Jason Cantarella's lab-focused robot Calculus 2250 course.</p>
     <p>In the past, I've been instructor for Calculus for Science and
-    Engineering (Spring 2014), and Precalculus (Fall 2013). I've also
-    been a graduate assistant for 1113E, the University System of
-    Georgia's online precalculus course (Fall 2014 &mdash; Spring
-    2015).</p>
+      Engineering (Spring 2014), and Precalculus (Fall 2013). I've also
+      been a graduate assistant for 1113E, the University System of
+      Georgia's online precalculus course (Fall 2014 &mdash; Spring
+      2015).</p>
 
     <h2 class="content">Contact</h2>
     <address>
@@ -79,4 +45,40 @@ about: true
       <strong>Email:</strong> hchapman@uga.edu
     </p>
   </div>
+
+  <div class="col-sm-7 col-sm-pull-5">
+    <br>
+    <div class='thumbnail'>
+      <img src="/res/img/withknuth.jpg" class="self_picture">
+      <div class="caption">
+        <h6>With Dr. Donald Knuth (on left)</h6>
+        Bowdoin College, February 2011 (This picture is getting old
+        but I look about the same, less the heavy Maine-winter coat.)
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-sm-pull-5">
+    <h2 class="content">Recent Talks &amp; Conferences</h2>
+    {% capture talks  %}{% include_relative talks.md %}{% endcapture %}
+    {{ talks | markdownify }}
+
+    {% comment %}<h2 class="content">Other Interests</h2>
+    <p>I like to cook, but I'm not very good at it. It is often difficult
+    to get motivated to cook when so much else is
+    happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
+    logic can be tough to beat some times</a>.</p>
+    <p>Music is great. So much so that I was webmaster & IT
+    guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
+    (although I never DJ'ed my own show...). We've
+    <a href="http://wuog.org/">seized the airwaves from the UGA
+    student radio WUOG</a> a few times now.</p>
+    <p>I <em>am all about</em> learning how to get computers to do
+    everything for me. I'm afraid though that once everything's
+    perfectly automated, I'll have nothing left to do... Sometimes I
+    publish my programs. There's more on this in
+    the <a href="/projects">projects tab</a>.</p>{% endcomment %}
+
+  </div>
+
 </div>

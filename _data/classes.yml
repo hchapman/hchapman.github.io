@@ -1,3 +1,11 @@
+- name: Spring 2016
+  classes:
+    - s2016-2250
+
+- name: Fall 2015
+  classes:
+    - f2015-1113
+
 - name: Spring 2014
   classes:
     - s2014-2250
