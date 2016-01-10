@@ -18,7 +18,7 @@
 
 #### Recent conference talks & visits
 + *A robotics-based calculus class*. \\
-  MAA Session on Mathematical Modeling in the Undergraduate Classroom,
+  MAA Session on Mathematical Modeling in the Undergraduate Classroom, \\
   Joint Mathematics Meetings 2016, \\
   Seattle, Washington, January 2016.
 + *Asymptotic laws for knot diagrams*. \\
