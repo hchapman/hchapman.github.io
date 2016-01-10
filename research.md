@@ -9,9 +9,17 @@ research: true
 ## Current Research
 
 My research interests have tended towards the intersection of
-combinatorics, topology and geometry, with a primary focus on knots. I
-am studying under the direction of <a
+combinatorics, topology and geometry, with a primary focus on random
+knots. I am studying under the direction of <a
 href="http://www.jasoncantarella.com">Jason Cantarella</a>.
+
+### Publications
+
+{% include_relative publications.md %}
+
+### Recent talks and conference visits
+
+{% include_relative talks.md %}
 
 ## Previous Research
 

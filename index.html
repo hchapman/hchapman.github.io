@@ -22,14 +22,14 @@ about: true
       Science, with Honors in Mathematics.</p>
 
     <h2 class="content">Teaching</h2>
-    <p>During the Fall 2015 semester, I'm teaching Precalculus (Math
-      1113), and working for the Writing Intenive Program (WIP) as a TA
-      for Jason Cantarella's lab-focused robot Calculus 2250 course.</p>
+    <p>During the Fall 2015 semester, I'm teaching Calculus I for Science and Engineering (Math
+      2250).</p>
     <p>In the past, I've been instructor for Calculus for Science and
-      Engineering (Spring 2014), and Precalculus (Fall 2013). I've also
-      been a graduate assistant for 1113E, the University System of
-      Georgia's online precalculus course (Fall 2014 &mdash; Spring
-      2015).</p>
+      Engineering (Spring 2014), and Precalculus (Fall 2013, Fall 2015), and a
+      Writing Intensive Program teaching assistant for a robotics-based Calculus I
+      course (Fall 2015). I've also been a graduate assistant for 1113E, the
+      University System of Georgia's online precalculus course (Fall
+      2014 &mdash; Spring 2015).</p>
 
     <h2 class="content">Contact</h2>
     <address>
@@ -59,6 +59,10 @@ about: true
   </div>
 
   <div class="col-sm-6 col-sm-pull-5">
+    <h2 class="content">Recent Publications</h2>
+    {% capture pubs  %}{% include_relative publications.md %}{% endcapture %}
+    {{ pubs | markdownify }}
+
     <h2 class="content">Recent Talks &amp; Conferences</h2>
     {% capture talks  %}{% include_relative talks.md %}{% endcapture %}
     {{ talks | markdownify }}
