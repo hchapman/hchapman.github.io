@@ -1,5 +1,5 @@
 relative_permalinks: false
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 permalink: pretty
 include: ["_static", "_sources"]
