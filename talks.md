@@ -19,7 +19,7 @@
 #### Recent conference talks & visits
 + *Asymptotic laws for knot diagrams*. \\
   Graduate Student Topology and Geometry Conference 2016, \\
-  Bloomington, Indiana, April 2016.
+  IU Bloomington, April 2016.
 + *A robotics-based calculus class*. \\
   MAA Session on Mathematical Modeling in the Undergraduate Classroom, \\
   Joint Mathematics Meetings 2016, \\
