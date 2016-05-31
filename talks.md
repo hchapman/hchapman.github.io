@@ -17,6 +17,8 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
++ Graphs and Surfaces: Algorithms, Combinatorics, and Toplogy, \\
+  Centre International de Recontres Mathématiques (CIRM), May 2016.
 + *Asymptotic laws for knot diagrams*. \\
   Graduate Student Topology and Geometry Conference 2016, \\
   IU Bloomington, April 2016.
