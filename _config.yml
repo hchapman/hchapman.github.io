@@ -2,6 +2,7 @@ relative_permalinks: false
 highlighter: rouge
 markdown: kramdown
 permalink: pretty
+encoding: UTF-8
 include: ["_static", "_sources"]
 
 defaults:
@@ -16,4 +17,3 @@ defaults:
     values:
       layout: "blog"
       author: "hchapman"
-    
