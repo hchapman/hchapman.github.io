@@ -18,7 +18,7 @@
 
 #### Recent conference talks & visits
 + Graphs and Surfaces: Algorithms, Combinatorics, and Toplogy, \\
-  Centre International de Recontres Mathématiques (CIRM), May 2016.
+  Centre International de Recontres MathÃ©matiques (CIRM), May 2016.
 + *Asymptotic laws for knot diagrams*. \\
   Graduate Student Topology and Geometry Conference 2016, \\
   IU Bloomington, April 2016.
