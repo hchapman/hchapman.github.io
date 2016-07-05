@@ -1,0 +1,15 @@
+- name: Centre Pompidou
+  src: /res/img/centrepomp.jpg
+  desc: Paris, May 2016
+
+- name: With Knuth
+  src: /res/img/withknuth.jpg
+  desc: Bowdoin, February 2011
+
+- name: Nympheas
+  src: /res/img/nympheas.jpg
+  desc: Paris, May 2016
+
+- name: Geneva
+  src: /res/img/genevasurf.jpg
+  desc: Geneva, May 2016

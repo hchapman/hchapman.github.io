@@ -9,17 +9,18 @@ about: true
     <h2 class="content">Curriculum Vitae</h2>
     <p><a href="./static/CV.pdf">My CV is available here.</a></p>
     <h2 class="content">About Me</h2>
-    <p>I am currently a mathematics graduate student at the University
-      of Georgia working towards a Ph.D. degree. My research interests
-      primarily lie within Topology and Geometry. I am studying under
-      the direction of <a href="http://www.jasoncantarella.com">Jason
-      Cantarella</a>. Recently I have been studying knots from the
-      map-theoretic view of knot diagrams.</p>
+    <p>I am currently a mathematics graduate student at the University of
+      Georgia working towards a Ph.D. degree. My research interests primarily
+      lie within Topology and Geometry. I am studying under the direction
+      of <a href="http://www.jasoncantarella.com">Jason Cantarella</a>. Recently
+      I have been studying knots from the map-theoretic view of knot diagrams,
+      and my research interests include low-dimensional topology, differential
+      geometry, combinatorics, and probability.</p>
 
-    <p>During the 2012-2013 school year, I was supported by the
-      University of Georgia's VIGRE II grant. I graduated from Bowdoin
-      College in May of 2011 with a B.A. in Mathematics and Computer
-      Science, with Honors in Mathematics.</p>
+    <p>During Summer 2012 and the 2012-2013 school year, I was supported by the
+      University of Georgia's VIGRE II grant. I graduated from Bowdoin College
+      in May of 2011 with a B.A. in Mathematics and Computer Science, with
+      Honors in Mathematics.</p>
 
     <h2 class="content">Teaching</h2>
     <p>During the Spring 2016 semester, I taught Calculus I for Science and Engineering (Math
@@ -47,41 +48,10 @@ about: true
   </div>
 
   <div class="col-sm-7 col-sm-pull-5">
-      <br>
-      <div class="thumbnail">
-      <div id="carousel-photos" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-              <li data-target="#carousel-photos" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-photos" data-slide-to="1"></li>
-              <li data-target="#carousel-photos" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-              <div class='item active'>
-                  <img src="/res/img/nympheas.jpg" class="self_picture">
-              </div>
-              <div class='item'>
-                  <img src="/res/img/withknuth.jpg" class="self_picture">
-              </div>
-              <div class='item'>
-                  <img src="/res/img/centrepomp.jpg" class="self_picture">
-              </div>
-          </div>
-          <a class="left carousel-control"
-             href="#carousel-photos"
-             role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control"
-             href="#carousel-photos"
-             role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-          </a>
-      </div>
-      </div>
+    <br>
+    {% include carousel.html items=site.data.photos %}
   </div>
-
+  
   <div class="col-sm-6 col-sm-pull-5">
     <h2 class="content">Recent Publications</h2>
     {% capture pubs  %}{% include_relative publications.md %}{% endcapture %}

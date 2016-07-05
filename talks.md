@@ -17,6 +17,9 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
++ *[Asymptotic laws for knot diagrams](http://www.lix.polytechnique.fr/~pilaud/FPSAC16/final_74)*. \\
+  28<sup>th</sup> International Conference on Formal Power Series and Algebraic Combinatorics (FPSAC), \\
+  Vancouver, BC, July 2016.
 + Graphs and Surfaces: Algorithms, Combinatorics, and Toplogy, \\
   Centre International de Recontres Mathématiques (CIRM), May 2016.
 + *Asymptotic laws for knot diagrams*. \\
