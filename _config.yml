@@ -1,4 +1,3 @@
-destination: ~/.config/hchapman.github.io/_site
 relative_permalinks: false
 highlighter: rouge
 markdown: kramdown

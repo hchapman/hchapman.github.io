@@ -7,14 +7,33 @@ permalink: /projects/
 
 ## Projects
 
-In my spare time, I'll often take up tiny coding projects or hack away
-at open-source programs. I try to keep everything that I do, big or
+I try to keep everything that I do, big or
 small, on my [Github profile](https://github.com/hchapman). Not only
 is this website hosted on Github,
 [you can view the source for it here](https://github.com/hchapman/hchapman.github.io)!
 
 Here are some of the things I'm proud to have put a substantial amount of
 time and effort into:
+
+### LiveFit
+
+An application which turns a setup with a webcam facing a projector screen into
+an *augmented reality display* that tracks moving projectiles and displays the
+location and trajectory for an audience or classroom to experience. The source
+and initial release binaries are
+[available on Github](https://github.com/hchapman/LiveFit), and the
+built documentation [lives here](https://hchapman.github.io/LiveFit).
+
+### Athena CSV to WebWork Converter
+
+Before the Fall 2016 semester, UGA's Athena software introduced a feature to
+export an instructor's class list as a CSV file. I wrote a small HTML5 application
+to make conversion to the WebWork classlist .lst format simple and (in theory)
+safe with confidential information (the app makes no network calls and all
+conversion is done on the local user's machine).
+
+The application is [available here](../wwconvert/) and the source is
+[available on Github](https://github.com/hchapman/uga-webwork-tools).
 
 ### Javier
 
