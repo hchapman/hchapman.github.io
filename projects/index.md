@@ -22,7 +22,7 @@ an *augmented reality display* that tracks moving projectiles and displays the
 location and trajectory for an audience or classroom to experience. The source
 and initial release binaries are
 [available on Github](https://github.com/hchapman/LiveFit), and the
-built documentation [lives here](https://hchapman.github.io/LiveFit).
+built documentation [lives here](/LiveFit/).
 
 ### Athena CSV to WebWork Converter
 
@@ -32,7 +32,7 @@ to make conversion to the WebWork classlist .lst format simple and (in theory)
 safe with confidential information (the app makes no network calls and all
 conversion is done on the local user's machine).
 
-The application is [available here](../wwconvert/) and the source is
+The application is [available here](/wwconvert/) and the source is
 [available on Github](https://github.com/hchapman/uga-webwork-tools).
 
 ### Javier

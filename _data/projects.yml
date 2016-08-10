@@ -1,5 +1,9 @@
 - name: Current
   projects:
+    - title: LiveFit
+      url: "https://github.com/hchapman/LiveFit"
+    - title: Athena CSV tool
+      url: "/wwconvert/"
     - title: plCurve-python
       url: "/projects/pyplcurve/"
     - title: Javier
