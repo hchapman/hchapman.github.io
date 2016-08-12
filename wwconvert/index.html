@@ -9,7 +9,6 @@ title: WebWork Classlist Converter
 <style type="text/css">
  .textdump {
      width: 100%;
-     height: 10em; 
  }
 </style>
 
@@ -36,7 +35,8 @@ title: WebWork Classlist Converter
        data-dstid="csvdata" class="btn btn-default"
        accept="text/csv, .csv"><br>
 <textarea id="csvdata"
-          class="textdump"></textarea><br>
+          class="textdump form-control"
+          rows="10"></textarea><br>
 <h2>2. Click the convert button</h2>
 <input type="button" id="convert"
        onclick="convertData(this.dataset.srcid, this.dataset.dstid)"
@@ -46,7 +46,8 @@ title: WebWork Classlist Converter
        class="btn btn-default"><br>
 <h2>3. Copy the formatted data into WebWork</h2>
 <textarea id="lstdata"
-          class="textdump"></textarea>
+          class="textdump form-control"
+          rows="10"></textarea>
 <input type="button" id="copybutton" value="Copy to Clipboard"
        data-clipboard-target="#lstdata"
        data-tooltip="#copyinfo"
