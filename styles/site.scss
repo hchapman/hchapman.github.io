@@ -1,0 +1,88 @@
+---
+---
+
+@import "bootstrap/variables";
+@import "bootstrap";
+
+.nameheader {
+    font-family: "Brawler", Georgia, Times, serif;
+}
+
+.primary-content h2, .primary-content h3 {
+    font-family: "Brawler", Times, serif;
+}
+
+.disclaimer,.copyright {
+    color: #aaa;
+    font-size: 80%;
+    margin: 0px;
+}
+
+h2 + div.blog-whowhen {
+    color: #aaa;
+    font-size: 80%;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+// Nav Sidebar
+// @author: Harrison Chapman
+// ---------------------------
+.nav-sidebar {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #f7f5fa;
+    border-radius: 5px;
+}
+
+.nav-sidebar > li > a.nav-header, .nav-sidebar > li > a.nav-header:hover, .nav-sidebar > li > a.nav-header:focus {
+    color: $headings-color;
+    background-color: #f7f5fa;
+}
+
+.nav-sidebar .nav > li > a {
+    padding-left: 30px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-size: 90%;
+}
+
+.center {
+    text-align: center;
+}
+
+body {
+    background-color: #eee;
+}
+
+img {
+    max-width: 100%;
+}
+
+div.tabs div.container {
+    padding: 0 20px;
+    margin-bottom: -1px;
+    border-bottom: 1px solid #eee;
+}
+
+li {
+    margin-bottom: .7em;
+}
+
+div.tabs {
+}
+
+ul.nav-primary {
+    padding-left: 3px;
+    border-color: #eee;
+}
+div.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}

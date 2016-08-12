@@ -1,6 +1,6 @@
 <div class="col-sm-4">
   <ul class="nav nav-sidebar">{% for semester in site.data.classes %}
-    <li><a><strong>{{ semester.name }}</strong></a>
+    <li><a class="nav-header"><strong>{{ semester.name }}</strong></a>
       {% include classes_ul.html items=semester.classes %}
     </li>
   {% endfor %}</ul>
