@@ -1,3 +1,7 @@
+- name: Fall 2016
+  classes:
+    - f2016-2250
+
 - name: Spring 2016
   classes:
     - s2016-2250
