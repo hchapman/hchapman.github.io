@@ -10,6 +10,42 @@ title: WebWork Classlist Converter
  .textdump {
      width: 100%;
  }
+
+ #csvdrop {
+     position: relative;
+ }
+
+ #dragoverlay {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 10;
+     background-color: #eef;
+     border-color: #aaf;
+     border-width: 10px;
+     border-style: solid;
+ }
+
+ #dragoverlay span {
+     display: inline-block;
+     width: 100%;
+     top: 50%;
+     font-size: 2em;
+     text-align: center;
+     margin-top: -1em;
+     position: absolute;
+     vertical-align: middle;
+ }
+
+ #copybutton {
+     width: 100%;
+ }
+
+ #copyinfo {
+     width: 100%;
+ }
 </style>
 
 <h1>Athena CSV &#8614; WebWork .lst converter</h1>
@@ -29,30 +65,42 @@ title: WebWork Classlist Converter
     <a href="https://github.com/hchapman/uga-webwork-tools/issues">GitHub
         tracker</a> or me at
     <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>.</p>
+
 <h2>1. Upload or paste your Athena CSV data</h2>
 <input type="file" id="csvupload"
        onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
        data-dstid="csvdata" class="btn btn-default"
-       accept="text/csv, .csv"><br>
-<textarea id="csvdata"
-          class="textdump form-control"
-          rows="10"></textarea><br>
+       accept="text/csv, .csv"
+       style="display:none">
+<label for="csvupload">
+    <a class="btn btn-primary">Pick a CSV file to upload</a>
+</label> or drag and drop below.<br>
+<div id="csvdrop">
+    <textarea id="csvdata"
+              class="textdump form-control"
+              placeholder="Upload, paste, or drag and drop here."
+              rows="10" wrap="off"></textarea>
+    <div id="dragoverlay" style="display:none; pointer-events:none">
+        <span>Drop .csv files here</span></div>
+</div><br>
+
 <h2>2. Click the convert button</h2>
 <input type="button" id="convert"
        onclick="convertData(this.dataset.srcid, this.dataset.dstid)"
        value="Convert!"
        data-srcid="csvdata"
        data-dstid="lstdata"
-       class="btn btn-default"><br>
+       class="btn btn-primary"><br>
+
 <h2>3. Copy the formatted data into WebWork</h2>
 <textarea id="lstdata"
           class="textdump form-control"
-          rows="10"></textarea>
+          rows="10" wrap="off"></textarea>
 <input type="button" id="copybutton" value="Copy to Clipboard"
        data-clipboard-target="#lstdata"
        data-tooltip="#copyinfo"
-       class="btn btn-default">
-<span id="copyinfo"></span>
+       class="btn btn-primary">
+<div id="copyinfo" class="alert-success"></div>
 
 
 <script type="text/javascript">
@@ -65,5 +113,59 @@ title: WebWork Classlist Converter
      var tip = document.querySelector(e.trigger.dataset.tooltip);
      tip.innerHTML = "Press &#8984;+C or Ctrl+C to copy!";
  });
+
+ var dropbox;
+ dropbox = document.getElementById("csvdrop");
+ dropbox.addEventListener("dragenter", dragEnterCsvDrop, false);
+ dropbox.addEventListener("dragleave", dragEndCsvDrop, false);
+ dropbox.addEventListener("dragover", dragOverCsvDrop, false);
+ dropbox.addEventListener("drop", dropCsvDrop, false);
+
+ var dragoverlay;
+ dragoverlay = document.getElementById("dragoverlay");
+
+ function containsFiles(event) {
+
+     if (event.dataTransfer.types) {
+         for (var i = 0; i < event.dataTransfer.types.length; i++) {
+             if (event.dataTransfer.types[i] == "Files") {
+                 return true;
+             }
+         }
+     }
+     return false;
+
+ }
+
+ function dragEnterCsvDrop(e) {
+     e.stopPropagation();
+     e.preventDefault();
+
+     if (containsFiles(e)) {
+         dragoverlay.style.display = "block";
+     }
+ }
+
+ function dragEndCsvDrop(e) {
+     dragoverlay.style.display = "none";
+ }
+
+ function dragOverCsvDrop(e) {
+     e.stopPropagation();
+     e.preventDefault();
+ }
+
+ function dropCsvDrop(e) {
+     e.stopPropagation();
+     e.preventDefault();
+
+     var dt = e.dataTransfer;
+     var files = dt.files;
+
+     loadFileToTextarea(files, "csvdata");
+     dragoverlay.style.display = "none";
+ }
+
+
 </script>
 
