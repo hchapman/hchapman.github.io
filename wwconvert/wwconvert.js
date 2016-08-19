@@ -47,6 +47,7 @@ function convertAthenaCSV(data) {
             lastname: athenaFullnameToLastname(res.data[i][2]),
             firstname: res.data[i][1],
             username: ugaEmailToUsername(res.data[i][9]),
+            section: res.data[i][10]
         });
     }
 
@@ -66,7 +67,8 @@ function convertStudentsToWW(students) {
             student.lastname,
             student.firstname,
             "C",
-            "", "", "", "\t"+student.username+"@uga.edu",
+            "", (student.section || ""), "",
+            "\t"+student.username+"@uga.edu",
             student.username
         ].join(","));
     }
