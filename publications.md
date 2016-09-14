@@ -6,5 +6,5 @@
 + *Knot Probabilities in Random Diagrams*. \\
   Jason Cantarella, Harrison Chapman and Matt Mastin. \\
   J. Phys. A: Math. Theor. 49 (2016), no. 40, p. 405001.\\
-  DOI: [http://dx.doi.org/10.1088/1751-8113/49/40/405001] \\
+  DOI: (http://dx.doi.org/10.1088/1751-8113/49/40/405001) \\
   Preprint: [arXiv:1512.05749](http://arxiv.org/abs/1512.05749)
