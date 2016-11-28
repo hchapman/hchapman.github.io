@@ -1,0 +1,279 @@
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+%\usepackage[T1]{fontenc}
+%\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{Harrison Chapman}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{http://hchapman.github.io/static/CV.pdf}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {mathematics, knot theory, random topology, statistical mechanics, physics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Other possible font commands include:
+% \ttfamily for teletype,
+% \sffamily for sans serif,
+% \bfseries for bold,
+% \scshape for small caps,
+% \normalsize, \large, \Large, \LARGE sizes.
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+% Place name at left
+{\huge \name}\\
+{\large\sc Curriculum Vit\ae}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+  \href{http://www.uga.edu/}{University of Georgia} \\
+  Department of Mathematics \\
+  Boyd Graduate Studies Research Center \\
+  Athens, GA 30602
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+    Phone: & (706) 542-2619 \\
+    Email: & \href{mailto:hchapman@uga.edu}{\tt hchapman@uga.edu} \\
+    Homepage: & \href{http://hchapman.github.io/}{\tt http://hchapman.github.io/} \\
+  \end{tabular}
+\end{minipage}
+
+\section*{Education}
+
+\begin{itemize}
+\item Ph.D.\ Mathematics, University of Georgia, 6th year (ABD), expected May
+  2017.\\
+  \textbullet \quad Advisor: Jason Cantarella.
+\item M.S.\ Mathematics, University of Georgia, 2015.
+\item B.A.\ Mathematics and Computer Science, Bowdoin College,
+  2011.\\
+  \textbullet \quad Cum laude \\
+  \textbullet \quad Honors in Mathematics (advisor: Thomas Pietraho)
+\end{itemize}
+
+ \section*{Awards}
+
+ \begin{itemize}
+ \item B.J.\ Ball Scholarship, 2016
+ \item UGA VIGRE Research Fellowship, 2012---2013, Summer 2014
+ \item Bowdoin Faculty Scholar, 2007
+ \end{itemize}
+
+\section*{Teaching}
+
+\subsection*{University of Georgia}
+
+\begin{enumerate}
+\item Instructor, Calculus for Science and Engineering I (MATH2250). \\
+  Spring 2014, Spring 2016, Fall 2016
+\item Instructor, Precalculus (MATH1113). \\
+  Fall 2013, Fall 2015
+\item Graduate assistant for Topology Qualifying Exam problem session
+  (volunteer). \\
+  Summer 2016
+\item Writing Intensive Program (WIP) teaching assistant for a lab and
+  robotics-focused Calculus I (MATH2250). \\
+  Fall 2015
+\item Graduate assistant, Online Precalculus (MATH1113E). \\
+  \emph{This was a course for all of the University System of Georgia}.\\
+  Fall 2014--Spring 2015
+\item Recitation instructor, Analytic Geometry and Calculus
+  (MATH2200).\\
+  Fall 2011, Spring 2012, Fall 2014
+\item Grading:
+  \begin{itemize}
+  \item Introduction to Higher Mathematics (MATH 3200): Fall 2011, Fall 2013
+  \item Graph Theory (MATH/CS 4690/6690): Spring 2012
+  \item Modern Algebra and Geometry (MATH 4000): Spring 2012
+  \end{itemize}
+
+\end{enumerate}
+
+\section*{Publications}
+
+\begin{enumerate}
+\item Markov chain sampling of random knot diagrams. In preparation. \\
+  with A.\ Rechnitzer.
+\item Slipknotting in knot diagrams. In preparation.
+\item Asymptotic laws for random knot diagrams. \emph{Submitted} 2016. \\
+  Preprint: \href{http://arxiv.org/abs/1608.02638}{\tt arXiv:1608.02638}.
+\item Knot probabilities in random diagrams.\\
+  with J.\ Cantarella, M.\ Mastin. \\
+  J. Phys. A: Math. Theor. 49 (2016), no. 40, p. 405001.\\
+  DOI: \href{http://dx.doi.org/10.1088/1751-8113/49/40/405001}{\tt 10.1088/1751-8113/49/40/405001}.\\
+  Preprint: \href{http://arxiv.org/abs/1512.05749}{\tt arXiv:1512.05749}.
+\item A Group-theoretic Approach to Human Solving Strategies in
+  Sudoku.\\
+  with M.\ Rupert (Mentor: E.\ Arnold). \\
+  Colonial Academic Alliance Undergraduate Research Journal (2012) vol
+  3, article 3.
+\item On orbital varieties of type A. \\
+  Advisor: T.\ Pietraho. Honors thesis (2011). Bowdoin
+  College.
+\end{enumerate}
+
+\section*{Software}
+
+\begin{enumerate}
+\item \emph{LiveFit}. C++. Augmented reality projectile-tracking demonstration
+  for use in calculus classes. \\
+  \url{https://github.com/hchapman/LiveFit}
+\item \texttt{plCurve}. C and Python. Piecewise-linear curve and link diagram library.\\
+  with T.\ Ashton, J.\ Cantarella, M.\ Mastin.
+  \textit{My primary contribution has been a Python interface to the C
+    library code.} \\
+  \url{http://www.jasoncantarella.com/wordpress/software/plcurve/}
+\item \emph{Reverb}. Java and C. An Android app which uses PulseAudio to
+  control volume and audio streams on Linux computers. \\
+  \url{https://github.com/hchapman/reverb}
+\end{enumerate}
+
+\section*{External Talks}
+
+\begin{enumerate}
+\item College of Charleston, AMS Spring Southeast Sectional Meeting 2017, \\
+  Special Session on Knot Theory and its Applications. \\
+  \textit{A Markov Chain sampler for knot diagrams}. Charleston SC, March 2017.
+
+\item Joint Mathematics Meetings 2017, \\
+  MAA Invited Paper Session on Random Polygons and Knots. \\
+  \textit{Slipknotting in the Knot Diagram Model}. Atlanta GA, January 2017.
+
+\item Piedmont College, Annual Math and Physics Lecture, \\
+  \textit{Random knots in physics and biology}. Demorest GA, November 2016.
+
+\item 28\textsuperscript{th} International Conference on Formal Power Series and
+  Algebraic Combinatorics, \\
+  \textit{Asymptotic laws for knot diagrams}. Vancouver BC, July 2016.
+
+\item IU Bloomington, Graduate Student Topology and Geometry Conference 2016, \\
+  \textit{Asymptotic laws for knot diagrams}. Bloomington IN, April 2016.
+  
+\item Joint Mathematics Meetings 2016, \\
+  MAA Session on Mathematical Modeling in the Undergraduate Classroom. \\
+  \textit{A robotics-based calculus class}. Seattle WA, January 2016.
+
+\item Joint Mathematics Meetings 2016, \\
+  AMS Session on General Topics. \\
+  \textit{Asymptotic laws for knot diagrams}. Seattle WA, January 2016.
+
+\item Tulane University, Geometry Seminar, \\
+  \textit{Asmyptotic laws for knot diagrams}. New Orleans LA, October 2015.
+
+\item CSU Fullerton, AMS Fall Western Sectional Meetings 2015,\\
+  Special Session on Algebraic and Combinatorial Structures in Knot Theory. \\
+  \textit{Asymptotics of random knot diagrams}. Fullerton CA, October 2015,
+
+\item University of Memphis, AMS Fall Southeastern Sectional Meetings 2015,\\
+  Special Session on Topological Combinatorics. \\
+  \textit{Asymptotics of random knot diagrams}. Memphis TN, October 2015.
+
+\item University of British Columbia, Discrete Math Seminar, \\
+  \textit{Asmyptotic laws for knot diagrams}. Vancouver BC, September 2015.
+  
+\item Simon Fraser University, Discrete Math Seminar, \\
+  \textit{Asmyptotic laws for knot diagrams}. Burnaby BC, September 2015.
+
+\item University of Saskatchewan, PIMS-USASK Graduate Summer School on Applied Combinatorics, \\
+  \textit{Knot diagrams and blossom trees}. Saskatoon SK, May 2015.
+  
+\item University of Nevada, AMS Spring Western Sectional Meetings,\\
+  Special Session on Inverse Problems and Related Mathematical Methods in Physics. \\
+  \textit{Random knot diagrams}. Las Vegas NV, April 2015.
+  
+\item Joint Mathematics Meetings, \\
+  AMS-MAA-SIAM Special Session on Research in Mathematics by
+  Undergraduates and Students in Post-Baccalaureate Programs.\\
+  \textit{Packets, Solving Symmetries, and Sudoku}. New Orleans LA, January 2011.
+  
+\item The Ohio State University, Young Mathematicians Conference, \\
+  \textit{Packets, Solving Symmetries, and Sudoku}. Columbus OH, August 2010.
+\end{enumerate}
+\section*{Workshops}
+\begin{enumerate}
+\item Graphs and Surfaces: Algorithms, Combinatorics, and Topology. \\
+  CIRM, Marseille, France, May 2016.
+\item Symplectic and Algebraic Geometry in the Statistical Physics of Polymers. \\
+  Simons Center for Geometry and Physics, Stony Brook NY, October 2015. 
+\item PIMS-USASK Graduate Summer School in Applied Combinatorics. \\
+  University of Saskatchewan, Saskatoon SK, May 2015.
+\end{enumerate}
+
+\bigskip
+
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+    \href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
