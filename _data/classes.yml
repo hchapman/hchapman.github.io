@@ -1,3 +1,8 @@
+- name: Spring 2017
+  classes:
+    - s2017-1113a
+    - s2017-1113b
+
 - name: Fall 2016
   classes:
     - f2016-2250
