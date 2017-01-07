@@ -1,4 +1,6 @@
 #### Recent seminar talks
++ *Random knots in physics and biology*. \\
+  Piedmont College, Annual Math and Physics Lecture, November 2016.
 + *Patterns in knot diagrams*. \\
   UGA Geometry Seminar, August 2016.
 + *Asymptotic laws for knot diagrams*. \\
@@ -19,6 +21,10 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
++ *Slipknotting in the Knot Diagram Model*. \\
+  MAA Invited Paper Session on Random Polygons and Knots, \\
+  Joint Mathematics Meetings 2017, \\
+  Atlanta GA, January 2017.
 + *[Asymptotic laws for knot diagrams](http://www.lix.polytechnique.fr/~pilaud/FPSAC16/final_74)*. \\
   28<sup>th</sup> International Conference on Formal Power Series and Algebraic Combinatorics (FPSAC), \\
   Vancouver, BC, July 2016.
