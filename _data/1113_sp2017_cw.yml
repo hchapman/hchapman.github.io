@@ -1,0 +1,15 @@
+- name: Classwork 1
+  basename: cw1
+  key: 1
+
+- name: Classwork 2
+  basename: cw2
+  key: 1
+
+- name: Classwork 3
+  basename: cw3
+  key: 1
+
+- name: Classwork 4
+  basename: cw4
+  key: 1
