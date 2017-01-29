@@ -13,3 +13,9 @@
 - name: Classwork 4
   basename: cw4
   key: 1
+
+- name: Classwork 5
+  basename: cw5
+
+- name: Classwork 6
+  basename: cw6
