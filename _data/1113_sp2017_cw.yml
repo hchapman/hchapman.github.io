@@ -1,21 +1,63 @@
-- name: Classwork 1
-  basename: cw1
-  key: 1
+- name: Unit 1
+  worksheets:
+    - name: Classwork 1
+      basename: cw1
+      key: 1
 
-- name: Classwork 2
-  basename: cw2
-  key: 1
+    - name: Classwork 2
+      basename: cw2
+      key: 1
 
-- name: Classwork 3
-  basename: cw3
-  key: 1
+    - name: Classwork 3
+      basename: cw3
+      key: 1
 
-- name: Classwork 4
-  basename: cw4
-  key: 1
+    - name: Classwork 4
+      basename: cw4
+      key: 1
 
-- name: Classwork 5
-  basename: cw5
+    - name: Classwork 5
+      basename: cw5
+      key: 1
+              
+    - name: Classwork 6
+      basename: cw6
+      key: 1
 
-- name: Classwork 6
-  basename: cw6
+- name: Unit 2
+  worksheets:
+    - name: Classwork 7
+      basename: cw7
+      key: 1
+    
+    - name: Classwork 8
+      basename: cw8
+      key: 1
+    
+    - name: Classwork 9
+      basename: cw9
+      key: 1
+    
+    - name: Classwork 10
+      basename: cw10
+      key: 1
+    
+    - name: Classwork 11
+      basename: cw11
+      key: 1
+    
+    - name: Classwork 12
+      basename: cw12
+      key: 1
+    
+    - name: Classwork 13
+      basename: cw13
+      key: 1
+    
+    - name: Classwork 14
+      basename: cw14
+      key: 1
+    
+    - name: Classwork 15
+      basename: cw15
+      key: 1
