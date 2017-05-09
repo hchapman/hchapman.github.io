@@ -1,4 +1,6 @@
 #### Recent seminar talks
++ *A Markov chain Monte Carlo sampler for knot diagrams*. \\
+  UGA Geometry Seminar, March 2017.
 + *Random knots in physics and biology*. \\
   Piedmont College, Annual Math and Physics Lecture, November 2016.
 + *Patterns in knot diagrams*. \\
@@ -21,6 +23,15 @@
   UGA Geometry Seminar, January 2014.
 
 #### Recent conference talks & visits
+
++ *A Markov chain sampler for knot diagrams*.\\
+  Special Session on Invariants of Knots, Links, and 3-manifolds, \\
+  AMS Spring Eastern Sectionals 2017, \\
+  Hunter College, May 2017.
++ *Slipknotting in the Knot Diagram Model*. \\
+  Special Session on Knot Theory and its Applications, \\
+  AMS Spring Southeastern Sectionals 2017, \\
+  College of Charleston, March 2017.
 + *Slipknotting in the Knot Diagram Model*. \\
   MAA Invited Paper Session on Random Polygons and Knots, \\
   Joint Mathematics Meetings 2017, \\
@@ -28,7 +39,7 @@
 + *[Asymptotic laws for knot diagrams](http://www.lix.polytechnique.fr/~pilaud/FPSAC16/final_74)*. \\
   28<sup>th</sup> International Conference on Formal Power Series and Algebraic Combinatorics (FPSAC), \\
   Vancouver, BC, July 2016.
-+ Graphs and Surfaces: Algorithms, Combinatorics, and Toplogy, \\
++ Graphs and Surfaces: Algorithms, Combinatorics, and Topology, \\
   Centre International de Recontres Mathématiques (CIRM), May 2016.
 + *Asymptotic laws for knot diagrams*. \\
   Graduate Student Topology and Geometry Conference 2016, \\
