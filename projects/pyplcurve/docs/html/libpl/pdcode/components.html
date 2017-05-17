@@ -1,0 +1,622 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Components module &#8212; plCurve 7.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '7.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The HOMFLY module" href="homfly.html" />
+    <link rel="prev" title="The Diagram module: PlanarDiagrams" href="diagram.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-libpl.pdcode.components">
+<span id="the-components-module"></span><h1>The Components module<a class="headerlink" href="#module-libpl.pdcode.components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="crossings-the-primary-building-blocks">
+<h2>Crossings: The primary building blocks<a class="headerlink" href="#crossings-the-primary-building-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-simple-example-creating-a-trefoil-diagram">
+<h3>A simple example: Creating a trefoil diagram<a class="headerlink" href="#a-simple-example-creating-a-trefoil-diagram" title="Permalink to this headline">¶</a></h3>
+<p>The following code excerpt demonstrates how you might use Crossing objects to
+manually construct a <a class="reference internal" href="diagram.html#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a> object in Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libpl.pdcode</span> <span class="kn">import</span> <span class="n">PlanarDiagram</span>
+<span class="k">print</span> <span class="s2">&quot;Hello&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-crossing-class">
+<h3>The Crossing class<a class="headerlink" href="#the-crossing-class" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="libpl.pdcode.components.Crossing">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.components.</code><code class="descname">Crossing</code><a class="headerlink" href="#libpl.pdcode.components.Crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>A crossing, which holds four edges in positions and an orientation.</p>
+<p>Crossing data is the <strong>most important</strong> piece of data in a PlanarDiagram.
+A full diagram object can be built from crossing data alone (although
+orientations of components may differ).</p>
+<p>Once you are finished setting any of the edges, you <strong>must</strong> call
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.PlanarDiagram.regenerate" title="libpl.pdcode.diagram.PlanarDiagram.regenerate"><code class="xref py py-obj docutils literal"><span class="pre">regenerate()</span></code></a> on the parent so that sanity can be
+checked and faces and components regenerated.</p>
+<p><strong>Accessing crossing information</strong></p>
+<p>Crossings support two methods of viewing their child edge data;</p>
+<blockquote>
+<div><ul class="simple">
+<li>Crossings <code class="docutils literal"><span class="pre">X</span></code> support being accessed as if they were lists;
+<code class="docutils literal"><span class="pre">X[i]</span></code> retrieves the <a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><code class="xref py py-obj docutils literal"><span class="pre">Edge</span></code></a> attached at position <code class="docutils literal"><span class="pre">i</span></code>.  This
+method takes into account that vertices are cyclical, but does not
+support assignment.</li>
+<li>The property <a class="reference internal" href="#libpl.pdcode.components.Crossing.edges" title="libpl.pdcode.components.Crossing.edges"><code class="xref py py-obj docutils literal"><span class="pre">edges</span></code></a> is a direct-memory view of edge indices attached
+to this crossing.  It <em>is</em> possible to change these indices, but the
+parent must be regenerated and validity checked manually after doing
+this.</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.adjacent">
+<code class="descname">adjacent</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span> &#x2192; Crossing, int position<a class="headerlink" href="#libpl.pdcode.components.Crossing.adjacent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the crossing and position to which the edge at <code class="docutils literal"><span class="pre">pos</span></code> points.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Crossing.edges">
+<code class="descname">edges</code><a class="headerlink" href="#libpl.pdcode.components.Crossing.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>A memory view of the indices of the edges which connect to this
+crossing.</p>
+<p>Indices can be changed, but you have to be careful and
+regenerate/validity check the diagram after this.</p>
+<p>If you want objects instead of indices, access this <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-obj docutils literal"><span class="pre">Crossing</span></code></a> like a
+sequence instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Crossing.faces">
+<code class="descname">faces</code><a class="headerlink" href="#libpl.pdcode.components.Crossing.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the indices of the faces around this vertex,
+in counterclockwise order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.get_faces">
+<code class="descname">get_faces</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple of Faces<a class="headerlink" href="#libpl.pdcode.components.Crossing.get_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the faces on which this crossing is a vertex, in
+clockwise order.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Crossing.index">
+<code class="descname">index</code><a class="headerlink" href="#libpl.pdcode.components.Crossing.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index by which this crossing is known in the parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.overstrand">
+<code class="descname">overstrand</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Edge incoming, Edge outgoing<a class="headerlink" href="#libpl.pdcode.components.Crossing.overstrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Edge objects which are the incoming and outgoing edges for the
+strand which passes <em>over</em> this crossing.</p>
+<p>If you want indices instead of objects, use
+<a class="reference internal" href="#libpl.pdcode.components.Crossing.overstrand_indices" title="libpl.pdcode.components.Crossing.overstrand_indices"><code class="xref py py-meth docutils literal"><span class="pre">overstrand_indices()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.overstrand_indices">
+<code class="descname">overstrand_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; in_index, out_index<a class="headerlink" href="#libpl.pdcode.components.Crossing.overstrand_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices corresponding to the incoming and outgoing
+edges for the strand which passes <em>over</em> this crossing.</p>
+<p>If you want objects instead of indices, use
+<a class="reference internal" href="#libpl.pdcode.components.Crossing.overstrand" title="libpl.pdcode.components.Crossing.overstrand"><code class="xref py py-meth docutils literal"><span class="pre">overstrand()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.overstrand_pos">
+<code class="descname">overstrand_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; in_pos, out_pos<a class="headerlink" href="#libpl.pdcode.components.Crossing.overstrand_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices around this crossing corresponding to the
+incoming and outgoing edges for the strand which passes <em>over</em>
+this crossing.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Crossing.parent">
+<code class="descname">parent</code><a class="headerlink" href="#libpl.pdcode.components.Crossing.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code> to which this crossing belongs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Crossing.sign">
+<code class="descname">sign</code><a class="headerlink" href="#libpl.pdcode.components.Crossing.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>The orientation of this crossing.  The convention used to determine
+sign is this:</p>
+<p><strong>Positive crossing</strong>: (upper tangent vector) <span class="math">\(\times\)</span>
+(lower tangent vector) points OUT of screen:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>     <span class="o">^</span>
+     <span class="o">|</span>
+<span class="o">-----------&gt;</span>
+     <span class="o">|</span>
+     <span class="o">|</span>
+</pre></div>
+</div>
+<p><strong>Negative crossing</strong>: (upper tangent vector) <span class="math">\(\times\)</span>
+(lower tangent vector) points INTO screen:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>     <span class="o">^</span>
+     <span class="o">|</span>
+<span class="o">-----|-----&gt;</span>
+     <span class="o">|</span>
+     <span class="o">|</span>
+</pre></div>
+</div>
+<p>You often simply want to know which of the strands (0-2) or (1-3) is on
+top.  There are several cases, because it depends BOTH on the sign of
+the crossing and the orientation of the strands.  It’s recommended to
+use the methods <a class="reference internal" href="#libpl.pdcode.components.Crossing.overstrand" title="libpl.pdcode.components.Crossing.overstrand"><code class="xref py py-meth docutils literal"><span class="pre">overstrand()</span></code></a> and <a class="reference internal" href="#libpl.pdcode.components.Crossing.understrand" title="libpl.pdcode.components.Crossing.understrand"><code class="xref py py-meth docutils literal"><span class="pre">understrand()</span></code></a> to
+determine which is which.  Also, the methods <a class="reference internal" href="#libpl.pdcode.components.Crossing.overstrand_pos" title="libpl.pdcode.components.Crossing.overstrand_pos"><code class="xref py py-meth docutils literal"><span class="pre">overstrand_pos()</span></code></a>
+and <a class="reference internal" href="#libpl.pdcode.components.Crossing.understrand_pos" title="libpl.pdcode.components.Crossing.understrand_pos"><code class="xref py py-meth docutils literal"><span class="pre">understrand_pos()</span></code></a> return the position in this crossing
+(that is, a number in 0..3) of the incoming and outgoing edges of the
+strand going over at this crossing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.toggle_sign">
+<code class="descname">toggle_sign</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Crossing.toggle_sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Switches the sign of the crossing to be positive if
+it was negative, or negative if it was positive. Has no
+effect on a crossing which is unsigned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.understrand">
+<code class="descname">understrand</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Edge incoming, Edge outgoing<a class="headerlink" href="#libpl.pdcode.components.Crossing.understrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Edge objects which are the incoming and outgoing edges for the
+strand which passes <em>under</em> this crossing.</p>
+<p>If you want indices instead of objects, use
+<a class="reference internal" href="#libpl.pdcode.components.Crossing.understrand_indices" title="libpl.pdcode.components.Crossing.understrand_indices"><code class="xref py py-meth docutils literal"><span class="pre">understrand_indices()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.understrand_indices">
+<code class="descname">understrand_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; in_index, out_index<a class="headerlink" href="#libpl.pdcode.components.Crossing.understrand_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices corresponding to the incoming and outgoing
+edges for the strand which passes <em>under</em> this crossing.</p>
+<p>If you want objects instead of indices, use
+<a class="reference internal" href="#libpl.pdcode.components.Crossing.understrand" title="libpl.pdcode.components.Crossing.understrand"><code class="xref py py-meth docutils literal"><span class="pre">understrand()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Crossing.understrand_pos">
+<code class="descname">understrand_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; in_pos, out_pos<a class="headerlink" href="#libpl.pdcode.components.Crossing.understrand_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices around this crossing corresponding to the
+incoming and outgoing edges for the strand which passes <em>under</em>
+this crossing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="edges">
+<h2>Edges<a class="headerlink" href="#edges" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.pdcode.components.Edge">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.components.</code><code class="descname">Edge</code><a class="headerlink" href="#libpl.pdcode.components.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>An oriented edge, joining two vertices tail -&gt; head.</p>
+<p>Once you are finished setting any of the properties <a class="reference internal" href="#libpl.pdcode.components.Edge.head" title="libpl.pdcode.components.Edge.head"><code class="xref py py-obj docutils literal"><span class="pre">head</span></code></a>, <a class="reference internal" href="#libpl.pdcode.components.Edge.headpos" title="libpl.pdcode.components.Edge.headpos"><code class="xref py py-obj docutils literal"><span class="pre">headpos</span></code></a>,
+<a class="reference internal" href="#libpl.pdcode.components.Edge.tail" title="libpl.pdcode.components.Edge.tail"><code class="xref py py-obj docutils literal"><span class="pre">tail</span></code></a>, and <a class="reference internal" href="#libpl.pdcode.components.Edge.tailpos" title="libpl.pdcode.components.Edge.tailpos"><code class="xref py py-obj docutils literal"><span class="pre">tailpos</span></code></a>, you <strong>must</strong> call
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.PlanarDiagram.regenerate" title="libpl.pdcode.diagram.PlanarDiagram.regenerate"><code class="xref py py-obj docutils literal"><span class="pre">regenerate()</span></code></a> on the parent so that
+sanity can be checked and faces and components regenerated.</p>
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.component_index_pos">
+<code class="descname">component_index_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; component index, edge pos<a class="headerlink" href="#libpl.pdcode.components.Edge.component_index_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the component on which this edge resides and this
+edge’s position on that component.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.component_pos">
+<code class="descname">component_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Component, edge pos<a class="headerlink" href="#libpl.pdcode.components.Edge.component_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#libpl.pdcode.components.Component" title="libpl.pdcode.components.Component"><code class="xref py py-obj docutils literal"><span class="pre">Component</span></code></a> on which this edge resides and this edge’s
+position on that component.  If you just want the index of the
+component, use <a class="reference internal" href="#libpl.pdcode.components.Edge.component_index_pos" title="libpl.pdcode.components.Edge.component_index_pos"><code class="xref py py-obj docutils literal"><span class="pre">component_index_pos()</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.face_index_pos">
+<code class="descname">face_index_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; [pos_face, pos], [neg_face, pos]<a class="headerlink" href="#libpl.pdcode.components.Edge.face_index_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the face indices on which this edge resides and this
+edge’s position on those faces.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.face_pos">
+<code class="descname">face_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; [Face plus, pos], [Face minus, pos]<a class="headerlink" href="#libpl.pdcode.components.Edge.face_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#libpl.pdcode.components.Face" title="libpl.pdcode.components.Face"><code class="xref py py-obj docutils literal"><span class="pre">Face</span></code></a>s on which this edge resides and this
+edge’s position on that face. If you just want the indices
+of the faces, use <a class="reference internal" href="#libpl.pdcode.components.Edge.face_index_pos" title="libpl.pdcode.components.Edge.face_index_pos"><code class="xref py py-obj docutils literal"><span class="pre">face_index_pos()</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.head">
+<code class="descname">head</code><a class="headerlink" href="#libpl.pdcode.components.Edge.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index of the crossing towards which this edge points.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.head_tuple">
+<code class="descname">head_tuple</code><a class="headerlink" href="#libpl.pdcode.components.Edge.head_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple (vertex, pos) describing where this edge points.</p>
+<p>The position is an index [0..3] in crossing record of head vertex.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.headpos">
+<code class="descname">headpos</code><a class="headerlink" href="#libpl.pdcode.components.Edge.headpos" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position in the crossing towards which this edge points.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.index">
+<code class="descname">index</code><a class="headerlink" href="#libpl.pdcode.components.Edge.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index by which this edge is known in the parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.next_crossing">
+<code class="descname">next_crossing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Crossing<a class="headerlink" href="#libpl.pdcode.components.Edge.next_crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-class docutils literal"><span class="pre">Crossing</span></code></a> towards which this edge points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.next_edge">
+<code class="descname">next_edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Edge<a class="headerlink" href="#libpl.pdcode.components.Edge.next_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the next <a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> along the component</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.oriented">
+<code class="descname">oriented</code><span class="sig-paren">(</span><em>sign</em><span class="sig-paren">)</span> &#x2192; Edge<a class="headerlink" href="#libpl.pdcode.components.Edge.oriented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of original edge if <code class="docutils literal"><span class="pre">sign</span></code> is
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.POS_ORIENTATION" title="libpl.pdcode.diagram.POS_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">POS_ORIENTATION</span></code></a>, or a new reversed edge if <code class="docutils literal"><span class="pre">sign</span></code> is
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.NEG_ORIENTATION" title="libpl.pdcode.diagram.NEG_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">NEG_ORIENTATION</span></code></a>.</p>
+<p>The <a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><code class="xref py py-obj docutils literal"><span class="pre">Edge</span></code></a> returned is not connected to any
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a> until it is attached.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.parent">
+<code class="descname">parent</code><a class="headerlink" href="#libpl.pdcode.components.Edge.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="diagram.html#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a> to which this edge belongs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.plug_head">
+<code class="descname">plug_head</code><span class="sig-paren">(</span><em>Crossing x</em>, <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Edge.plug_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redirect the head of this edge to point to x[pos].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><em>Crossing</em></a>) – The crossing to connect this edge to</li>
+<li><strong>pos</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The position in [0..3] of the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-obj docutils literal"><span class="pre">Crossing</span></code></a> <code class="docutils literal"><span class="pre">x</span></code> to
+connect this edge to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>Exception</strong> – If this edge is either not part of a
+<code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code>, or connected to a different <code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code> than
+the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-obj docutils literal"><span class="pre">Crossing</span></code></a> <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.plug_tail">
+<code class="descname">plug_tail</code><span class="sig-paren">(</span><em>Crossing x</em>, <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Edge.plug_tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redirect the tail of this edge to point from x[pos].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><em>Crossing</em></a>) – The crossing to connect this edge to</li>
+<li><strong>pos</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The position in [0..3] of the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-obj docutils literal"><span class="pre">Crossing</span></code></a> <code class="docutils literal"><span class="pre">x</span></code> to
+connect this edge to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>Exception</strong> – If this edge is either not part of a
+<code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code>, or connected to a different <code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code> than
+the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-obj docutils literal"><span class="pre">Crossing</span></code></a> <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.prev_crossing">
+<code class="descname">prev_crossing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Crossing<a class="headerlink" href="#libpl.pdcode.components.Edge.prev_crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <a class="reference internal" href="#libpl.pdcode.components.Crossing" title="libpl.pdcode.components.Crossing"><code class="xref py py-class docutils literal"><span class="pre">Crossing</span></code></a> from which this edge originates.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.prev_edge">
+<code class="descname">prev_edge</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Edge<a class="headerlink" href="#libpl.pdcode.components.Edge.prev_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the previous <a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> along the component</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.reorient">
+<code class="descname">reorient</code><span class="sig-paren">(</span><em>sign</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Edge.reorient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flips the edge if <code class="docutils literal"><span class="pre">sign</span></code> is <a class="reference internal" href="diagram.html#libpl.pdcode.diagram.NEG_ORIENTATION" title="libpl.pdcode.diagram.NEG_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">NEG_ORIENTATION</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.swap_head">
+<code class="descname">swap_head</code><span class="sig-paren">(</span><em>Edge other</em>, <em>head_or_tail</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Edge.swap_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap the head of this edge with the head or tail of edge <code class="docutils literal"><span class="pre">other</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>other</strong> (<a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><em>Edge</em></a>) – the other edge with whom to swap</li>
+<li><strong>head_or_tail</strong> – Either <a class="reference internal" href="diagram.html#libpl.pdcode.diagram.NEG_ORIENTATION" title="libpl.pdcode.diagram.NEG_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">NEG_ORIENTATION</span></code></a> or
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.POS_ORIENTATION" title="libpl.pdcode.diagram.POS_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">POS_ORIENTATION</span></code></a>, which determines whether to swap the
+head of this edge with the tail or head of <code class="docutils literal"><span class="pre">other</span></code>, respectively.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>Exception</strong> – If head_or_tail is not a valid orientation choice,
+or this edge is connected to a different parent than <code class="docutils literal"><span class="pre">other</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Edge.swap_tail">
+<code class="descname">swap_tail</code><span class="sig-paren">(</span><em>Edge other</em>, <em>head_or_tail</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Edge.swap_tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap the tail of this edge with the head or tail of edge <code class="docutils literal"><span class="pre">other</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>other</strong> (<a class="reference internal" href="#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><em>Edge</em></a>) – the other edge with whom to swap</li>
+<li><strong>head_or_tail</strong> – Either <a class="reference internal" href="diagram.html#libpl.pdcode.diagram.NEG_ORIENTATION" title="libpl.pdcode.diagram.NEG_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">NEG_ORIENTATION</span></code></a> or
+<a class="reference internal" href="diagram.html#libpl.pdcode.diagram.POS_ORIENTATION" title="libpl.pdcode.diagram.POS_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">POS_ORIENTATION</span></code></a>, which determines whether to swap the
+tail of this edge with the tail or head of <code class="docutils literal"><span class="pre">other</span></code>,
+respectively.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>Exception</strong> – If head_or_tail is not a valid orientation choice,
+or this edge is connected to a different parent than <code class="docutils literal"><span class="pre">other</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.tail">
+<code class="descname">tail</code><a class="headerlink" href="#libpl.pdcode.components.Edge.tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index of the crossing from which this edge leaves.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.tail_tuple">
+<code class="descname">tail_tuple</code><a class="headerlink" href="#libpl.pdcode.components.Edge.tail_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple (vertex, pos) describing where this edge leaves.</p>
+<p>The position is an index [0..3] in crossing record of tail vertex.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Edge.tailpos">
+<code class="descname">tailpos</code><a class="headerlink" href="#libpl.pdcode.components.Edge.tailpos" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position in the crossing from which this edge leaves.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="link-components">
+<h2>Link components<a class="headerlink" href="#link-components" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.pdcode.components.Component">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.components.</code><code class="descname">Component</code><a class="headerlink" href="#libpl.pdcode.components.Component" title="Permalink to this definition">¶</a></dt>
+<dd><p>A component of a diagram.</p>
+<p>A component is an oriented cycle of edges in its parent diagram, formed by
+proceeding directly across each crossing to the following edge.  If a
+diagram has only one Component, it is a knot diagram.</p>
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Component.edge">
+<code class="descname">edge</code><a class="headerlink" href="#libpl.pdcode.components.Component.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of edge indices of which this component consists</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Component.index">
+<code class="descname">index</code><a class="headerlink" href="#libpl.pdcode.components.Component.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index by which this component is known in the parent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Component.nedges">
+<code class="descname">nedges</code><a class="headerlink" href="#libpl.pdcode.components.Component.nedges" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of edges in this component. Equivalent to <code class="docutils literal"><span class="pre">len(cmp)</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Component.parent">
+<code class="descname">parent</code><a class="headerlink" href="#libpl.pdcode.components.Component.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code> to which this component belongs.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="faces">
+<h2>Faces<a class="headerlink" href="#faces" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.pdcode.components.Face">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.components.</code><code class="descname">Face</code><a class="headerlink" href="#libpl.pdcode.components.Face" title="Permalink to this definition">¶</a></dt>
+<dd><p>A face of a diagram.</p>
+<p>A face is an oriented cycle of edges in its parent diagram, formed by
+turning at each corner of a vertex.  Each face has the topology of a disk.</p>
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.edges">
+<code class="descname">edges</code><a class="headerlink" href="#libpl.pdcode.components.Face.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the <em>indices</em> of the edges around this face. The edges
+are in counterclockwise order around the face.</p>
+<p>If you want to access the Python objects, use this Face object
+like a sequence instead (e.g. <code class="docutils literal"><span class="pre">face[4]</span></code> or <code class="docutils literal"><span class="pre">for</span> <span class="pre">edge</span> <span class="pre">in</span> <span class="pre">face:</span></code>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.components.Face.get_vertices">
+<code class="descname">get_vertices</code><span class="sig-paren">(</span><em>) -&gt; (Crossing</em><span class="optional">[</span>, <em>Crossing</em>, <em>…</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.components.Face.get_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of Crossings around this face in counterclockwise
+order. The first crossing is the one immediately before the first edge
+in this face.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.index">
+<code class="descname">index</code><a class="headerlink" href="#libpl.pdcode.components.Face.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index by which this face is known in the parent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.nedges">
+<code class="descname">nedges</code><a class="headerlink" href="#libpl.pdcode.components.Face.nedges" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of edges in this face</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.parent">
+<code class="descname">parent</code><a class="headerlink" href="#libpl.pdcode.components.Face.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code> to which this face belongs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.signs">
+<code class="descname">signs</code><a class="headerlink" href="#libpl.pdcode.components.Face.signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the signs of the edges around this face. The edges
+are in counterclockwise order around the face.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.components.Face.vertices">
+<code class="descname">vertices</code><a class="headerlink" href="#libpl.pdcode.components.Face.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tuple of the crossing <em>indices</em> around this face in counterclockwise
+order.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Components module</a><ul>
+<li><a class="reference internal" href="#crossings-the-primary-building-blocks">Crossings: The primary building blocks</a><ul>
+<li><a class="reference internal" href="#a-simple-example-creating-a-trefoil-diagram">A simple example: Creating a trefoil diagram</a></li>
+<li><a class="reference internal" href="#the-crossing-class">The Crossing class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#edges">Edges</a></li>
+<li><a class="reference internal" href="#link-components">Link components</a></li>
+<li><a class="reference internal" href="#faces">Faces</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../pdcode.html">The pdcode Module: Diagrams</a><ul>
+      <li>Previous: <a href="diagram.html" title="previous chapter">The Diagram module: PlanarDiagrams</a></li>
+      <li>Next: <a href="homfly.html" title="next chapter">The HOMFLY module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/libpl/pdcode/components.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014, Jason Cantarella.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/libpl/pdcode/components.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
