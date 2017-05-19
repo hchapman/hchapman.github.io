@@ -1,0 +1,163 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The HOMFLY module &#8212; plCurve 7.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '7.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="plcurve: Piecewise-Linear Curves (a.k.a. Polygons)" href="../plcurve.html" />
+    <link rel="prev" title="The Components module" href="components.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-libpl.pdcode.homfly">
+<span id="the-homfly-module"></span><h1>The HOMFLY module<a class="headerlink" href="#module-libpl.pdcode.homfly" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="libpl.pdcode.homfly.HOMFLYPolynomial">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.homfly.</code><code class="descname">HOMFLYPolynomial</code><span class="sig-paren">(</span><em>polynomial</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.homfly.HOMFLYPolynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>An immutable HOMFLY polynomial object.</p>
+<p>HOMFLYPolynomials support the following operations; given T and S two
+objects;</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">~T</span></code> performs the substitution <span class="math">\(a \mapsto a^{-1}\)</span>, i.e.
+returns the HOMFLY of a mirrored knot</li>
+<li><code class="docutils literal"><span class="pre">T+S</span></code> produces the sum of the two polynomials</li>
+<li><code class="docutils literal"><span class="pre">T*S</span></code> produces the product of the two polynomials</li>
+<li><code class="docutils literal"><span class="pre">T**k</span></code> produces <code class="docutils literal"><span class="pre">T*T*...*T</span></code>, provided k is an integer</li>
+</ul>
+</div></blockquote>
+<p>HOMFLYPolynomials can be checked for equality with <code class="docutils literal"><span class="pre">==</span></code> or <code class="docutils literal"><span class="pre">!=</span></code> as
+usual.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>polynomial</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a><em> or </em><em>iterable</em><em>(</em><a class="reference internal" href="#libpl.pdcode.homfly.HOMFLYTerm" title="libpl.pdcode.homfly.HOMFLYTerm"><em>HOMFLYTerm</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a><em>)</em><em>)</em>) – Either a LaTeX-ish string from <code class="docutils literal"><span class="pre">llmpoly</span></code>, or an
+iterable of triples (C, alpha, zeta), representing monomials
+<span class="math">\(Ca^\alpha{}z^\zeta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Create a new HOMFLY polynomial from a LaTeX representation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="libpl.pdcode.homfly.HOMFLYTerm">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.homfly.</code><code class="descname">HOMFLYTerm</code><span class="sig-paren">(</span><em>int C</em>, <em>int alpha</em>, <em>int zeta</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.homfly.HOMFLYTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>An immutable HOMFLY monomial object (i.e. a monomial of the form
+<span class="math">\(Ca^\alpha{}z^\zeta\)</span>)</p>
+<p>HOMFLYTerm support the following operations; given T and S two objects;</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">~T</span></code> performs the substitution <span class="math">\(a \mapsto a^{-1}\)</span></li>
+<li><code class="docutils literal"><span class="pre">T+S</span></code>, provided the exponents of a and z match, returns the
+monomial with coefficient the sum of coefficients of T and S</li>
+<li><code class="docutils literal"><span class="pre">T*S</span></code> produces the product monomial of the two monomials</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>C</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The constant factor</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The power of the formal variable <span class="math">\(a\)</span></li>
+<li><strong>zeta</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The power of the formal variable <span class="math">\(z\)</span></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../pdcode.html">The pdcode Module: Diagrams</a><ul>
+      <li>Previous: <a href="components.html" title="previous chapter">The Components module</a></li>
+      <li>Next: <a href="../plcurve.html" title="next chapter">plcurve: Piecewise-Linear Curves (a.k.a. Polygons)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/libpl/pdcode/homfly.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014, Jason Cantarella.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/libpl/pdcode/homfly.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,18 +1,24 @@
-#### Recent seminar talks
-+ *A Markov chain Monte Carlo sampler for knot diagrams*. \\
-  UGA Geometry Seminar, March 2017.
+### Recent seminar talks
+
+#### External
+
 + *Random knots in physics and biology*. \\
   Piedmont College, Annual Math and Physics Lecture, November 2016.
-+ *Patterns in knot diagrams*. \\
-  UGA Geometry Seminar, August 2016.
 + *Asymptotic laws for knot diagrams*. \\
   Tulane University Geometry Seminar, October 2015.
-+ *The quantum harmonic oscillator*. \\
-  UGA Geometry Seminar, October 2015.
 + *Asymptotic laws for knot diagrams*. \\
   University of British Columbia Discrete Math Seminar, September 2015.
 + *Asymptotic laws for knot diagrams*. \\
   Simon Fraser University Discrete Math Seminar, September 2015.
+  
+#### At UGA
+
++ *A Markov chain Monte Carlo sampler for knot diagrams*. \\
+  UGA Geometry Seminar, March 2017.
++ *Patterns in knot diagrams*. \\
+  UGA Geometry Seminar, August 2016.
++ *The quantum harmonic oscillator*. \\
+  UGA Geometry Seminar, October 2015.
 + *Asymptotic laws for knot diagrams*. \\
   UGA Geometry Seminar, September 2015.
 + *How to count (a quick glance at analytic combinatorics)*. \\
@@ -22,7 +28,7 @@
 + *Random planar diagrams*. \\
   UGA Geometry Seminar, January 2014.
 
-#### Recent conference talks & visits
+### Recent conference talks & visits
 
 + *A Markov chain sampler for knot diagrams*.\\
   Special Session on Invariants of Knots, Links, and 3-manifolds, \\
@@ -40,7 +46,8 @@
   28<sup>th</sup> International Conference on Formal Power Series and Algebraic Combinatorics (FPSAC), \\
   Vancouver, BC, July 2016.
 + Graphs and Surfaces: Algorithms, Combinatorics, and Topology, \\
-  Centre International de Recontres Mathématiques (CIRM), May 2016.
+  Centre International de Recontres Mathématiques (CIRM), May 2016. \\
+  [I presented an open problem, a list is available here](http://monge.univ-mlv.fr/~colinde/proj/16epit//problems.pdf).
 + *Asymptotic laws for knot diagrams*. \\
   Graduate Student Topology and Geometry Conference 2016, \\
   IU Bloomington, April 2016.

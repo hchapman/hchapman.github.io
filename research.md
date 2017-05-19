@@ -6,22 +6,22 @@ research: true
 
 ---
 
-## Current Research
+# Current Research
 
 My research interests have tended towards the intersection of
 combinatorics, topology and geometry, with a primary focus on random
 knots. I am studying under the direction of <a
 href="http://www.jasoncantarella.com">Jason Cantarella</a>.
 
-### Publications
+## Publications
 
 {% include_relative publications.md %}
 
-### Recent talks and conference visits
+## Talks
 
 {% include_relative talks.md %}
 
-## Previous Research
+# Previous Research
 
 * In the summer of 2010, I took part in an REU where we tried to answer
 questions about Sudoku (with M. Rupert, mentor E. Arnold): <a

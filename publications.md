@@ -1,3 +1,6 @@
++ *A diagrammatic theory of random knots*. \\
+  PhD Thesis, University of Georgia. \\
+  [Preprint](static/phdthesis.pdf).
 + *Asymptotic laws for random knot diagrams*. \\
   J. Phys. A: Math. Theor. 50 (2017), no. 22, p. 225001.\\
   DOI: [https://doi.org/10.1088/1751-8121/aa6e45](https://doi.org/10.1088/1751-8121/aa6e45)\\

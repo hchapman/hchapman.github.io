@@ -1,0 +1,1629 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Diagram module: PlanarDiagrams &#8212; plCurve 7.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '7.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Components module" href="components.html" />
+    <link rel="prev" title="The pdcode Module: Diagrams" href="../pdcode.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-libpl.pdcode.diagram">
+<span id="the-diagram-module-planardiagrams"></span><h1>The Diagram module: PlanarDiagrams<a class="headerlink" href="#module-libpl.pdcode.diagram" title="Permalink to this headline">¶</a></h1>
+<p>In this file we primarily wrap the functionality of the C object
+<code class="xref c c-type docutils literal"><span class="pre">pd_code_t</span></code> as a Python class, <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a>.</p>
+<p>There are also some utility functions and variables defined.  For the most
+part, naming conventions try to match up with plcTopology.h and headers
+pd_***.h, and further documentation can be found there.</p>
+<p>A reminder about Cython: In order to make sure that your functions and methods
+contain signatures for, e.g., completion in iPython, make sure to include a
+docstring for your functions containing the signature, such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function_or_method</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">return_type_or_var</span>
+</pre></div>
+</div>
+<p>This makes scripting a lot more friendly, and allows Sphinx autodoc to present
+function calls and their arguments, too.</p>
+<div class="section" id="constants-and-other-top-level-features">
+<h2>Constants and other top-level features<a class="headerlink" href="#constants-and-other-top-level-features" title="Permalink to this headline">¶</a></h2>
+<p>The Diagram module provides the following constant values:</p>
+<p><strong>Signs and orientation constants</strong></p>
+<dl class="data">
+<dt id="libpl.pdcode.diagram.POS_ORIENTATION">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">POS_ORIENTATION</code><a class="headerlink" href="#libpl.pdcode.diagram.POS_ORIENTATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Positive orientation sign</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="libpl.pdcode.diagram.NEG_ORIENTATION">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">NEG_ORIENTATION</code><a class="headerlink" href="#libpl.pdcode.diagram.NEG_ORIENTATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Negative orientation sign</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="libpl.pdcode.diagram.UNSET_ORIENTATION">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">UNSET_ORIENTATION</code><a class="headerlink" href="#libpl.pdcode.diagram.UNSET_ORIENTATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset orientation sign</p>
+</dd></dl>
+
+<p><strong>Equivalence type constants</strong></p>
+<dl class="data">
+<dt id="libpl.pdcode.diagram.ISOTOPY">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">ISOTOPY</code><a class="headerlink" href="#libpl.pdcode.diagram.ISOTOPY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use diagram isomorphism; check signs</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="libpl.pdcode.diagram.UO_ISOMORPHISM">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">UO_ISOMORPHISM</code><a class="headerlink" href="#libpl.pdcode.diagram.UO_ISOMORPHISM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use map iosmorphism; ignore signs</p>
+</dd></dl>
+
+<p>Additionally, the diagram module includes some helper functions for toggling
+debug verbosity in the wrapped C library:</p>
+<dl class="function">
+<dt id="libpl.pdcode.diagram.pd_debug_off">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">pd_debug_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.pd_debug_off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable debug output from libplCurve</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="libpl.pdcode.diagram.pd_debug_on">
+<code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">pd_debug_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.pd_debug_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debug output from libplCurve</p>
+</dd></dl>
+
+</div>
+<div class="section" id="the-planardiagram-class">
+<h2>The PlanarDiagram Class<a class="headerlink" href="#the-planardiagram-class" title="Permalink to this headline">¶</a></h2>
+<p>The primary definition of the module <code class="xref py py-obj docutils literal"><span class="pre">diagram</span></code> is the <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a> object:</p>
+<dl class="class">
+<dt id="libpl.pdcode.diagram.PlanarDiagram">
+<em class="property">class </em><code class="descclassname">libpl.pdcode.diagram.</code><code class="descname">PlanarDiagram</code><span class="sig-paren">(</span><em>max_verts=15</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class which represents a PD code (planar diagram).  There are a few
+different ways to create <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a>s:</p>
+<p>The constructor will create a new empty diagram with <code class="xref py py-obj docutils literal"><span class="pre">max_verts</span></code> blank
+crossings.</p>
+<p>There are two class methods for reading diagrams from files, both from
+files written in <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a>’s own format, and from files written in
+Mathematica’s KnotTheory format.</p>
+<p>There are multiple class methods which create new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a>s of
+basic examples; their docstrings contain some specific information.</p>
+<p><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a>s support the following operations; given <code class="docutils literal"><span class="pre">K</span></code> and <code class="docutils literal"><span class="pre">L</span></code>
+two objects;</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">K</span> <span class="pre">==</span> <span class="pre">L</span></code> checks whether <code class="xref py py-obj docutils literal"><span class="pre">K</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">L</span></code> are <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.isotopic" title="libpl.pdcode.diagram.PlanarDiagram.isotopic"><code class="xref py py-obj docutils literal"><span class="pre">isotopic()</span></code></a> if
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.equiv_type" title="libpl.pdcode.diagram.PlanarDiagram.equiv_type"><code class="xref py py-obj docutils literal"><span class="pre">equiv_type</span></code></a> is <a class="reference internal" href="#libpl.pdcode.diagram.ISOTOPY" title="libpl.pdcode.diagram.ISOTOPY"><code class="xref py py-obj docutils literal"><span class="pre">ISOTOPY</span></code></a>, or if they are <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.map_isomorphic" title="libpl.pdcode.diagram.PlanarDiagram.map_isomorphic"><code class="xref py py-obj docutils literal"><span class="pre">map_isomorphic()</span></code></a> if
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.equiv_type" title="libpl.pdcode.diagram.PlanarDiagram.equiv_type"><code class="xref py py-obj docutils literal"><span class="pre">equiv_type</span></code></a> is <a class="reference internal" href="#libpl.pdcode.diagram.UO_ISOMORPHISM" title="libpl.pdcode.diagram.UO_ISOMORPHISM"><code class="xref py py-obj docutils literal"><span class="pre">UO_ISOMORPHISM</span></code></a>.</li>
+<li><code class="docutils literal"><span class="pre">K</span> <span class="pre">!=</span> <span class="pre">L</span></code> checks whether <code class="xref py py-obj docutils literal"><span class="pre">K</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">L</span></code> are not <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.isotopic" title="libpl.pdcode.diagram.PlanarDiagram.isotopic"><code class="xref py py-obj docutils literal"><span class="pre">isotopic()</span></code></a> if
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.equiv_type" title="libpl.pdcode.diagram.PlanarDiagram.equiv_type"><code class="xref py py-obj docutils literal"><span class="pre">equiv_type</span></code></a> is <a class="reference internal" href="#libpl.pdcode.diagram.ISOTOPY" title="libpl.pdcode.diagram.ISOTOPY"><code class="xref py py-obj docutils literal"><span class="pre">ISOTOPY</span></code></a>, or if they are not <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.map_isomorphic" title="libpl.pdcode.diagram.PlanarDiagram.map_isomorphic"><code class="xref py py-obj docutils literal"><span class="pre">map_isomorphic()</span></code></a> if
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.equiv_type" title="libpl.pdcode.diagram.PlanarDiagram.equiv_type"><code class="xref py py-obj docutils literal"><span class="pre">equiv_type</span></code></a> is <a class="reference internal" href="#libpl.pdcode.diagram.UO_ISOMORPHISM" title="libpl.pdcode.diagram.UO_ISOMORPHISM"><code class="xref py py-obj docutils literal"><span class="pre">UO_ISOMORPHISM</span></code></a>.</li>
+<li><code class="docutils literal"><span class="pre">len(K)</span></code> returns the number of components of <code class="docutils literal"><span class="pre">K</span></code>, <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-obj docutils literal"><span class="pre">ncomps</span></code></a>.</li>
+</ul>
+</div></blockquote>
+<p>Create a new PlanarDiagram. You may set the initial available number
+of vertices by passing a number to <code class="xref py py-obj docutils literal"><span class="pre">max_verts</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_verts</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The initial size (in vertices) of the object</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.components">
+<code class="descname">components</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.components" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sequence of <code class="xref py py-class docutils literal"><span class="pre">Component</span></code> which belong to this diagram</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.crossings">
+<code class="descname">crossings</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.crossings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sequence of <code class="xref py py-class docutils literal"><span class="pre">Crossing</span></code> which belong to this diagram</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.edges">
+<code class="descname">edges</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sequence of <code class="xref py py-class docutils literal"><span class="pre">Edge</span></code> which belong to this diagram</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.equiv_type">
+<code class="descname">equiv_type</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.equiv_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>What type of equivalence to use for the <code class="docutils literal"><span class="pre">==</span></code> operation. Valid values are,</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#libpl.pdcode.diagram.ISOTOPY" title="libpl.pdcode.diagram.ISOTOPY"><code class="xref py py-obj docutils literal"><span class="pre">ISOTOPY</span></code></a>, the default; equality is dictated by <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.isotopic" title="libpl.pdcode.diagram.PlanarDiagram.isotopic"><code class="xref py py-obj docutils literal"><span class="pre">isotopic()</span></code></a></li>
+<li><a class="reference internal" href="#libpl.pdcode.diagram.UO_ISOMORPHISM" title="libpl.pdcode.diagram.UO_ISOMORPHISM"><code class="xref py py-obj docutils literal"><span class="pre">UO_ISOMORPHISM</span></code></a>; equality is dictated by <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.map_isomorphic" title="libpl.pdcode.diagram.PlanarDiagram.map_isomorphic"><code class="xref py py-obj docutils literal"><span class="pre">map_isomorphic()</span></code></a></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.faces">
+<code class="descname">faces</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sequence of <code class="xref py py-class docutils literal"><span class="pre">Face</span></code> which belong to this diagram</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.hash">
+<code class="descname">hash</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash of this of this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.ncomps">
+<code class="descname">ncomps</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of components in this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.ncross">
+<code class="descname">ncross</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.ncross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of crossings in this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.nedges">
+<code class="descname">nedges</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.nedges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of edges in this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.nfaces">
+<code class="descname">nfaces</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.nfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of faces in this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.uid">
+<code class="descname">uid</code><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>UID of this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="creating-planardiagrams">
+<h3>Creating PlanarDiagrams<a class="headerlink" href="#creating-planardiagrams" title="Permalink to this headline">¶</a></h3>
+<p>Typically, one does not construct such an object by hand. There are several
+different ways to either create or load PlanarDiagram objects.</p>
+<p>The following are all class methods:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.random_diagram">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">random_diagram</code><span class="sig-paren">(</span><em>n_crossings</em>, <em>n_components=None</em>, <em>max_att=50</em>, <em>dia_type=None</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.random_diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new PlanarDiagram with <code class="docutils literal"><span class="pre">n_crossings</span></code> crossings by uniformly
+sampling a rooted 4-regular map using Giles Schaeffer’s PlanarMap and
+uniformly sampling a sign at each crossing.  If n_components is a
+positive integer rather than <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>, then we will attempt up to max_att
+times to create a diagram with precisely n_components, and <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>
+otherwise.  If <code class="docutils literal"><span class="pre">max_att=0</span></code> then there is no limit on the number of
+attempts to satisfy <code class="docutils literal"><span class="pre">n_components</span></code>.</p>
+<p>Presently, dia_type is one of <code class="docutils literal"><span class="pre">'all'</span></code>, <code class="docutils literal"><span class="pre">'prime'</span></code>, <code class="docutils literal"><span class="pre">'6conn'</span></code>, or
+<code class="docutils literal"><span class="pre">'biquart'</span></code>.  (<code class="docutils literal"><span class="pre">dia_type=None</span></code> defaults to all)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_crossings</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The number of crossings of the result diagram</li>
+<li><strong>n_components</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a>) – The number of components of the result diagram, or
+None if no constraint</li>
+<li><strong>max_att</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The max number of attempts to create a diagram of
+<code class="xref py py-obj docutils literal"><span class="pre">n_components</span></code> components.</li>
+<li><strong>dia_type</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a>) – <p>The type of diagram to produce, or None for any.
+Valid types are:</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">'all'</span></code>, 2-edge-connected (i.e. any) diagrams,</li>
+<li><code class="docutils literal"><span class="pre">'prime'</span></code>, 4-connected (i.e. prime) diagrams</li>
+<li><code class="docutils literal"><span class="pre">'6conn'</span></code>, 6-connected diagrams, and</li>
+<li><code class="docutils literal"><span class="pre">'biquart'</span></code>, bipartite diagrams.  Notice that bipartite
+diagrams never have precisely 1 component.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new uniformly sampled PlanarDiagram of the appropriate type</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.from_dt_code">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">from_dt_code</code><span class="sig-paren">(</span><em>dt_code</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.from_dt_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new PlanarDiagram from a DT code (Dowker-Thistlethwaite).
+Requires <code class="xref py py-mod docutils literal"><span class="pre">Spherogram</span></code> package</p>
+<p>Warning: Currently depends on <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.from_pdcode" title="libpl.pdcode.diagram.PlanarDiagram.from_pdcode"><code class="xref py py-meth docutils literal"><span class="pre">from_pdcode()</span></code></a>, which has bugs with
+components of length 2</p>
+<p>Requires: <code class="xref py py-mod docutils literal"><span class="pre">spherogram</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dt_code</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Dowker-Thistlethwaite code to parse</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A new diagram corresponding to dt_code</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.from_editor">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">from_editor</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.from_editor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new PlanarDiagram using a new <code class="xref py py-obj docutils literal"><span class="pre">plink.LinkEditor</span></code></p>
+<p>Requires package <code class="xref py py-mod docutils literal"><span class="pre">plink</span></code> and Tkinter interface</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Arguments for plink.LinkEditor constructor</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A new diagram based on the link drawn in the editor</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.from_plink">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">from_plink</code><span class="sig-paren">(</span><em>editor</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.from_plink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> from a <code class="xref py py-obj docutils literal"><span class="pre">plink.LinkManager</span></code> object.</p>
+<p>Requires package <code class="xref py py-mod docutils literal"><span class="pre">plink</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>editor</strong> (<em>plink.LinkManager</em>) – The <code class="xref py py-obj docutils literal"><span class="pre">plink.LinkManager</span></code> object which
+contains the diagram</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether or not to wrap child components in Python</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new diagram object based on that drawn in the editor</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.from_pdcode">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">from_pdcode</code><span class="sig-paren">(</span><em>pdcode</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.from_pdcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a PlanarDiagram from a planar diagram code list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.db_knot">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">db_knot</code><span class="sig-paren">(</span><em>ncross</em>, <em>index</em>, <em>alternating=None</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.db_knot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches the Rolfsen table of knot types and returns a new
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-obj docutils literal"><span class="pre">PlanarDiagram</span></code></a> which is isotopic.  Raises <code class="xref py py-obj docutils literal"><span class="pre">KeyError</span></code> if the specified knot
+is not found.</p>
+<p>The variable <code class="docutils literal"><span class="pre">alternating</span></code> defaults to <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>.  If the crossing number
+is high enough that knots are distinguished by ‘Alternating’ or
+‘NonAlternating,’ be sure to set <code class="docutils literal"><span class="pre">alternating</span></code> to <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> or <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a>
+respectively.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ncross</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Minimal crossing number</li>
+<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index among other minimal crossing number knots</li>
+<li><strong>alternating</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – For small knots, there is no alternating
+information and this should be None.  Otherwise, we specify that a
+knot is non-alternating or alternating, whether this is True or
+False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>KeyError</strong> – If queried entry is not found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A diagram representing the database knot queried</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.db_link">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">db_link</code><span class="sig-paren">(</span><em>ncross</em>, <em>index</em>, <em>alternating=True</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.db_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches the Thistlethwaite table of link types and returns a new
+PlanarDiagram which is isotopic.  Raises KeyError if the specified link
+is not found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ncross</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Minimal crossing number</li>
+<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index among other minimal crossing number links</li>
+<li><strong>alternating</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to find a non-alternating or alternating link</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>KeyError</strong> – If queried entry is not found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A diagram representing the database link queried</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.unknot">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">unknot</code><span class="sig-paren">(</span><em>n_crossings</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.unknot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> which represents an
+<span class="math">\(n\)</span>-crossing unknot diagram</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_crossings</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of crossings in resulting diagram</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new unknot diagram</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.unknot_wye">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">unknot_wye</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.unknot_wye" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> representing an unknot which is
+designed for hash collisions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Positive integer parameter</li>
+<li><strong>b</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Positive integer parameter</li>
+<li><strong>c</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Positive integer parameter</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new wye unknot diagram</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.torus_knot">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">torus_knot</code><span class="sig-paren">(</span><em>p</em>, <em>q</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.torus_knot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> which represents a
+<span class="math">\((p,q)\)</span>-torus knot.  Only implemented for <span class="math">\(p=2\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of rotations around the a generator, must be 2
+currently</li>
+<li><strong>q</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of rotations around the b generator</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>Exception</strong> – If p is not 2</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new <span class="math">\((p,q)\)</span> torus knot diagram</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.twist_knot">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">twist_knot</code><span class="sig-paren">(</span><em>n_twists</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.twist_knot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> which represents a twist knot
+with <span class="math">\(n\)</span> twists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_twists</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of twists</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new twist knot diagram</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.simple_chain">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">simple_chain</code><span class="sig-paren">(</span><em>n_links</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.simple_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> which represents an
+<span class="math">\(n\)</span>-link chain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_links</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of links in the simple chain</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new simple chain diagram</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The following methods produce new diagrams from other diagrams:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.copy">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a memory deepcopy of this PlanarDiagram</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A deep memory copy of this PlanarDiagram</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.edit_copy">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">edit_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.edit_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a plink editor for this PlanarDiagram. On
+completion, returns a new PlanarDiagram object.</p>
+<p>Requires package <code class="xref py py-mod docutils literal"><span class="pre">plink`</span></code> and TKinter interface</p>
+</dd></dl>
+
+</div>
+<div class="section" id="diagram-i-o">
+<h3>Diagram I/O<a class="headerlink" href="#diagram-i-o" title="Permalink to this headline">¶</a></h3>
+<p>There are a few methods for reading and writing specific diagrams from and to
+files. The following “read” methods are all class methods:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.read">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">read</code><span class="sig-paren">(</span><em>file f</em>, <em>read_header=False</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the next pdcode from a file object.</p>
+<p>TODO: Rewrite for Py3 compatibility; use a filename rather than a file
+pointer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – File to read</li>
+<li><strong>read_header</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to read in a pdstor file header</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><strong>TypeError</strong> – If the file is not a valid type</li>
+<li><strong>EOFError</strong> – If the file is already at EOF and there is no object
+to read</li>
+<li><strong>Exception</strong> – If there is an issue reading the PlanarDiagram
+object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a>, or <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> on failure.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a> or <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.read_all">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">read_all</code><span class="sig-paren">(</span><em>file f</em>, <em>read_header=False</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; generator of PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.read_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator that iterates through the pdcodes stored in the
+file <code class="docutils literal"><span class="pre">f</span></code>.</p>
+<p>TODO: Rewrite for Py3 compatibility; use a filename rather than a file
+pointer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – File to read</li>
+<li><strong>read_header</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to read in a pdstor file header</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><strong>TypeError</strong> – If the file is not a valid type</li>
+<li><strong>Exception</strong> – If there is an issue reading the PlanarDiagram
+object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A generator of <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> objects contained in the
+file</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">generator(<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a>)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.read_knot_theory">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">read_knot_theory</code><span class="sig-paren">(</span><em>file f</em>, <em>thin=False</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.read_knot_theory" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads a pdcode which was exported from the Mathematica
+package KnotTheory, exported as text with something like:</p>
+<p><code class="docutils literal"><span class="pre">Export[&quot;7_2.txt&quot;,PD[Knot[7,2]]]</span></code></p>
+<p>These PD codes don’t have component or face information, so that is all
+regenerated once the crossings have been loaded from the file.  This
+will only read one PD code from the file <code class="docutils literal"><span class="pre">f</span></code>.</p>
+<p>TODO: Rewrite for Py3 compatibility; use a filename rather than a file
+pointer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – File to read</li>
+<li><strong>thin</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – Whether to wrap all children as Python objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> – If the file is not a valid type</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a>, or <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> on failure.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a> or <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)">None</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The following “write” methods are also available to save diagrams to disk.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.write">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">write</code><span class="sig-paren">(</span><em>file f</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this pdcode to the open file object <code class="docutils literal"><span class="pre">f</span></code>.</p>
+<p>TODO: Rewrite for Py3 compatibility; use a filename rather than a file
+pointer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a>) – File object to write to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>IOError</strong> – If the file is not writable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.write_knot_theory">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">write_knot_theory</code><span class="sig-paren">(</span><em>file f</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.write_knot_theory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this pdcode in KnotTheory format to the open file object <code class="docutils literal"><span class="pre">f</span></code>.</p>
+<p>TODO: Rewrite for Py3 compatibility; use a filename rather than a file
+pointer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><em>file</em></a>) – File object to write to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>IOError</strong> – If the file is not writable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The following method checks if, and where, a diagram is in a pdstor file.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.pdstor_index">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">pdstor_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int index<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.pdstor_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of this diagram’s isotopy (or isomorphism, if isotopy=False)
+class in the opened, readable pdstor file pdstor_f.</p>
+<p>Treats pdstor_f’s current position as beginning of file, and will re-seek
+file pointer back on completion. It may help to open the file as ‘rb’ to
+avoid inconsistencies with Windows.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="diagram-properties-and-invariants">
+<h3>Diagram properties and invariants<a class="headerlink" href="#diagram-properties-and-invariants" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to find properties and other invariants of diagrams and shadows.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.homfly">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">homfly</code><span class="sig-paren">(</span><em>as_string=False</em>, <em>timeout=None</em><span class="sig-paren">)</span> &#x2192; HOMFLYPolynomial<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.homfly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the HOMFLY polynomial for this diagram.  Returns <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> on
+error or timeout.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>as_string</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a>, return a <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> rather than a
+<code class="xref py py-obj docutils literal"><span class="pre">HOMFLYPolynomial</span></code></li>
+<li><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Infinite if <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a> (default), or a timeout in
+milliseconds for <code class="docutils literal"><span class="pre">llmpoly</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The HOMFLY polynomial of this diagram, or None on error</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="homfly.html#libpl.pdcode.homfly.HOMFLYPolynomial" title="libpl.pdcode.homfly.HOMFLYPolynomial">HOMFLYPolynomial</a> or <a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)">str</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.ccode">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">ccode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.ccode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this PlanarDiagram to its Ewing-Millett ccode
+format. Wraps <code class="xref c c-func docutils literal"><span class="pre">pdcode_to_ccode()</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An Ewing-Millett ccode string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.linking_number">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">linking_number</code><span class="sig-paren">(</span><em>c1=0</em>, <em>c2=0</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.linking_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linking number of the two numbered components.  If no
+arguments are supplied, checks the first component with itself.  If one
+argument is supplied, the other defaults to the first component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c1</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of a component between 0 and <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a>-1,
+inclusive</li>
+<li><strong>c2</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of a component between 0 and <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a>-1,
+inclusive</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Linking number of the two components</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.unsigned_linking_number">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">unsigned_linking_number</code><span class="sig-paren">(</span><em>c1=0</em>, <em>c2=0</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.unsigned_linking_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the linking number of the two numbered components.  If no
+arguments are supplied, checks the first component with itself.  If one
+argument is supplied, the other defaults to the first component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c1</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of a component between 0 and <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a>-1,
+inclusive</li>
+<li><strong>c2</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of a component between 0 and <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a>-1,
+inclusive</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Unsigned linking number of the two components</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.interlaced_crossings">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">interlaced_crossings</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple of int<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.interlaced_crossings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the interlaced crossings of this diagram.</p>
+<p>For a knot shadow, one can compute the average (over all possible
+crossing assignments) <span class="math">\(v_2\)</span> invariant by <span class="math">\(v_2=-C/4\)</span>, where
+C is the number of interlaced crossings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tuple of <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a> ints</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)">int</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.interlaced_crossings_unsigned">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">interlaced_crossings_unsigned</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple of int<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.interlaced_crossings_unsigned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the unsigned interlaced crossings of this diagram.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tuple of <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncomps" title="libpl.pdcode.diagram.PlanarDiagram.ncomps"><code class="xref py py-attr docutils literal"><span class="pre">ncomps</span></code></a> ints</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)">int</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.euler_characteristic">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">euler_characteristic</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.euler_characteristic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Euler characteristic of the diagram.  The pdcode library is
+currently only guaranteed for the sphere, with Euler characteristic 2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Euler characteristic of the embedding surface for this
+diagram.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="equivalence-checking-and-isomorphism-generation">
+<h3>Equivalence Checking and Isomorphism generation<a class="headerlink" href="#equivalence-checking-and-isomorphism-generation" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> comparisons (which depend on the value of
+<code class="xref py py-obj docutils literal"><span class="pre">equiv_type</span></code>), diagrams support the following operations for comparison and
+equivalence checking:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.isotopic">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">isotopic</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.isotopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> is diagram-isotopic
+to the input <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>.  This is
+equivalent to <code class="docutils literal"><span class="pre">pd</span> <span class="pre">==</span> <span class="pre">other</span></code> or <code class="docutils literal"><span class="pre">not</span> <span class="pre">pd</span> <span class="pre">!=</span> <span class="pre">other</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to check isotopy to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the diagrams are isotopic</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.map_isomorphic">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">map_isomorphic</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.map_isomorphic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this pdcode is oriented-<span class="math">\(S^2\)</span>-isotopic to
+the input <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to check oriented-isomorphism to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the diagrams are oriented-isomorphic</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.isomorphic">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">isomorphic</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.isomorphic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this pdcode is shadow isomorphic (i.e.
+unoriented sphere- or UU-isomorphic) to the input pdcode <code class="docutils literal"><span class="pre">other_pd</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to check shadow isomorphism to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the diagrams are shadow isomorphic</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.identical">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">identical</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.identical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether or not this diagram is identical to <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>,
+i.e., whether or not it has the exact same crossings, edges, faces, and
+components.  Does not care about memory allocated, just the advertised
+structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to compare</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the diagrams are identical</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Furthermore, it is possible to inspect isomorphism groups using,</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.build_isotopies">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">build_isotopies</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; tuple of PlanarIsomorphism<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.build_isotopies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all diagram isotopies to <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to compute diagram-isotopy
+to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple of isotopies</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(PlanarIsomorphism)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.build_autoisotopies">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">build_autoisotopies</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple of PlanarIsomorphism<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.build_autoisotopies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all diagram isotopies to itself</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tuple of isotopies</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(PlanarIsomorphism)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.build_map_isomorphisms">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">build_map_isomorphisms</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; tuple of PlanarIsomorphism<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.build_map_isomorphisms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all oriented-sphere isomorphisms to <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to compute oriented-isomorphism
+to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple of isotopies</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(PlanarIsomorphism)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.build_isomorphisms">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">build_isomorphisms</code><span class="sig-paren">(</span><em>PlanarDiagram other_pd</em><span class="sig-paren">)</span> &#x2192; tuple of PlanarIsomorphism<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.build_isomorphisms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all unoriented-sphere isomorphisms to <code class="xref py py-obj docutils literal"><span class="pre">other_pd</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Diagram to compute
+unoriented-isomorphism to</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple of isomorphisms</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(PlanarIsomorphism)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.build_automorphisms">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">build_automorphisms</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; tuple, PlanarIsomorphism<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.build_automorphisms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all unoriented isomorphisms to itself</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tuple of isomorphisms</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(PlanarIsomorphism)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="diagram-manipulation">
+<h3>Diagram Manipulation<a class="headerlink" href="#diagram-manipulation" title="Permalink to this headline">¶</a></h3>
+<p>There are several different methods for the manipulation of PlanarDiagram objects.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.set_all_crossing_signs">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">set_all_crossing_signs</code><span class="sig-paren">(</span><em>signature</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.set_all_crossing_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all signs of the crossings in this diagram to match signature; i.e.
+set <code class="docutils literal"><span class="pre">self.crossing.sign[i]</span> <span class="pre">=</span> <span class="pre">signature[i]</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signature</strong> – Sign to set all crossings in this diagram</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.unset_crossing_signs">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">unset_crossing_signs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.unset_crossing_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset all signs on this PlanarDiagram to <a class="reference internal" href="#libpl.pdcode.diagram.UNSET_ORIENTATION" title="libpl.pdcode.diagram.UNSET_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">UNSET_ORIENTATION</span></code></a>, i.e.
+make this diagram a shadow.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.toggle_crossing">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">toggle_crossing</code><span class="sig-paren">(</span><em>x_i</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.toggle_crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle the sign of crossing x_i, from positive to negative (or vice
+versa). If the crossing sign is unset, this is a no-op.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x_i</strong> – Index of the crossing to toggle</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.reorient_component">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">reorient_component</code><span class="sig-paren">(</span><em>component</em>, <em>sign</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.reorient_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse the orientation of component iff sign is
+<a class="reference internal" href="#libpl.pdcode.diagram.NEG_ORIENTATION" title="libpl.pdcode.diagram.NEG_ORIENTATION"><code class="xref py py-obj docutils literal"><span class="pre">NEG_ORIENTATION</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>component</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of the component to reorient</li>
+<li><strong>sign</strong> – If NEG_ORIENTATION, reverse the component orientation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.randomly_assign_crossings">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">randomly_assign_crossings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.randomly_assign_crossings" title="Permalink to this definition">¶</a></dt>
+<dd><p>randomly_assigned_crossings()</p>
+<p>Randomly assign a sign in {+,-} to each of the crossings of
+this PlanarDiagram.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.connect_sum">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">connect_sum</code><span class="sig-paren">(</span><em>Edge edge</em>, <em>PlanarDiagram other_pd</em>, <em>Edge other_edge</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.connect_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gives the connect sum of two PlanarDiagram objects at two
+different edges, keeping edge orientations consistent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>edge</strong> (<a class="reference internal" href="components.html#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><em>Edge</em></a>) – Edge in this diagram which designates location of connect sum</li>
+<li><strong>other_pd</strong> (<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><em>PlanarDiagram</em></a>) – Other diagram to connect sum in</li>
+<li><strong>other_edge</strong> (<a class="reference internal" href="components.html#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge"><em>Edge</em></a>) – Edge in other_pd which designates location of connect sum</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new PlanarDiagram which is the result of the connect sum</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The following methods change diagrams at a lower level, and require some care.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.resize">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">resize</code><span class="sig-paren">(</span><em>ncross</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a> to fit more (or less, down to
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.ncross" title="libpl.pdcode.diagram.PlanarDiagram.ncross"><code class="xref py py-obj docutils literal"><span class="pre">ncross</span></code></a>) vertices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ncross</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – New total number of crossings for resultant object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.add_crossing">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">add_crossing</code><span class="sig-paren">(</span><em>N=1</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.add_crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add <code class="xref py py-obj docutils literal"><span class="pre">N</span></code> crossings to this <a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram"><code class="xref py py-class docutils literal"><span class="pre">PlanarDiagram</span></code></a>.  If too small,
+we resize first to fit the new crossings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of new crossings to add, or 1 by default</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="simplification-and-reidemeister-moves">
+<h3>Simplification and Reidemeister Moves<a class="headerlink" href="#simplification-and-reidemeister-moves" title="Permalink to this headline">¶</a></h3>
+<p>One goal of the PlanarDiagram library is to implement routines for
+simplification.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.neighbors">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; generator of tuple of PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of knot-isomorphic PlanarDiagrams by identifying
+and performing knot moves which preserve isomorphism (i.e. Reidemeister
+moves).  The generator yields <em>tuples</em> of PlanarDiagrams, in case the
+move untangled a link into two separate diagrams.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A generator of one-move-simplified neighbors</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator(<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a>))</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.simplify">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">simplify</code><span class="sig-paren">(</span><span class="optional">[</span><em>seed=None</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; tuple of PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of PlanarDiagram whose split link is isomorphic to this
+diagram and whose crossing numbers software knows not how to decrease
+(i.e. this would <strong>ideally</strong> return a tuple of diagrams isomorphic to
+link with minimal number of crossings).</p>
+<p>The return value is a tuple of PlanarDiagram, as it is possible that R2
+simplifications break apart a split link diagram into two separate
+PlanarDiagrams.  Order of the tuple depends on the simplification
+order; at R2 simplifications which split links, two diagrams are
+returned as (Upper, Lower) depending on their pre-R2 simplification
+state: Whatever diagrams are produced from simplifying the first
+diagram come first in the tuple, while the end will the diagrams
+obtained from simplifying the second.  In a very meaningless sense this
+means the resultant diagrams are returned in a height order, with the
+“top” diagram appearing first and so on: Of course, there’s no
+well-defined notion of height of a split link diagram, and it’s
+possible that simplification steps could mess this up, too.</p>
+<p>If <code class="docutils literal"><span class="pre">seed</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>, pick a random move instead of using any
+order (using the integer seed provided).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – If non-None, a deterministic seed for the random number
+generator</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">PlanarDiagrams produced by reducing, from “top” to “bottom”;
+see description for scare-quote explanation.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#tuple" title="(in Python v2.7)">tuple</a>(<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram" title="libpl.pdcode.diagram.PlanarDiagram">PlanarDiagram</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>This works (theoretically) by applying Reidemeister moves to diagrams which do
+not change the link type of a diagram. The following methods check for
+Reidemeister local sites:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.get_R1_loops">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">get_R1_loops</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; generator of Faces<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.get_R1_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of loops which are viable candidates for
+Reidemeister 1 moves.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Generator of monogon loops</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator(<a class="reference internal" href="components.html#libpl.pdcode.components.Face" title="libpl.pdcode.components.Face">Face</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.get_R2_bigons">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">get_R2_bigons</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; generator of Faces<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.get_R2_bigons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of bigons which are viable candidates for
+Reidemeister 2 moves.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Generator of bigon loops whose signs are valid for a R2 move
+operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator(<a class="reference internal" href="components.html#libpl.pdcode.components.Face" title="libpl.pdcode.components.Face">Face</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.get_R3_triangles">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">get_R3_triangles</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; generator of Face, Edge<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.get_R3_triangles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of trigons which are viable candidates for
+Reidemeister 3 moves, with the strand that would move.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Generator of triangles whose signs are valid for an R3 move,
+with an edge that can move</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator((<a class="reference internal" href="components.html#libpl.pdcode.components.Face" title="libpl.pdcode.components.Face">Face</a>,<a class="reference internal" href="components.html#libpl.pdcode.components.Edge" title="libpl.pdcode.components.Edge">Edge</a>))</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The following Reidemeister-type moves are implemented:</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R1_loop_deletion">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R1_loop_deletion</code><span class="sig-paren">(</span><em>cr</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R1_loop_deletion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a Reidemeister 1 loop deletion which removes the loop
+designated by input crossing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cr</strong> (<a class="reference external" href="https://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Index of crossing identifying loop to remove</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>Exception</strong> – If there is an error performing the R1 deletion move</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A new PlanarDiagram with the monogon removed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R2_bigon_elimination">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R2_bigon_elimination</code><span class="sig-paren">(</span><em>Face f</em><span class="sig-paren">)</span> &#x2192; Upper PlanarDiagram[, Lower PlanarDiagram]<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R2_bigon_elimination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a Reidemeister 2 bigon elimination removing the bigon f.  This
+is <strong>not an in-place operation</strong> as there may be more than one
+PlanarDiagram as a result of the move.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> (<a class="reference internal" href="components.html#libpl.pdcode.components.Face" title="libpl.pdcode.components.Face"><em>Face</em></a>) – Face to eliminate, must be a bigon with valid signs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">An Exception if the Face f is not a bigon.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R2_bigon_elimination_vertices">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R2_bigon_elimination_vertices</code><span class="sig-paren">(</span><em>cr1</em>, <em>cr2</em><span class="sig-paren">)</span> &#x2192; Upper PlanarDiagram, [Lower PlanarDiagram]<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R2_bigon_elimination_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a Reidemeister 2 bigon elimination removing the bigon defined by the vertices
+indexed by cr1 and cr2. Observe that cr1 and cr2 uniquely determine a bigon unless
+the diagram is a split link of two trivial circles; in this case the result will be two
+trivial diagrams.</p>
+<p>Caveat: This method does not check that cr1 and cr2 actually define a bigon! It is
+preferred that you use R2_bigon_elimination(), which does error checking.</p>
+</dd></dl>
+
+<p>The following Reidemeister methods are non-working, or otherwise non-tested</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R1_loop_addition">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R1_loop_addition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R1_loop_addition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R2_bigon_addition">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R2_bigon_addition</code><span class="sig-paren">(</span><em>f</em>, <em>e1_on_f</em>, <em>e2_on_f</em>, <em>e1_over_e2_or</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R2_bigon_addition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a Reidemeister 2 bigon addition move across the face indexed
+by f, by moving edges e1_on_f and e2_on_f across each other.  NOT FULLY
+WORKING?</p>
+<p>TODO: Fix implementation!  The orientation currently has no effect
+TODO: Fix specification!  We should be more consistent and be able to
+work with python objects like using a Face f instead of an index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R3_triangle_flip">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R3_triangle_flip</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R3_triangle_flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a Reidemeister 3 triangle flip move, flipping the face indexed
+by f. Currently DOES NOT CARE about sign, and so only works on shadows.</p>
+<p>TODO: Implement properly for diagrams</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R3_nice_swap">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R3_nice_swap</code><span class="sig-paren">(</span><em>Face f</em>, <em>Edge e</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R3_nice_swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform an R3 move. <em>Possibly not implemented</em></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.R3_strand_swap">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">R3_strand_swap</code><span class="sig-paren">(</span><em>i_x</em>, <em>i_a_1</em>, <em>i_b_1</em>, <em>i_a_2</em>, <em>i_b_2</em><span class="sig-paren">)</span> &#x2192; PlanarDiagram<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.R3_strand_swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a R3 move. <em>Possibly not implemented</em></p>
+</dd></dl>
+
+</div>
+<div class="section" id="regeneration-and-sanity-checking">
+<h3>Regeneration and Sanity Checking<a class="headerlink" href="#regeneration-and-sanity-checking" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes—particularly after making low-level modifications to diagram
+objects—we have to regenerate higher-level objects like <code class="xref py py-obj docutils literal"><span class="pre">Component</span></code> and
+<code class="xref py py-obj docutils literal"><span class="pre">Face</span></code> and check that planar diagram objects are valid.</p>
+<dl class="docutils">
+<dt><em>Note</em>: Methods of the form <code class="docutils literal"><span class="pre">regenerate_componentType</span></code> do not regenerate</dt>
+<dd>Python objects, and should be used with care; it is advised to instead use the
+<a class="reference internal" href="#libpl.pdcode.diagram.PlanarDiagram.regenerate" title="libpl.pdcode.diagram.PlanarDiagram.regenerate"><code class="xref py py-obj docutils literal"><span class="pre">regenerate</span></code></a> method instead.</dd>
+</dl>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.regenerate">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">regenerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.regenerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regenerates everything from cross data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.regenerate_hash">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">regenerate_hash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.regenerate_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill in (printable) hash value from comps, faces, and crossings</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.is_ok">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">is_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.is_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that all data contained in this PD code is sane.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether or not this PD code is sane</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.crossings_ok">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">crossings_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.crossings_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crossings are the fundamental data from which
+PD codes are regenerated. This checks that the crossing
+data is sane.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the crossing data is sane</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.edges_ok">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">edges_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.edges_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the edge data agrees with crossing data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the edges agree with crossing data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.faces_ok">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">faces_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.faces_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the face data agrees with crossing data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the faces agree with crossing data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.components_ok">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">components_ok</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.components_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the component data agrees with crossing data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the components agree with crossing data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2.7/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.assert_nonnull">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">assert_nonnull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.assert_nonnull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise an exception if this PlanarDiagram’s data pointer is NULL.</p>
+<p>TODO: Make this definition private (_assert_nonnull) as end users
+should not need to ever call this, in theory…</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>Exception</strong> – if the internal C data pointer is NULL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="snappy-and-spherogram">
+<h3>SnapPy and Spherogram<a class="headerlink" href="#snappy-and-spherogram" title="Permalink to this headline">¶</a></h3>
+<p>We support some conversions to <code class="xref py py-mod docutils literal"><span class="pre">snappy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">spherogram</span></code> data
+types.</p>
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.as_spherogram">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">as_spherogram</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; spherogram.Link<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.as_spherogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Spherogram Link object representing this PlanarDiagram</p>
+<p>Requires: <code class="xref py py-mod docutils literal"><span class="pre">spherogram</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A spherogram Link object which represents this PlanarDiagram</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">spherogram.Link</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.pdcode.diagram.PlanarDiagram.snappy_manifold">
+<code class="descclassname">PlanarDiagram.</code><code class="descname">snappy_manifold</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; snappy.Manifold<a class="headerlink" href="#libpl.pdcode.diagram.PlanarDiagram.snappy_manifold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SnapPy Manifold object which represents this knot/link’s
+complement in <span class="math">\(S^3\)</span>.</p>
+<p>Requires: <code class="xref py py-mod docutils literal"><span class="pre">snappy</span></code>, <code class="xref py py-mod docutils literal"><span class="pre">spherogram</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A snappy Manifold object which represents this PlanarDiagram’s
+complement</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">snappy.Manifold</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Diagram module: PlanarDiagrams</a><ul>
+<li><a class="reference internal" href="#constants-and-other-top-level-features">Constants and other top-level features</a></li>
+<li><a class="reference internal" href="#the-planardiagram-class">The PlanarDiagram Class</a><ul>
+<li><a class="reference internal" href="#creating-planardiagrams">Creating PlanarDiagrams</a></li>
+<li><a class="reference internal" href="#diagram-i-o">Diagram I/O</a></li>
+<li><a class="reference internal" href="#diagram-properties-and-invariants">Diagram properties and invariants</a></li>
+<li><a class="reference internal" href="#equivalence-checking-and-isomorphism-generation">Equivalence Checking and Isomorphism generation</a></li>
+<li><a class="reference internal" href="#diagram-manipulation">Diagram Manipulation</a></li>
+<li><a class="reference internal" href="#simplification-and-reidemeister-moves">Simplification and Reidemeister Moves</a></li>
+<li><a class="reference internal" href="#regeneration-and-sanity-checking">Regeneration and Sanity Checking</a></li>
+<li><a class="reference internal" href="#snappy-and-spherogram">SnapPy and Spherogram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../pdcode.html">The pdcode Module: Diagrams</a><ul>
+      <li>Previous: <a href="../pdcode.html" title="previous chapter">The pdcode Module: Diagrams</a></li>
+      <li>Next: <a href="components.html" title="next chapter">The Components module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/libpl/pdcode/diagram.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014, Jason Cantarella.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/libpl/pdcode/diagram.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

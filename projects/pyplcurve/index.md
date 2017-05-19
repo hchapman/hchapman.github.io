@@ -6,6 +6,12 @@ title: "plCurve for Python: libpl"
 
 # plCurve for Python: `libpl`
 
+## Documentation
+
+Documentation for the Python module can be found [here](docs/html).
+
+## Introduction
+
 The Python interface to
 [plCurve](http://www.jasoncantarella.com/wordpress/software/plcurve/)
 is now built using Cython. The old [SWIG interface documentation can be found here](old_swig).
@@ -74,10 +80,6 @@ running `from libpl import pdcode; help(pdcode)` or `from libpl.pdcode
 import *; help(PlanarDiagram)`. It may also be enlightening to view
 the source for the module (at pysrc/libpl/pdcode.pyx) which, while
 written as Cython, reads much like typical Python.
-
-## Documentation
-
-A (possibly outdated) version of the documentation can be found [here](docs/html).
 
 ### Building from source
 

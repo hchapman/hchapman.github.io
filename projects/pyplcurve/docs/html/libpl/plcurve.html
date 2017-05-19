@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>plcurve: Piecewise-Linear Curves (a.k.a. Polygons) &#8212; plCurve 7.3 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '7.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The HOMFLY module" href="pdcode/homfly.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="plcurve-piecewise-linear-curves-a-k-a-polygons">
+<h1>plcurve: Piecewise-Linear Curves (a.k.a. Polygons)<a class="headerlink" href="#plcurve-piecewise-linear-curves-a-k-a-polygons" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-plcurve-class">
+<h2>The PlCurve class<a class="headerlink" href="#the-plcurve-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.plcurve.PlCurve">
+<em class="property">class </em><code class="descclassname">libpl.plcurve.</code><code class="descname">PlCurve</code><a class="headerlink" href="#libpl.plcurve.PlCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a PlCurve.</p>
+<p>Create a new PlCurve, optionally with empty components described by <code class="xref py py-obj docutils literal"><span class="pre">component_spec</span></code>.</p>
+<p>If it is not <a class="reference external" href="https://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">component_spec</span></code> is a sequence of the form
+(int num_vertices, bool open, int num_colors).</p>
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.add_component">
+<code class="descname">add_component</code><span class="sig-paren">(</span><em>component</em><span class="sig-paren">)</span><a class="headerlink" href="#libpl.plcurve.PlCurve.add_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a component to this PlCurve.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.center_of_mass">
+<code class="descname">center_of_mass</code><a class="headerlink" href="#libpl.plcurve.PlCurve.center_of_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Center of mass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.fix_wrap">
+<code class="descname">fix_wrap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#libpl.plcurve.PlCurve.fix_wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.gyradius">
+<code class="descname">gyradius</code><a class="headerlink" href="#libpl.plcurve.PlCurve.gyradius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gyradius of this PlCurve.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.num_edges">
+<code class="descname">num_edges</code><a class="headerlink" href="#libpl.plcurve.PlCurve.num_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of edges in this PlCurve.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.num_vertices">
+<code class="descname">num_vertices</code><a class="headerlink" href="#libpl.plcurve.PlCurve.num_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of vertices in this PlCurve.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.perturb">
+<code class="descname">perturb</code><a class="headerlink" href="#libpl.plcurve.PlCurve.perturb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomly perturb this PlCurve</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libpl.plcurve.PlCurve.pointset_diameter">
+<code class="descname">pointset_diameter</code><a class="headerlink" href="#libpl.plcurve.PlCurve.pointset_diameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diameter of the points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.projection_to_PlanarDiagram">
+<code class="descname">projection_to_PlanarDiagram</code><span class="sig-paren">(</span><em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; new PlanarDiagram<a class="headerlink" href="#libpl.plcurve.PlCurve.projection_to_PlanarDiagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new PlanarDiagram from a projection of this PlCurve.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_closed_plane_polygon">
+<code class="descname">random_closed_plane_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_closed_plane_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random closed plane polygon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_closed_polygon">
+<code class="descname">random_closed_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_closed_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random closed polygon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_equilateral_closed_polygon">
+<code class="descname">random_equilateral_closed_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_equilateral_closed_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random equilateral polygon using the CSU algorithm.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_equilateral_open_polygon">
+<code class="descname">random_equilateral_open_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_equilateral_open_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random equilateral open polygon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_open_plane_polygon">
+<code class="descname">random_open_plane_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_open_plane_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random open plane polygon.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libpl.plcurve.PlCurve.random_open_polygon">
+<code class="descname">random_open_polygon</code><span class="sig-paren">(</span><em>int n_edges</em>, <em>RandomGenerator rng</em><span class="sig-paren">)</span> &#x2192; PlCurve<a class="headerlink" href="#libpl.plcurve.PlCurve.random_open_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random open polygon.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="utility-classes">
+<h2>Utility classes<a class="headerlink" href="#utility-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libpl.plcurve.RandomGenerator">
+<em class="property">class </em><code class="descclassname">libpl.plcurve.</code><code class="descname">RandomGenerator</code><a class="headerlink" href="#libpl.plcurve.RandomGenerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">plcurve: Piecewise-Linear Curves (a.k.a. Polygons)</a><ul>
+<li><a class="reference internal" href="#the-plcurve-class">The PlCurve class</a></li>
+<li><a class="reference internal" href="#utility-classes">Utility classes</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="pdcode/homfly.html" title="previous chapter">The HOMFLY module</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/libpl/plcurve.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014, Jason Cantarella.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/libpl/plcurve.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
