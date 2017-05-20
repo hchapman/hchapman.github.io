@@ -75,8 +75,7 @@ about: true
   
   <div class="col-sm-6 col-sm-pull-5">
     <h2 class="content">Recent Publications</h2>
-    {% capture pubs  %}{% include_relative publications.md %}{% endcapture %}
-    {{ pubs | markdownify }}
+    {% include autopublications.html %}
 
     <h2 class="content">Recent Talks &amp; Conferences</h2>
     {% capture talks  %}{% include_relative talks.md %}{% endcapture %}

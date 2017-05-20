@@ -10,7 +10,7 @@ research: true
 
 My research interests have tended towards the intersection of
 combinatorics, topology and geometry, with a primary focus on random
-knots. I am studying under the direction of <a
+knots. I completed my PhD under the direction of <a
 href="http://www.jasoncantarella.com">Jason Cantarella</a>.
 
 ## Publications
