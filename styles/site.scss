@@ -86,3 +86,12 @@ div.container {
     padding: 20px;
     border: 1px solid #ddd;
 }
+
+.collapse-toggle::after {
+    content: " Hide"
+}
+
+.collapse-toggle.collapsed::after {
+    content: " Show"
+}
+

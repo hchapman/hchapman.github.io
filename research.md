@@ -15,7 +15,7 @@ href="http://www.jasoncantarella.com">Jason Cantarella</a>.
 
 ## Publications
 
-{% include_relative publications.md %}
+{% include autopublications.html %}
 
 ## Talks
 
