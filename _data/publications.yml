@@ -36,6 +36,7 @@ entries:
         pages: '225001'
         url: http://stacks.iop.org/1751-8121/50/i=22/a=225001
         year: '2017'
+        month: '6'
         abstract: 'We study random knotting by considering knot and link diagrams
             as decorated, (rooted) topological maps on spheres and pulling them uniformly
             from among sets of a given number of vertices n, as first established
@@ -66,6 +67,7 @@ entries:
         pages: '405001'
         url: http://stacks.iop.org/1751-8121/49/i=40/a=405001
         year: '2016'
+        month: '9'
         abstract: We consider a natural model of random knotting—choose a knot diagram
             at random from the finite set of diagrams with n crossings. We tabulate
             diagrams with 10 and fewer crossings and classify the diagrams by knot

@@ -1,0 +1,6 @@
+<li id="pub-{{ bibkey }}">
+    <em>{{ bibdata.title }}</em>.<br>
+    {% if bibdata.otherauthor %}With {{ bibdata.otherauthor[0].first }} {{ bibdata.otherauthor[0].last }}{% for author in bibdata.otherauthor offset:1 %} and {{ author.first }} {{ author.last }}{% endfor %}.<br>
+    {% endif %}{{ bibdata.eventtitle }}.<br>
+    {% if bibdata.organization %}{{ bibdata.organization }}, {% endif %}{{ bibdata.address }}, {{ bibdata.month | append: "/" | append: bibdata.year | date: "%B %Y" }}.
+</li>

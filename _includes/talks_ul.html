@@ -1,0 +1,13 @@
+{% assign _count = 0 %}
+<ul class="talks" id="talks">{% for bib in site.data.talks.entries %}
+    {% if include.limit and _count == include.limit %}{% break %}{% endif %}
+    {% assign bibkey = bib[0] %}{% assign bibdata = bib[1] %}
+    {% if bib[1].type == "inproceedings" %}
+    {% if include.subtype == nil or bib[1].entrysubtype == include.subtype %}
+    {% if include.keyword == nil or bib[1].keywords contains include.keyword %}
+    {% include bibfmt/external_talk_li.html bibkey=bibkey bibdata=bibdata %}
+    {% assign _count = _count | plus: 1 %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+{% endfor %}</ul>

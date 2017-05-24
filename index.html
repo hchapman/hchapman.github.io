@@ -74,12 +74,20 @@ about: true
   </div>
   
   <div class="col-sm-6 col-sm-pull-5">
-    <h2 class="content">Recent Publications</h2>
+      <h2 class="content">Recent Publications</h2>
+      <p>For a full list, see <a href="/research/"> my research page</a>. Entries
+      are also available in <a href="/static/hchapman.bib">BibTeX format</a>.</p>
     {% include autopublications.html %}
 
-    <h2 class="content">Recent Talks &amp; Conferences</h2>
-    {% capture talks  %}{% include_relative talks.md %}{% endcapture %}
-    {{ talks | markdownify }}
+      <h2 class="content">Recent Talks &amp; Conferences</h2>
+      <p>For a full list, see <a href="/research/"> my research page</a>.
+    <h3>Seminar talks and lectures</h3>
+    <h4>External</h4>
+    {% include talks_ul.html limit=3 subtype="external" keyword="seminar" %}
+    <h4>At UGA</h4>
+    {% include talks_ul.html limit=3 subtype="internal" keyword="seminar" %}
+    <h3>Conference talks</h3>
+    {% include talks_ul.html limit=3 subtype="external" keyword="conference" %}
 
     {% comment %}<h2 class="content">Other Interests</h2>
     <p>I like to cook, but I'm not very good at it. It is often difficult

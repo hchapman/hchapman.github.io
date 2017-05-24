@@ -16,6 +16,87 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 
+\newcommand*\publistbasestyle{ieee}
+
+\usepackage{csquotes}
+\usepackage[style=publist,sorting=ddnt, defernumbers=true]{biblatex}
+\plauthorname[Harrison]{Chapman}
+\addbibresource{hchapman.bib}
+\addbibresource{hchapman_inprogress.bib}
+\addbibresource{hchapman_old.bib}
+\addbibresource{hchapman_talks.bib}
+
+%\DeclareFieldFormat{labelnumberwidth}{#1.}
+
+\newbibmacro*{bbx:parunit}{%
+  \ifbibliography
+    {\setunit{\bibpagerefpunct}\newblock
+     \usebibmacro{pageref}%
+     \clearlist{pageref}%
+     \setunit{\adddot\par\nobreak}}
+    {}}
+
+%%% Put DOI, etc block on own line
+\renewbibmacro*{doi+eprint+url}{%
+  \usebibmacro{bbx:parunit}% Added
+  \iftoggle{bbx:doi}
+    {\printfield{doi}}
+    {}%
+  \setunit{\adddot\addspace}%
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%  
+  \setunit{\adddot\addspace}%  
+  \iftoggle{bbx:url}
+    {\usebibmacro{url+urldate}}
+    {}%
+}
+
+%%% Just say ``URL'' for online link
+\DeclareFieldFormat{url}{\mkbibacro{url}\addcolon\space\url{#1}}
+
+%%% Put eprint on own line
+\renewbibmacro*{eprint}{%
+  \usebibmacro{bbx:parunit}% Added
+  \iffieldundef{eprinttype}
+    {\printfield{eprint}}
+    {\printfield[eprint:\strfield{eprinttype}]{eprint}}}
+  
+
+%%% Put web URL on own line
+\renewbibmacro*{url+urldate}{%
+  \usebibmacro{bbx:parunit}% Added
+  \printfield{url}%
+  \iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+      \printtext[urldate]{\printurldate}}}
+  
+%%% Nicer formatting for event venues
+\renewbibmacro*{event+venue+date}{%
+  \iffieldundef{eventtitle}
+    {}
+    {%
+      \setunit{\adddot\addspace}%
+      \printtext{\adddot\addspace}%
+      \usebibmacro{bbx:parunit}%
+      \printfield{eventtitle}%
+    }%
+  \ifboolexpr{
+    test {\iffieldundef{venue}}
+    and
+    test {\iffieldundef{eventyear}}
+  }
+    {}
+    {\setunit*{\addspace}%
+     \printtext[parens]{%
+       \printfield{venue}%
+       \setunit*{\addcomma\space}%
+       \printeventdate}}%
+  \newunit
+}
+
+
 % Comment the following lines to use the default Computer Modern font
 % instead of the Palatino font provided by the mathpazo package.
 % Remove the 'osf' bit if you don't like the old style figures.
@@ -94,11 +175,16 @@
 \end{minipage}
 \begin{minipage}{0.45\linewidth}
   \begin{tabular}{ll}
-    Phone: & (706) 542-2619 \\
     Email: & \href{mailto:hchapman@math.uga.edu}{\tt hchapman@math.uga.edu} \\
     Homepage: & \href{http://hchapman.github.io/}{\tt http://hchapman.github.io/} \\
   \end{tabular}
 \end{minipage}
+
+\section*{Employment}
+
+\begin{itemize}
+  \item Postdoctoral Fellow. Colorado State University, Fort Collins CO. 2017--present.
+\end{itemize}
 
 \section*{Education}
 
@@ -117,9 +203,9 @@
  \section*{Awards}
 
  \begin{itemize}
- \item B.J.\ Ball Scholarship, 2016
- \item UGA VIGRE Research Fellowship, 2012---2013, Summer 2014
- \item Bowdoin Faculty Scholar, 2007
+ \item B.J.\ Ball Scholarship, 2016.
+ \item UGA VIGRE Research Fellowship, 2012---2013, Summer 2014.
+ \item Bowdoin Faculty Scholar, 2007.
  \end{itemize}
 
 \section*{Teaching}
@@ -154,62 +240,13 @@
 
 \section*{Publications}
 
-\begin{enumerate}
-\item \emph{A Markov chain sampler for plane curves}. \\
-  With A.\ Rechnitzer. \\
-  In preparation.
-  %\textit{We demonstrate a Markov Chain Monte Carlo sampler on the space of knot
-  %  shadows and prove that it is ergodic. This provides a new way to uniformly
-  %  sample knot diagrams and computationally enumerate the class of knot
-  %  diagrams.}
-\item \emph{Slipknotting in the knot diagram model}. \\
-  In preparation. 
-  %\textit{I apply pattern theorem results to knot diagrams to show that
-  %  slipknots of any topological type appear almost surely in different classes
-  %  of knot diagrams. Namely, I show that diagrams of unknots contain slipknots,
-  %  a result which remains a conjecture for other models of knotting.}
-  
-\item \emph{A diagrammatic theory of random knots}. \\
-  Advisor: J.\ Cantarella. PhD dissertation (2017). University of Georgia.
-\item \emph{Asymptotic laws for random knot diagrams}. \\
-  J.\ Phys.\ A:\ Math.\ Theor.\ 50 (2017), no.\ 22, p.\ 225001.\\
-  DOI: \href{https://doi.org/10.1088/1751-8121/aa6e45}{\tt
-    10.1088/1751-8121/aa6e45}. \\
-  Preprint: \href{http://arxiv.org/abs/1608.02638}{\tt arXiv:1608.02638}. 
-  %\textit{I show a pattern theorem result for knot diagrams and use it to both
-  %  prove the Frisch-Wasserman-Delbr\"uck conjecture for the model of knot
-  %  diagrams and show that symmetries of knot diagrams are statistically
-  %  insignificant.}
-\item \emph{Knot probabilities in random diagrams}.\\
-  With J.\ Cantarella, M.\ Mastin. \\
-  J.\ Phys.\ A:\ Math.\ Theor. 49 (2016), no.\ 40, p.\ 405001.\\
-  DOI: \href{http://dx.doi.org/10.1088/1751-8113/49/40/405001}{\tt 10.1088/1751-8113/49/40/405001}.\\
-  Preprint: \href{http://arxiv.org/abs/1512.05749}{\tt arXiv:1512.05749}. 
-  %\textit{We compute the exact probability that a random diagram of
-  %  $n$ crossings has a given knot type (for $n \leq 10$) by directly
-  %  enumerating and classifying the knot diagrams of $n$
-  %  crossings. Ou
-  r enumeration method is based on identifying knot
-  %  diagrams with a class of embedded 4-regular planar graphs.}
-\item \emph{A Group-theoretic Approach to Human Solving Strategies in
-  Sudoku}.\\
-  With M.\ Rupert (Mentor: E.\ Arnold). \\
-  Colonial Academic Alliance Undergraduate Research Journal (2012) vol
-  3, article 3.
-  %\textit{Paper produced during an NSF REU at James Madison University
-  %  in 2010. We quantify the data of Sudoku board states by
-  %  considering which numbers \emph{cannot} go in a given cell and
-  %  consider how a typical player's solving strategies are a group
-  %  acting on this set of states.}
-\item \emph{On orbital varieties of type A}. \\
-  Advisor: T.\ Pietraho. Honors thesis (2011). Bowdoin
-  College. 
-  %\textit{Thesis on the Smith conjecture on orbital varieties of
-  %  nilpotent orbits in the Lie group $GL_n$.  Outlines the
-  %  correspondence between Young tableaux and orbital varieties and
-  %  concludes with conditions for which certain shapes of Young
-  %  tableaux will admit orbital varities which are not Smith.}
-\end{enumerate}
+\newrefsection[hchapman_inprogress]
+\nocite{*}
+\printbibliography[heading=none]
+\vspace{-.5em}
+\newrefsection[hchapman,hchapman_old]
+\nocite{*}
+\printbibliography[heading=none]
 
 \section*{Software}
 
@@ -228,120 +265,17 @@
 \end{enumerate}
 
 \section*{External Talks}
+\csnumgdef{bbx@itemtotal}{0} %% Restart count for talks from 1
 
-\begin{enumerate}
-\item Hunter College, AMS Spring Eastern Sectional Meeting 2017, \\
-  Special Session on Invariants of Knots, Links, and 3-manifolds. \\
-  \textit{A Markov chain sampler for knot diagrams}. New York NY, May 2017.
-
-\item College of Charleston, AMS Spring Southeast Sectional Meeting 2017, \\
-  Special Session on Knot Theory and its Applications. \\
-  \textit{Slipknotting in the Knot Diagram Model}. Charleston SC, March 2017.
-
-\item Joint Mathematics Meetings 2017, \\
-  MAA Invited Paper Session on Random Polygons and Knots. \\
-  \textit{Slipknotting in the Knot Diagram Model}. Atlanta GA, January 2017.
-
-\item Piedmont College, Annual Math and Physics Lecture, \\
-  \textit{Random knots in physics and biology}. Demorest GA, November 2016.
-
-\item 28\textsuperscript{th} International Conference on Formal Power Series and
-  Algebraic Combinatorics, \\
-  \textit{Asymptotic laws for knot diagrams}. Vancouver BC, July 2016.
-
-\item IU Bloomington, Graduate Student Topology and Geometry Conference 2016, \\
-  \textit{Asymptotic laws for knot diagrams}. Bloomington IN, April 2016.
-  
-\item Joint Mathematics Meetings 2016, \\
-  MAA Session on Mathematical Modeling in the Undergraduate Classroom. \\
-  \textit{A robotics-based calculus class}. Seattle WA, January 2016.
-
-\item Joint Mathematics Meetings 2016, \\
-  AMS Session on General Topics. \\
-  \textit{Asymptotic laws for knot diagrams}. Seattle WA, January 2016.
-
-\item Tulane University, Geometry Seminar, \\
-  \textit{Asmyptotic laws for knot diagrams}. New Orleans LA, October 2015.
-
-\item CSU Fullerton, AMS Fall Western Sectional Meetings 2015,\\
-  Special Session on Algebraic and Combinatorial Structures in Knot Theory. \\
-  \textit{Asymptotics of random knot diagrams}. Fullerton CA, October 2015,
-
-\item University of Memphis, AMS Fall Southeastern Sectional Meetings 2015,\\
-  Special Session on Topological Combinatorics. \\
-  \textit{Asymptotics of random knot diagrams}. Memphis TN, October 2015.
-
-\item University of British Columbia, Discrete Math Seminar, \\
-  \textit{Asmyptotic laws for knot diagrams}. Vancouver BC, September 2015.
-  
-\item Simon Fraser University, Discrete Math Seminar, \\
-  \textit{Asmyptotic laws for knot diagrams}. Burnaby BC, September 2015.
-
-\item University of Saskatchewan, PIMS-USASK Graduate Summer School on Applied Combinatorics, \\
-  \textit{Knot diagrams and blossom trees}. Saskatoon SK, May 2015.
-  
-\item University of Nevada, AMS Spring Western Sectional Meetings,\\
-  Special Session on Inverse Problems and Related Mathematical Methods in Physics. \\
-  \textit{Random knot diagrams}. Las Vegas NV, April 2015.
-  
-\item Joint Mathematics Meetings, \\
-  AMS-MAA-SIAM Special Session on Research in Mathematics by
-  Undergraduates and Students in Post-Baccalaureate Programs.\\
-  \textit{Packets, Solving Symmetries, and Sudoku}. New Orleans LA, January 2011.
-  
-\item The Ohio State University, Young Mathematicians Conference, \\
-  \textit{Packets, Solving Symmetries, and Sudoku}. Columbus OH, August 2010.
-\end{enumerate}
+\newrefsection[hchapman_talks]
+\nocite{*}
+\printbibliography[heading=none,subtype=external,resetnumbers=true]
 
 \section*{Internal Talks}
 
-\begin{enumerate}
-
-\item University of Georgia, Geometry Seminar, \\
-  \textit{A Markov chain Monte Carlo sampler for knot diagrams}. Athens GA,
-  March 2017.
-  
-\item University of Georgia, Geometry Seminar, \\
-  \textit{Patterns in knot diagrams}. Athens GA, August 2016. 
-
-\item University of Georgia, Geometry Seminar,\\
-  \textit{The quantum harmonic oscillator}. Athens GA, October 2015.
-  
-\item University of Georgia, Geometry Seminar, \\
-  \textit{Asmyptotic laws for knot diagrams}. Athens GA, September 2015.
-  
-\item University of Georgia, Graduate Student Seminar, \\
-  \textit{How to count (a quick glance at analytic combinatorics)}. Athens GA, September 2015.
-  
-\item University of Georgia, Mock AMS Conference, \\
-  \textit{Asymptotics of knot and link diagrams}. Athens GA, July 2015.
-
-\item University of Georgia, Graduate Student Seminar,\\
-  \textit{Virtual Knot Theory}. Athens GA, February 2015.
-  
-\item University of Georgia, Geometry Seminar,\\
-  \textit{Random Planar Diagrams}. Athens GA, January 2014.
-  
-\item University of Georgia, Graduate Student Topology Seminar,\\
-  \textit{The Poincar\'e homolgy sphere as the link of a singularity}. Athens GA, November 2014.
-  
-\item University of Georgia, Research Group on Minimal Surfaces, \\
-  \textit{Discrete Ricci Flow}. Athens GA, November 2014.
-  
-\item University of Georgia, Mock AMS Conference, \\
-  \textit{The Tropical Grassmannian}. Athens GA, June 2014.
-  
-\item University of Georgia, Mock AMS Conference, \\
-  \textit{Hope for slackers: Playing games to prove theorems}. Athens GA, June 2013.
-  
-\item University of Georgia, Mock AMS Conference, \\
-  \textit{The Classification of Surfaces}. Athens GA, June 2012.
-  
-\item University of Georgia, VIGRE Research Group on Minkowski's Geometry of Numbers, \\
-  \textit{Vinogradov's generalization of a theorem of Aubry-Thue}. Athens GA, March 2012.
-
-\end{enumerate}
-
+\newrefsection[hchapman_talks]
+\nocite{*}
+\printbibliography[heading=none,subtype=internal]
 
 \section*{Workshops}
 \begin{enumerate}

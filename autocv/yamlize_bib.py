@@ -1,4 +1,37 @@
 from pybtex import database
+from collections import OrderedDict
+from pybtex.database.output.bibyaml import Writer as YamlWriter
+
+class Writer(YamlWriter):
+    """Outputs YAML markup with rich data"""
+
+    def _to_dict(self, bib_data):
+        def process_person_roles(entry):
+            for role, persons in entry.persons.iteritems():
+                yield role, list(process_persons(persons))
+
+        def process_person(person):
+            for type in ('first', 'middle', 'prelast', 'last', 'lineage'):
+                name = person.get_part_as_text(type)
+                if name:
+                    yield type, name
+
+        def process_persons(persons):
+            for person in persons:
+                yield OrderedDict(process_person(person))
+
+        def process_entries(bib_data):
+            for key, entry in bib_data.iteritems():
+                fields = OrderedDict([('type', entry.original_type)])
+                fields.update({k: v.render_as("html").replace("\\textsuperscript ", "") for
+                               k,v in entry.rich_fields.iteritems()})
+                fields.update(process_person_roles(entry))
+                yield key, fields
+
+        data = {'entries': OrderedDict(process_entries(bib_data.entries))}
+        if bib_data.preamble:
+            data['preamble'] = bib_data.preamble
+        return data
 
 def extra_bibparse(db):
     """
@@ -10,6 +43,7 @@ def extra_bibparse(db):
             if ("Harrison" not in auth.first_names or
                 "Chapman" not in auth.last_names):
                 entry.add_person(auth, "otherauthor")
+
 
 if __name__ == "__main__":
     import argparse
@@ -30,4 +64,5 @@ if __name__ == "__main__":
 
     extra_bibparse(bibdb)
 
-    bibdb.to_file(args.yamlfile, "yaml")
+    writer = Writer()
+    writer.write_file(bibdb, args.yamlfile)

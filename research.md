@@ -15,11 +15,17 @@ href="http://www.jasoncantarella.com">Jason Cantarella</a>.
 
 ## Publications
 
+Entries are also available in [BibTeX format](/static/hchapman.bib).
+
 {% include autopublications.html %}
 
 ## Talks
 
-{% include_relative talks.md %}
+### External
+{% include talks_ul.html subtype="external" %}
+    
+### Internal
+{% include talks_ul.html subtype="internal" %}
 
 # Previous Research
 
