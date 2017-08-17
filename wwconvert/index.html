@@ -30,6 +30,10 @@ wwconvert: true
     <a href="https://github.com/hchapman/uga-webwork-tools/issues">GitHub
         tracker</a> or me at
     <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>.</p>
+<h3>Update news</h3>
+<p><strong>(8/17/2017)</strong> Added a new preprocess step to select correct columns. It will try to
+    automatically select the correct choices to make everything as simple as
+    possible.</p>
 <h2>1. Upload or paste your Athena CSV data</h2>
 <input type="file" id="csvupload"
        onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
@@ -38,14 +42,55 @@ wwconvert: true
 <textarea id="csvdata"
           class="textdump form-control"
           rows="10"></textarea><br>
-<h2>2. Click the convert button</h2>
+<h2>2. Click the preprocess button, check and correct columns</h2>
+<input type="button" id="process"
+       onclick="autoguessColumns(this.dataset.srcid, this.dataset.dstid)"
+       value="Preprocess!"
+       data-srcid="csvdata"
+       data-dstid="colmap"
+       class="btn btn-default"><br>
+<div id="colmap" style="display: none;">
+  <table class="mapform table">
+    <thead><td>Information</td><td>Column</td><td>Preview</td></thead>
+    <tr class="mapform_password" data-required="true">
+      <td><strong>UGA ID</strong></td>
+      <td class="map_select"><select></select></td>
+      <td class="map_preview"></td>
+    </tr>
+    <tr class="mapform_fullname" data-required="true">
+      <td><strong>Full name</strong></td>
+      <td class="map_select"><select></select></td>
+      <td class="map_preview"></td>
+    </tr>
+    <tr class="mapform_email" data-required="true">
+      <td><strong>UGA Email</strong></td>
+      <td class="map_select"><select></select></td>
+      <td class="map_preview"></td>
+    </tr>
+    <tr class="mapform_section" data-required="false">
+      <td>Section/CRN</td>
+      <td class="map_select"><select></select></td>
+      <td class="map_preview"></td>
+    </tr>
+    <tr class="mapform_prefname" data-required="false">
+      <td>Preferred Name</td>
+      <td class="map_select"><select></select></td>
+      <td class="map_preview"></td>
+    </tr>
+  </table>
+  <div id="parsepreview">
+    
+  </div>
+</div>
+<h2>3. Click convert</h2>
 <input type="button" id="convert"
-       onclick="convertData(this.dataset.srcid, this.dataset.dstid)"
+       onclick="convertData(this.dataset.srcid, this.dataset.dstid, this.dataset.colmapid)"
        value="Convert!"
        data-srcid="csvdata"
+       data-colmapid="colmap"
        data-dstid="lstdata"
        class="btn btn-default"><br>
-<h2>3. Copy the formatted data into WebWork</h2>
+<h2>4. Copy the formatted data into WebWork</h2>
 <textarea id="lstdata"
           class="textdump form-control"
           rows="10"></textarea>
