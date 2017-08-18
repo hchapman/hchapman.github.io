@@ -11,6 +11,22 @@ wwconvert: true
  .textdump {
      width: 100%;
  }
+
+ #csvupload {
+     width: 100%;
+ }
+
+ .mapform tr > td:first-child{
+     white-space: nowrap;
+     width: 10%;
+     word-break: break-all;
+ }
+
+ .mapform tr > td:nth-child(2){
+     white-space: nowrap;
+     width: 10%;
+     word-break: break-all;
+ }
 </style>
 
 <h1>Athena CSV &#8614; WebWork .lst converter</h1>
@@ -29,19 +45,28 @@ wwconvert: true
 <p>Please report any issues or bugs to the
     <a href="https://github.com/hchapman/uga-webwork-tools/issues">GitHub
         tracker</a> or me at
-    <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>.</p>
+    <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>. I'm no longer at
+    UGA, so I won't personally know if there are any changes to Athena or to the
+    WebWork setup&mdash;if you have a problem and let me know some details
+    though, I'll happily work with you to fix everything.</p>
 <h3>Update news</h3>
+<p><strong>(8/18/2017)</strong> Added some light guiding along with the
+  step-to-step process by coloring buttons and scrolling the screen down as steps are completed.</p>
 <p><strong>(8/17/2017)</strong> Added a new preprocess step to select correct columns. It will try to
     automatically select the correct choices to make everything as simple as
-    possible.</p>
-<h2>1. Upload or paste your Athena CSV data</h2>
+  possible.</p>
+<div id="csv-input">
+<h2 id="">1. Upload or paste your Athena CSV data</h2>
 <input type="file" id="csvupload"
        onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
-       data-dstid="csvdata" class="btn btn-default"
+       data-dstid="csvdata" class="btn btn-default btn-primary"
        accept="text/csv, .csv"><br>
 <textarea id="csvdata"
+          onchange="onChangeCsvData(event)"
           class="textdump form-control"
           rows="10"></textarea><br>
+</div>
+<div id="col-mapping">
 <h2>2. Click the preprocess button, check and correct columns</h2>
 <input type="button" id="process"
        onclick="autoguessColumns(this.dataset.srcid, this.dataset.dstid)"
@@ -50,8 +75,11 @@ wwconvert: true
        data-dstid="colmap"
        class="btn btn-default"><br>
 <div id="colmap" style="display: none;">
-  <table class="mapform table">
-    <thead><td>Information</td><td>Column</td><td>Preview</td></thead>
+  <table class="mapform table table-striped">
+    <thead>
+      <tr><th>Information</th><th>Column</th><th>Preview</th></tr>
+    </thead>
+    <tbody>
     <tr class="mapform_password" data-required="true">
       <td><strong>UGA ID</strong></td>
       <td class="map_select"><select></select></td>
@@ -77,11 +105,14 @@ wwconvert: true
       <td class="map_select"><select></select></td>
       <td class="map_preview"></td>
     </tr>
+    </tbody>
   </table>
   <div id="parsepreview">
     
   </div>
 </div>
+</div>
+<div id="convert-go">
 <h2>3. Click convert</h2>
 <input type="button" id="convert"
        onclick="convertData(this.dataset.srcid, this.dataset.dstid, this.dataset.colmapid)"
@@ -90,6 +121,8 @@ wwconvert: true
        data-colmapid="colmap"
        data-dstid="lstdata"
        class="btn btn-default"><br>
+</div>
+<div id="copy-result">
 <h2>4. Copy the formatted data into WebWork</h2>
 <textarea id="lstdata"
           class="textdump form-control"
@@ -99,6 +132,7 @@ wwconvert: true
        data-tooltip="#copyinfo"
        class="btn btn-default">
 <span id="copyinfo"></span>
+</div>
 
 
 <script type="text/javascript">

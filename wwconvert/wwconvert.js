@@ -8,6 +8,7 @@ function loadFileToTextarea(files, dstid) {
         var reader = new FileReader();
         reader.onload = (function(aParent) { return function(e) {
             aParent.value = e.target.result;
+            maybeHintProcess(aParent);
         }; })(document.getElementById(dstid));
         reader.readAsText(file);
     }
@@ -116,6 +117,8 @@ function convertData(srcid, dstid, colmapid) {
     lststr = convertStudentsToWW(students);
 
     document.getElementById(dstid).value = lststr;
+
+    maybeHintCopy(document.getElementById(dstid));
 }
 
 function parseColmap(el) {
@@ -183,6 +186,8 @@ function autoguessColumns(srcid, dstid) {
     dst.data_email.set(email_i);
     dst.data_section.set(section_i);
     dst.data_prefname.set(prefname_i);
+
+    maybeHintConvert(dst);
 }
 
 function dressColumnSelection(dst, headerdata, previewdata) {
@@ -253,4 +258,27 @@ function dressColumnSelection(dst, headerdata, previewdata) {
     dst.data_email = emailTr;
     dst.data_section = sectionTr;
     dst.data_prefname = prefnameTr;
+}
+
+function onChangeCsvData(e) {
+    maybeHintProcess(e.target);
+}
+
+function maybeHintProcess(csvfield) {
+    if (csvfield.value != "") {
+        document.getElementById('process').classList.add('btn-primary');
+        location.hash = "#" + "col-mapping";
+    } else {
+        document.getElementById('process').classList.remove('btn-primary');
+    }
+}
+
+function maybeHintConvert(colmap) {
+    document.getElementById('convert').classList.add('btn-primary');
+    location.hash = "#" + "convert-go";
+}
+
+function maybeHintCopy(wwlist) {
+    document.getElementById('copybutton').classList.add('btn-primary');
+    location.hash = "#" + "copy-result";
 }
