@@ -1,24 +1,28 @@
-- name: Spring 2017
+- name: Fall 2017
+  classes:
+    - f2017-369
+
+- name: (@UGA) Spring 2017
   classes:
     - s2017-1113a
     - s2017-1113b
 
-- name: Fall 2016
+- name: (@UGA) Fall 2016
   classes:
     - f2016-2250
 
-- name: Spring 2016
+- name: (@UGA) Spring 2016
   classes:
     - s2016-2250
 
-- name: Fall 2015
+- name: (@UGA) Fall 2015
   classes:
     - f2015-1113
 
-- name: Spring 2014
+- name: (@UGA) Spring 2014
   classes:
     - s2014-2250
 
-- name: Fall 2013
+- name: (@UGA) Fall 2013
   classes:
     - f2013-1113
