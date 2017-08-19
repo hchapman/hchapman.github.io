@@ -13,7 +13,7 @@
 
 **Course Webpage:** <http://hchapman.github.io/369>
 
-**Text:** *Linear Algebra* by Cherney, Denton, Thomas, and Waldron. Available free online at \
+**Text:** *Linear Algebra* by Cherney, Denton, Thomas, and Waldron. Available free online at \\
 <https://www.math.ucdavis.edu/~linear/linear-guest.pdf>.
 
 <#include "../classes/_f2017-369-syllabus.md">
