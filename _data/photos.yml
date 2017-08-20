@@ -2,6 +2,10 @@
   src: /res/img/centrepomp.jpg
   desc: Paris, May 2016
 
+- name: Simons Center
+  src: /res/img/scgp2015.jpg
+  desc: Simons Center, October 2015
+
 - name: With Knuth
   src: /res/img/withknuth.jpg
   desc: Bowdoin, February 2011
