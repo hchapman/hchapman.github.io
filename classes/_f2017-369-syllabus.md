@@ -118,3 +118,14 @@ number of different resources that I encourage you to explore:
   the
   [Colorado State University tutoring webpage](http://tutoring.colostate.edu/).
   
+#### Accommodations
+
+If you think you may need accommodations in this course due to the impact of a disability please
+meet with me privately during the first week of class. You should also contact the [Resources for
+Disabled Students office](http://rds.colostate.edu) to confirm your eligibility for appropriate
+accommodations. Doing so early in the semester will help prevent unnecessary inconvenience.
+
+#### Disclaimer
+
+The course syllabus is a general plan for the course; deviations announced in class may be
+necessary.
