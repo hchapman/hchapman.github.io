@@ -68,11 +68,13 @@ div.tabs div.container {
     border-bottom: 1px solid #eee;
 }
 
-li {
-    margin-bottom: .7em;
+div.tabs {
 }
 
-div.tabs {
+nav {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 1em;
 }
 
 ul.nav-primary {
