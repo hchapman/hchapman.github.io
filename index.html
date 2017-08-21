@@ -5,7 +5,7 @@ about: true
 ---
 
 <div class="row">
-  <div class="col-sm-5 col-sm-push-7">
+  <div class="col-sm-6 order-2">
     <h2 class="content">Curriculum Vitae</h2>
     <p><a ga-on="click"
           ga-event-category="PDF"
@@ -34,7 +34,8 @@ about: true
               .lst files for import into the WebWork homework system.</li>
               <li>I have contributed to
                   <a href="http://www.jasoncantarella.com/wordpress/software/plcurve">Jason Cantarella's plCurve</a>,
-              primarily in adding a robust Python interface for scripting
+                  primarily in adding a robust Python interface for scripting
+
               experiments on knot shadows and diagrams.</li>
               <li>During Summer 2014 I was supported by NSF DUE-12-45540 in
               order to produce <a href="http://github.com/hchapman/LiveFit">an
@@ -70,43 +71,47 @@ about: true
     </p>
   </div>
 
-  <div class="col-sm-7 col-sm-pull-5">
-    <br>
-    {% include carousel.html items=site.data.photos %}
-  </div>
-  
-  <div class="col-sm-6 col-sm-pull-5">
-      <h2 class="content">Recent Publications</h2>
-      <p>For a full list, see <a href="/research/"> my research page</a>. Entries
-      are also available in <a href="/static/hchapman.bib">BibTeX format</a>.</p>
-    {% include autopublications.html %}
+  <div class="col-sm-6 order-2 order-sm-1">
+    <div class="row">
+      <div class="col-sm-12">
+        {% include carousel.html items=site.data.photos %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="content">Recent Publications</h2>
+        <p>For a full list, see <a href="/research/"> my research page</a>. Entries
+          are also available in <a href="/static/hchapman.bib">BibTeX format</a>.</p>
+        {% include autopublications.html %}
 
-      <h2 class="content">Recent Talks &amp; Conferences</h2>
-      <p>For a full list, see <a href="/research/"> my research page</a>.
-    <h3>Seminar talks and lectures</h3>
-    <h4>External</h4>
-    {% include talks_ul.html limit=3 subtype="external" keyword="seminar" %}
-    <h4>At UGA</h4>
-    {% include talks_ul.html limit=3 subtype="internal" keyword="seminar" %}
-    <h3>Conference talks</h3>
-    {% include talks_ul.html limit=3 subtype="external" keyword="conference" %}
+        <h2 class="content">Recent Talks &amp; Conferences</h2>
+        <p>For a full list, see <a href="/research/"> my research page</a>.</p>
+        <h3>Seminar talks and lectures</h3>
+        <h4>External</h4>
+        {% include talks_ul.html limit=3 subtype="external" keyword="seminar" %}
+        <h4>At UGA</h4>
+        {% include talks_ul.html limit=3 subtype="internal" keyword="seminar" %}
+        <h3>Conference talks</h3>
+        {% include talks_ul.html limit=3 subtype="external" keyword="conference" %}
 
-    {% comment %}<h2 class="content">Other Interests</h2>
-    <p>I like to cook, but I'm not very good at it. It is often difficult
-    to get motivated to cook when so much else is
-    happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
-    logic can be tough to beat some times</a>.</p>
-    <p>Music is great. So much so that I was webmaster & IT
-    guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
-    (although I never DJ'ed my own show...). We've
-    <a href="http://wuog.org/">seized the airwaves from the UGA
-    student radio WUOG</a> a few times now.</p>
-    <p>I <em>am all about</em> learning how to get computers to do
-    everything for me. I'm afraid though that once everything's
-    perfectly automated, I'll have nothing left to do... Sometimes I
-    publish my programs. There's more on this in
-    the <a href="/projects">projects tab</a>.</p>{% endcomment %}
+        {% comment %}<h2 class="content">Other Interests</h2>
+        <p>I like to cook, but I'm not very good at it. It is often difficult
+          to get motivated to cook when so much else is
+          happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
+          logic can be tough to beat some times</a>.</p>
+        <p>Music is great. So much so that I was webmaster & IT
+          guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
+          (although I never DJ'ed my own show...). We've
+          <a href="http://wuog.org/">seized the airwaves from the UGA
+            student radio WUOG</a> a few times now.</p>
+        <p>I <em>am all about</em> learning how to get computers to do
+          everything for me. I'm afraid though that once everything's
+          perfectly automated, I'll have nothing left to do... Sometimes I
+          publish my programs. There's more on this in
+          the <a href="/projects">projects tab</a>.</p>{% endcomment %}
 
+      </div>
+    </div>
   </div>
 
 </div>

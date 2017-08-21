@@ -1,32 +1,44 @@
 <div class='container'>
-  <div class='name-header'>
+  <div class='row align-items-center justify-content-around'>
     <!-- Start header -->
-    <h1 class="nameheader">Harrison Chapman</h1>
-    <h3>
-      Department of Mathematics
-    </h3>
-    <h4>Colorado State University</h4><br />
+    <div class="col-md-6 text-center text-md-left">
+      <h1 class="nameheader">Harrison Chapman</h1>
+    </div>
+    <div class="col-md-6 text-center text-md-right d-none d-sm-block">
+      <h3>
+        Department of Mathematics
+      </h3>
+      <h4>Colorado State University</h4>
+    </div>
     <!-- End header -->
 
   </div>
 
-  <div class="tabs">
-    <div class="tab-container">
-      <ul class="nav nav-tabs nav-primary">
-        <li class="{% if page.about %}active{% endif %}">
-          <a href="/">About</a>
+  <div class="navbar navbar-expand-sm navbar-light bg-light justify-content-center">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="justify-content-center">
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link {% if page.about %}active{% endif %}" href="/">About</a>
         </li>
-        <li class="{% if page.url contains '/classes/' %}active{% endif %}">
-          <a href="/classes">Teaching</a>
+        <li class="nav-item">
+          <a class="nav-link {% if page.url contains '/classes/' %}active{% endif %}" href="/classes">Teaching</a>
         </li>
-        <li class="{% if page.research %}active{% endif %}">
-          <a href="/research">Research</a>
+        <li class="nav-item">
+          <a class="nav-link {% if page.research %}active{% endif %}" href="/research">Research</a>
         </li>
-        <li class="{% if page.projects %}active{% endif %}">
-          <a href="/projects">Projects</a>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarText">
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link {% if page.projects %}active{% endif %}" href="/projects">Projects</a>
         </li>
-        <li class="{% if page.wwconvert %}active{% endif %}">
-            <a href="/wwconvert">Athena &rarr; Webwork</a>
+        <li class="nav-item">
+            <a class="nav-link {% if page.wwconvert %}active{% endif %}" href="/wwconvert">Athena &rarr; Webwork</a>
         </li>
       </ul>
     </div>
