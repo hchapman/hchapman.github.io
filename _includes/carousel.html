@@ -12,7 +12,7 @@
     <div class="carousel-inner" role="listbox">
       {% for photo in photos %}
       <div class='carousel-item{% if forloop.first %} active{% endif %}'>
-        <img src="{{ photo.src }}" class="d-block self_picture">
+        <img class="d-block self_picture{% if forloop.first %}"{% else %} img-lazy-load" src="/res/img/blank.png" data-{% endif %}src="{{ photo.src }}">
       </div>
       {% endfor %}
     </div>

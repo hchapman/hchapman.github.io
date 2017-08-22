@@ -1,0 +1,8 @@
+<script type="text/javascript">
+ window.addEventListener("load", function() {
+   var lazyImages = document.getElementsByClassName("img-lazy-load");
+   for (var i = 0; i < lazyImages.length; i++) {
+     lazyImages[i].src = lazyImages[i].dataset.src;
+   }
+ }, false);
+</script>
