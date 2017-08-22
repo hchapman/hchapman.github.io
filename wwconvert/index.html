@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: big_content
 title: WebWork Classlist Converter
 wwconvert: true
 ---
@@ -29,7 +29,7 @@ wwconvert: true
  }
 </style>
 
-<h1>Athena CSV &#8614; WebWork .lst converter</h1>
+<h2>Athena CSV &#8614; WebWork .lst converter</h2>
 <p>This webpage will let you load (or paste) an UGA Athena CSV export file
     into the standard format for WebWork .lst import suggested at
     <a href="http://www.math.uga.edu/webwork">the WebWork FAQ</a>.</p>
@@ -49,14 +49,14 @@ wwconvert: true
     UGA, so I won't personally know if there are any changes to Athena or to the
     WebWork setup&mdash;if you have a problem and let me know some details
     though, I'll happily work with you to fix everything.</p>
-<h3>Update news</h3>
+<h4>Update news</h4>
 <p><strong>(8/18/2017)</strong> Added some light guiding along with the
   step-to-step process by coloring buttons and scrolling the screen down as steps are completed.</p>
 <p><strong>(8/17/2017)</strong> Added a new preprocess step to select correct columns. It will try to
     automatically select the correct choices to make everything as simple as
   possible.</p>
 <div id="csv-input">
-<h2 id="">1. Upload or paste your Athena CSV data</h2>
+<h3 id="">1. Upload or paste your Athena CSV data</h3>
 <input type="file" id="csvupload"
        onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
        data-dstid="csvdata" class="btn btn-default btn-primary"
@@ -67,7 +67,7 @@ wwconvert: true
           rows="10"></textarea><br>
 </div>
 <div id="col-mapping">
-<h2>2. Click the preprocess button, check and correct columns</h2>
+<h3>2. Check and correct columns</h3>
 <input type="button" id="process"
        onclick="autoguessColumns(this.dataset.srcid, this.dataset.dstid)"
        value="Preprocess!"
@@ -113,7 +113,7 @@ wwconvert: true
 </div>
 </div>
 <div id="convert-go">
-<h2>3. Click convert</h2>
+<h3>3. Click convert</h3>
 <input type="button" id="convert"
        onclick="convertData(this.dataset.srcid, this.dataset.dstid, this.dataset.colmapid)"
        value="Convert!"
@@ -123,7 +123,7 @@ wwconvert: true
        class="btn btn-default"><br>
 </div>
 <div id="copy-result">
-<h2>4. Copy the formatted data into WebWork</h2>
+<h3>4. Copy the formatted data into WebWork</h3>
 <textarea id="lstdata"
           class="textdump form-control"
           rows="10"></textarea>

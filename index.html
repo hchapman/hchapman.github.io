@@ -4,53 +4,61 @@ title: About
 about: true
 ---
 
-<div class="row">
-  <div class="col-sm-5 col-sm-push-7">
-    <h2 class="content">Curriculum Vitae</h2>
-    <p><a ga-on="click"
-          ga-event-category="PDF"
-          ga-event-action="download"
-          ga-event-label="CV"
-          href="./static/CV.pdf">My CV is available here.</a></p>
-    <p><a href="https://scholar.google.com/citations?user=Biq1k8MAAAAJ&hl=en&oi=sra">My Google Scholar profile is here.</a></p>
+<div class="row primary-content">
+  <div class="col-sm-6 order-2">
+    <div class="card text-center bg-dark mb-3">
+      <div class="card-body text-white">
+        <h2 class="card-title">Curriculum Vit&aelig;</h2>
+        <a class="btn btn-primary"
+           ga-on="click"
+           ga-event-category="PDF"
+           ga-event-action="download"
+           ga-event-label="CV"
+           href="./static/CV.pdf">View CV</a>
+        <a class="btn btn-secondary"
+           href="https://scholar.google.com/citations?user=Biq1k8MAAAAJ&hl=en&oi=sra">
+          Google Scholar</a>
+      </div>
+    </div>
     <h2 class="content">About Me</h2>
-    <p><strong>I am a postdoctoral fellow at Colorado State University.</strong></p>
+    <p class="lead">I am a postdoctoral fellow at Colorado State University.</p>
 
-      <p>My research interests primarily lie within random topology and geometry
+    <p>My research interests primarily lie within random topology and geometry
       through combinatorial and stat-mech methods, with a view towards knot
       theory. This research has connections through various lenses to biology,
       physics, and chemistry. I completed my PhD in May of 2017 under the
       direction of
-        <a href="http://www.jasoncantarella.com">Jason Cantarella</a>. Recently
+      <a href="http://www.jasoncantarella.com">Jason Cantarella</a>. Recently
       I have been studying knots from the map-theoretic view of knot diagrams,
       and my research interests include low-dimensional topology, differential
       geometry, combinatorics, and probability.</p>
 
-      <p>I love to write software for use in research, teaching, and even just for fun. This includes:
-        <ul>
+    <p>I love to write software for use in research, teaching, and even just for fun. This includes:
+      <ul>
 
-              <li><a href="/wwconvert">My Athena .csv &rarr; Webwork converter</a> converts Athena (UGA's
-              student and faculty information system) course roll .csv files to
-              .lst files for import into the WebWork homework system.</li>
-              <li>I have contributed to
-                  <a href="http://www.jasoncantarella.com/wordpress/software/plcurve">Jason Cantarella's plCurve</a>,
-              primarily in adding a robust Python interface for scripting
-              experiments on knot shadows and diagrams.</li>
-              <li>During Summer 2014 I was supported by NSF DUE-12-45540 in
-              order to produce <a href="http://github.com/hchapman/LiveFit">an
-              augmented reality demonstration for projectile motion</a> that
-              works with any webcam/projector setup.</li>
-          </ul></p>
+        <li><a href="/wwconvert">My Athena .csv &rarr; Webwork converter</a> converts Athena (UGA's
+          student and faculty information system) course roll .csv files to
+          .lst files for import into the WebWork homework system.</li>
+        <li>I have contributed to
+          <a href="http://www.jasoncantarella.com/wordpress/software/plcurve">Jason Cantarella's plCurve</a>,
+          primarily in adding a robust Python interface for scripting
 
-      <p>During
+          experiments on knot shadows and diagrams.</li>
+        <li>During Summer 2014 I was supported by NSF DUE-12-45540 in
+          order to produce <a href="http://github.com/hchapman/LiveFit">an
+          augmented reality demonstration for projectile motion</a> that
+          works with any webcam/projector setup.</li>
+      </ul></p>
+
+    <p>During
       Summer 2012 and the 2012-2013 school year, I was supported by the
       University of Georgia's VIGRE II grant. I graduated from Bowdoin College
       in May of 2011 with a B.A. in Mathematics and Computer Science, with
       Honors in Mathematics.</p>
 
-      <h2 class="content">Teaching</h2>
-      <p>For the semester Fall 2017 at CSU, I'm teaching two sections of <a href="/classes/f2017-369/">MATH 369 (Linear Algebra I)</a>.</p>
-      <p>When I was at UGA, I tought Calculus for Science and Engineering (Spring 2014, Spring 2016, Fall 2016),
+    <h2 class="content">Teaching</h2>
+    <p>For the semester Fall 2017 at CSU, I'm teaching two sections of <a href="/classes/f2017-369/">MATH 369 (Linear Algebra I)</a>.</p>
+    <p>When I was at UGA, I tought Calculus for Science and Engineering (Spring 2014, Spring 2016, Fall 2016),
       and Precalculus (Fall 2013, Fall 2015, Spring 2017), and I was a Writing
       Intensive Program teaching assistant for a robotics-based Calculus I
       course (Fall 2015).</p>
@@ -70,43 +78,47 @@ about: true
     </p>
   </div>
 
-  <div class="col-sm-7 col-sm-pull-5">
-    <br>
-    {% include carousel.html items=site.data.photos %}
-  </div>
-  
-  <div class="col-sm-6 col-sm-pull-5">
-      <h2 class="content">Recent Publications</h2>
-      <p>For a full list, see <a href="/research/"> my research page</a>. Entries
-      are also available in <a href="/static/hchapman.bib">BibTeX format</a>.</p>
-    {% include autopublications.html %}
+  <div class="col-sm-6 order-2 order-sm-1">
+    <div class="row">
+      <div class="col-sm-12">
+        {% include carousel.html items=site.data.photos %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="content">Recent Publications</h2>
+        <p>For a full list, see <a href="/research/"> my research page</a>. Entries
+          are also available in <a href="/static/hchapman.bib">BibTeX format</a>.</p>
+        {% include autopublications.html %}
 
-      <h2 class="content">Recent Talks &amp; Conferences</h2>
-      <p>For a full list, see <a href="/research/"> my research page</a>.
-    <h3>Seminar talks and lectures</h3>
-    <h4>External</h4>
-    {% include talks_ul.html limit=3 subtype="external" keyword="seminar" %}
-    <h4>At UGA</h4>
-    {% include talks_ul.html limit=3 subtype="internal" keyword="seminar" %}
-    <h3>Conference talks</h3>
-    {% include talks_ul.html limit=3 subtype="external" keyword="conference" %}
+        <h2 class="content">Recent Talks &amp; Conferences</h2>
+        <p>For a full list, see <a href="/research/"> my research page</a>.</p>
+        <h3>Seminar talks and lectures</h3>
+        <h4>External</h4>
+        {% include talks_ul.html limit=3 subtype="external" keyword="seminar" %}
+        <h4>At UGA</h4>
+        {% include talks_ul.html limit=3 subtype="internal" keyword="seminar" %}
+        <h3>Conference talks</h3>
+        {% include talks_ul.html limit=3 subtype="external" keyword="conference" %}
 
-    {% comment %}<h2 class="content">Other Interests</h2>
-    <p>I like to cook, but I'm not very good at it. It is often difficult
-    to get motivated to cook when so much else is
-    happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
-    logic can be tough to beat some times</a>.</p>
-    <p>Music is great. So much so that I was webmaster & IT
-    guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
-    (although I never DJ'ed my own show...). We've
-    <a href="http://wuog.org/">seized the airwaves from the UGA
-    student radio WUOG</a> a few times now.</p>
-    <p>I <em>am all about</em> learning how to get computers to do
-    everything for me. I'm afraid though that once everything's
-    perfectly automated, I'll have nothing left to do... Sometimes I
-    publish my programs. There's more on this in
-    the <a href="/projects">projects tab</a>.</p>{% endcomment %}
+        {% comment %}<h2 class="content">Other Interests</h2>
+        <p>I like to cook, but I'm not very good at it. It is often difficult
+          to get motivated to cook when so much else is
+          happening; <a href="http://www.qwantz.com/index.php?comic=2464">this
+          logic can be tough to beat some times</a>.</p>
+        <p>Music is great. So much so that I was webmaster & IT
+          guru/liason for my <a href="http://www.wbor.org">undergraduate radio station</a>
+          (although I never DJ'ed my own show...). We've
+          <a href="http://wuog.org/">seized the airwaves from the UGA
+            student radio WUOG</a> a few times now.</p>
+        <p>I <em>am all about</em> learning how to get computers to do
+          everything for me. I'm afraid though that once everything's
+          perfectly automated, I'll have nothing left to do... Sometimes I
+          publish my programs. There's more on this in
+          the <a href="/projects">projects tab</a>.</p>{% endcomment %}
 
+      </div>
+    </div>
   </div>
 
 </div>

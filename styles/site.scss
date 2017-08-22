@@ -1,15 +1,15 @@
 ---
 ---
 
-@import "bootstrap/variables";
 @import "bootstrap";
+@import "bootstrap-grid";
 
 .nameheader {
     font-family: "Brawler", Georgia, Times, serif;
 }
 
-.primary-content h2, .primary-content h3 {
-    font-family: "Brawler", Times, serif;
+.primary-content h2, .primary-content h3, .primary-content h4, .primary-content h5 {
+    font-family: "Brawler", Georgia, Times, serif;
 }
 
 .disclaimer,.copyright {
@@ -29,13 +29,19 @@ h2 + div.blog-whowhen {
 // @author: Harrison Chapman
 // ---------------------------
 .nav-sidebar {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 10px;
-    text-shadow: 0 1px 0 #fff;
     background-color: #f7f5fa;
     border-radius: 5px;
+}
+
+.navbar-nav-default {
+    @extend .navbar-nav;
+}
+
+.navbar-expand-sm .navbar-nav-default .nav-link {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
 }
 
 .nav-sidebar > li > a.nav-header, .nav-sidebar > li > a.nav-header:hover, .nav-sidebar > li > a.nav-header:focus {
@@ -43,11 +49,22 @@ h2 + div.blog-whowhen {
     background-color: #f7f5fa;
 }
 
+.nav-sidebar > li {
+    margin-top: 1em;
+}
+
+.nav-sidebar > li > a.nav-header {
+    padding-left: 1em;
+}
+
 .nav-sidebar .nav > li > a {
-    padding-left: 30px;
-    padding-bottom: 3px;
+    padding-left: 1em;
     padding-top: 3px;
     font-size: 90%;
+}
+
+.nav-sidebar a.nav-link.active {
+    font-weight: bold;
 }
 
 .center {
@@ -68,11 +85,16 @@ div.tabs div.container {
     border-bottom: 1px solid #eee;
 }
 
-li {
-    margin-bottom: .7em;
+div.tabs {
 }
 
-div.tabs {
+$outer-container-lrpad: 1.5em;
+$outer-container-tbpad: 1em;
+
+nav {
+    margin-left: -$outer-container-lrpad;
+    margin-right: -$outer-container-lrpad;
+    margin-bottom: 1em;
 }
 
 ul.nav-primary {
@@ -83,7 +105,7 @@ div.container {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #fff;
-    padding: 20px;
+    padding: $outer-container-tbpad $outer-container-lrpad;
     border: 1px solid #ddd;
 }
 

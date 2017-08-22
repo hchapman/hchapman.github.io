@@ -1,5 +1,5 @@
 <div class="col-sm-4">
-  <ul class="nav nav-sidebar">{% for section in site.data.projects %}
+  <ul class="nav flex-column nav-sidebar">{% for section in site.data.projects %}
     <li><a class="nav-header"><strong>{{ section.name }}</strong></a>
       {% include projects_ul.html items=section.projects %}
     </li>

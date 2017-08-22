@@ -1,5 +1,5 @@
 {% assign projects = include.items %}
 
-<ul class="nav">{% for p in projects %}
-  <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+<ul class="nav flex-column nav-pills">{% for p in projects %}
+  <li class="nav-item"><a class="nav-link" href="{{ p.url }}">{{ p.title }}</a></li>
 {% endfor %}</ul>
