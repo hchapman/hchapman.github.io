@@ -102,11 +102,12 @@ ul.nav-primary {
     border-color: #eee;
 }
 div.container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    @include media-breakpoint-up(sm) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
     background-color: #fff;
     padding: $outer-container-tbpad $outer-container-lrpad;
-    border: 1px solid #ddd;
 }
 
 .collapse-toggle::after {
