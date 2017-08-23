@@ -131,3 +131,9 @@ div.container {
 .homework ol li {
     padding-left: .5rem
 }
+
+.homework ol {
+    @include media-breakpoint-down(sm) {
+        padding-left: 1rem;
+    }
+}
