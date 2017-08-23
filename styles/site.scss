@@ -5,6 +5,10 @@
 @import "bootstrap";
 //@import "bootstrap-grid";
 
+@each $color, $value in $theme-colors {
+    @include bg-variant('.bg-light-#{$color}', theme-color-level($color, -10));
+}
+
 .nameheader {
     font-family: "Brawler", Georgia, Times, serif;
 }
@@ -119,3 +123,11 @@ div.container {
     content: " Show"
 }
 
+.homework ol ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.5rem;
+}
+
+.homework ol li {
+    padding-left: .5rem
+}

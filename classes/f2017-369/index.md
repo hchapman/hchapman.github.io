@@ -2,6 +2,7 @@
 layout: teaching
 title: Linear Algebra I (MATH 369)
 permalink: classes/f2017-369/
+class: f2017-369
 redirect_from:
   - /369/
 ---
@@ -41,7 +42,11 @@ They are the same except for meeting times.
 
 + There
   [is a list of private tutors maintained by the math department](http://www.math.colostate.edu/courses/Tutoring/tutoring.shtml).
+  
+### Homework
+
+{% include homework_list.html %}
 
 ### Syllabus
 
-{% include_relative _f2017-369-syllabus.md %}
+{% include_relative _syllabus.md %}

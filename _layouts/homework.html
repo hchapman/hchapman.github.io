@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/classes/">Teaching</a></li>
+  <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/">{{ page.class-name }}</a></li>
+  <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/hw/">Homework</a></li>
+  <li class="breadcrumb-item active">{{ page.title }}</li>
+</ol>
+
+<div class="row primary-content">
+  <div class="col-sm-12 homework">
+    <h2>{{ page.class-name }}: {{ page.title }}</h2>
+    <div class="hw-duedate">Due: {{ page.due-date | date: "%A, %B %-d, %Y" }}</div>
+    <div class="mb-3"><a href="../{{ page.assignment }}.pdf">PDF version</a></div>
+    {{ content }}
+  </div>
+</div>

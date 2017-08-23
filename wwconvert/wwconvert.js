@@ -9,6 +9,7 @@ function loadFileToTextarea(files, dstid) {
         reader.onload = (function(aParent) { return function(e) {
             aParent.value = e.target.result;
             maybeHintProcess(aParent);
+            successCsvLoad();
         }; })(document.getElementById(dstid));
         reader.readAsText(file);
     }
@@ -110,13 +111,29 @@ function convertStudentsToWW(students) {
 
 function convertData(srcid, dstid, colmapid) {
     /* Take data in #csvdata, convert it, and place it in #lstdata */
-    var data = document.getElementById(srcid).value;
-    var colmap = parseColmap(document.getElementById(colmapid));
+    var convButton = document.getElementById('convert');
+    convButton.classList.remove('btn-primary');
+    convButton.classList.remove('btn-danger');
+    convButton.classList.remove('btn-success');
 
-    students = convertAthenaCSV(data, colmap);
-    lststr = convertStudentsToWW(students);
+    var data = document.getElementById(srcid).value;
+
+    try {
+        var colmap = parseColmap(document.getElementById(colmapid));
+
+        students = convertAthenaCSV(data, colmap);
+        lststr = convertStudentsToWW(students);
+    } catch(ex) {
+        convButton.classList.add('btn-danger');
+        return;
+    }
 
     document.getElementById(dstid).value = lststr;
+
+    convButton.classList.add('btn-success');
+    document.getElementById('col-mapping').classList.add('border-success');
+    document.getElementById('col-mapping').classList.add('bg-light-success');
+    document.getElementById('copy-result').classList.remove('d-none');
 
     maybeHintCopy(document.getElementById(dstid));
 }
@@ -146,9 +163,20 @@ function parseColmap(el) {
 function autoguessColumns(srcid, dstid) {
     /* Take data in #csvdata, try to guess column types, and place it in #colmap
      * table */
+    var preproButton = document.getElementById('process');
+    preproButton.classList.remove('btn-primary');
+    preproButton.classList.remove('btn-success');
+    preproButton.classList.remove('btn-danger');
+
     var data = document.getElementById(srcid).value;
 
     var res = Papa.parse(data, {skipEmptyLines: true});
+
+    if (res.errors.length > 0) {
+        preproButton.classList.add('btn-danger');
+        return;
+    }
+
     var headrow = res.data[0];
     var previewrow = res.data[1];
 
@@ -187,18 +215,24 @@ function autoguessColumns(srcid, dstid) {
     dst.data_section.set(section_i);
     dst.data_prefname.set(prefname_i);
 
+    preproButton.classList.add('btn-success');
+    document.getElementById('csv-input').classList.add('border-success');
+    document.getElementById('csv-input').classList.add('bg-light-success');
+    document.getElementById("col-mapping").classList.remove('d-none');
+
     maybeHintConvert(dst);
+
 }
 
 function dressColumnSelection(dst, headerdata, previewdata) {
     dst.previewdata = previewdata;
     dst.style = "";
 
-    if (dst.__dressed) {
-        return;
-    }
-
     function initSelect(select) {
+        for (var i = select.options.length; i > 0; --i) {
+            select.options.remove(i);
+        }
+
         var opt = document.createElement("option");
         opt.value = -1;
         opt.label = "None selected";
@@ -210,8 +244,6 @@ function dressColumnSelection(dst, headerdata, previewdata) {
             select.add(opt);
         }
     }
-
-    dst.__dressed = true;
 
     var table = dst.getElementsByClassName("mapform")[0];
 
@@ -225,6 +257,16 @@ function dressColumnSelection(dst, headerdata, previewdata) {
     var prefnameTr = table.getElementsByClassName("mapform_prefname")[0];
 
     var data_trs = [passwordTr, fullnameTr, emailTr, sectionTr, prefnameTr];
+
+    if (dst.__dressed) {
+        for (let j = 0; j < data_trs.length; j++) {
+            var tr = data_trs[j];
+            initSelect(tr.select);
+        }
+        return;
+    }
+
+    dst.__dressed = true;
 
     for (let j = 0; j < data_trs.length; j++) {
         var tr = data_trs[j];
@@ -264,7 +306,14 @@ function onChangeCsvData(e) {
     maybeHintProcess(e.target);
 }
 
+function successCsvLoad() {
+    var finput = document.getElementById("csvupload");
+    finput.classList.remove('btn-primary');
+    finput.classList.add('btn-success');
+}
+
 function maybeHintProcess(csvfield) {
+    document.getElementById('process').classList.remove('btn-danger');
     if (csvfield.value != "") {
         document.getElementById('process').classList.add('btn-primary');
         location.hash = "#" + "col-mapping";
@@ -275,7 +324,7 @@ function maybeHintProcess(csvfield) {
 
 function maybeHintConvert(colmap) {
     document.getElementById('convert').classList.add('btn-primary');
-    location.hash = "#" + "convert-go";
+    location.hash = "#" + "convert";
 }
 
 function maybeHintCopy(wwlist) {

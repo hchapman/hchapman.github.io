@@ -12,10 +12,6 @@ wwconvert: true
      width: 100%;
  }
 
- #csvupload {
-     width: 100%;
- }
-
  .mapform tr > td:first-child{
      white-space: nowrap;
      width: 10%;
@@ -31,119 +27,127 @@ wwconvert: true
 
 <h2>Athena CSV &#8614; WebWork .lst converter</h2>
 <p>This webpage will let you load (or paste) an UGA Athena CSV export file
-    into the standard format for WebWork .lst import suggested at
-    <a href="http://www.math.uga.edu/webwork">the WebWork FAQ</a>.</p>
+  into the standard format for WebWork .lst import suggested at
+  <a href="http://www.math.uga.edu/webwork">the WebWork FAQ</a>.</p>
 <p>All of the code is local javascript that should work in a modern
-    browser (I've tested a new version of Chrome) and should <em>involve
-    no network calls beyond the initial page load</em>. This means that
-    this webapp should be entirely safe to use with your students'
-    sensitive data! I however make no guarantee of this, and you are
-    advised to either
-    <a href="https://github.com/hchapman/hchapman.github.io/tree/master/wwconvert">read the
-        source</a>
-    yourself, or not use the service.</p>
+  browser (I've tested a new version of Chrome) and should <em>involve
+  no network calls beyond the initial page load</em>. This means that
+  this webapp should be entirely safe to use with your students'
+  sensitive data! I however make no guarantee of this, and you are
+  advised to either
+  <a href="https://github.com/hchapman/hchapman.github.io/tree/master/wwconvert">read the
+    source</a>
+  yourself, or not use the service.</p>
 <p>Please report any issues or bugs to the
-    <a href="https://github.com/hchapman/uga-webwork-tools/issues">GitHub
-        tracker</a> or me at
-    <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>. I'm no longer at
-    UGA, so I won't personally know if there are any changes to Athena or to the
-    WebWork setup&mdash;if you have a problem and let me know some details
-    though, I'll happily work with you to fix everything.</p>
+  <a href="https://github.com/hchapman/uga-webwork-tools/issues">GitHub
+    tracker</a> or me at
+  <a href="mailto:hchaps@gmail.com">hchaps@gmail.com</a>. I'm no longer at
+  UGA, so I won't personally know if there are any changes to Athena or to the
+  WebWork setup&mdash;if you have a problem and let me know some details
+  though, I'll happily work with you to fix everything.</p>
 <h4>Update news</h4>
 <p><strong>(8/18/2017)</strong> Added some light guiding along with the
   step-to-step process by coloring buttons and scrolling the screen down as steps are completed.</p>
 <p><strong>(8/17/2017)</strong> Added a new preprocess step to select correct columns. It will try to
-    automatically select the correct choices to make everything as simple as
+  automatically select the correct choices to make everything as simple as
   possible.</p>
-<div id="csv-input">
-<h3 id="">1. Upload or paste your Athena CSV data</h3>
-<input type="file" id="csvupload"
-       onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
-       data-dstid="csvdata" class="btn btn-default btn-primary"
-       accept="text/csv, .csv"><br>
-<textarea id="csvdata"
-          onchange="onChangeCsvData(event)"
-          class="textdump form-control"
-          rows="10"></textarea><br>
-</div>
-<div id="col-mapping">
-<h3>2. Check and correct columns</h3>
-<input type="button" id="process"
-       onclick="autoguessColumns(this.dataset.srcid, this.dataset.dstid)"
-       value="Preprocess!"
-       data-srcid="csvdata"
-       data-dstid="colmap"
-       class="btn btn-default"><br>
-<div id="colmap" style="display: none;">
-  <table class="mapform table table-striped">
-    <thead>
-      <tr><th>Information</th><th>Column</th><th>Preview</th></tr>
-    </thead>
-    <tbody>
-    <tr class="mapform_password" data-required="true">
-      <td><strong>UGA ID</strong></td>
-      <td class="map_select"><select></select></td>
-      <td class="map_preview"></td>
-    </tr>
-    <tr class="mapform_fullname" data-required="true">
-      <td><strong>Full name</strong></td>
-      <td class="map_select"><select></select></td>
-      <td class="map_preview"></td>
-    </tr>
-    <tr class="mapform_email" data-required="true">
-      <td><strong>UGA Email</strong></td>
-      <td class="map_select"><select></select></td>
-      <td class="map_preview"></td>
-    </tr>
-    <tr class="mapform_section" data-required="false">
-      <td>Section/CRN</td>
-      <td class="map_select"><select></select></td>
-      <td class="map_preview"></td>
-    </tr>
-    <tr class="mapform_prefname" data-required="false">
-      <td>Preferred Name</td>
-      <td class="map_select"><select></select></td>
-      <td class="map_preview"></td>
-    </tr>
-    </tbody>
-  </table>
-  <div id="parsepreview">
-    
+<div id="csv-input" class="card mb-3">
+  <div class="card-body">
+    <h3 class="card-title">1. Upload or paste your Athena CSV data</h3>
+    <input type="file" id="csvupload"
+           onchange="loadFileToTextarea(this.files, this.dataset.dstid)"
+           data-dstid="csvdata" class="btn btn-default btn-primary btn-block"
+           accept="text/csv, .csv">
+    <textarea id="csvdata"
+              onchange="onChangeCsvData(event)"
+              class="textdump form-control mb-3"
+              rows="10"></textarea>
+    <input type="button" id="process"
+           onclick="autoguessColumns(this.dataset.srcid, this.dataset.dstid)"
+           value="Preprocess!"
+           data-srcid="csvdata"
+           data-dstid="colmap"
+           class="btn btn-default">
   </div>
 </div>
+<div id="col-mapping" class="mb-3 d-none card">
+  <div class="card-body">
+    <h3 class="card-title">2. Check and correct columns</h3>
+    <br>
+    <div id="colmap">
+      <table class="mapform table table-striped">
+        <thead>
+          <tr><th>Information</th><th>Column</th><th>Preview</th></tr>
+        </thead>
+        <tbody>
+          <tr class="mapform_password" data-required="true">
+            <td><strong>UGA ID</strong></td>
+            <td class="map_select"><select></select></td>
+            <td class="map_preview"></td>
+          </tr>
+          <tr class="mapform_fullname" data-required="true">
+            <td><strong>Full name</strong></td>
+            <td class="map_select"><select></select></td>
+            <td class="map_preview"></td>
+          </tr>
+          <tr class="mapform_email" data-required="true">
+            <td><strong>UGA Email</strong></td>
+            <td class="map_select"><select></select></td>
+            <td class="map_preview"></td>
+          </tr>
+          <tr class="mapform_section" data-required="false">
+            <td>Section/CRN</td>
+            <td class="map_select"><select></select></td>
+            <td class="map_preview"></td>
+          </tr>
+          <tr class="mapform_prefname" data-required="false">
+            <td>Preferred Name</td>
+            <td class="map_select"><select></select></td>
+            <td class="map_preview"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="parsepreview">
+
+      </div>
+    </div>
+    <input type="button" id="convert"
+           onclick="convertData(this.dataset.srcid, this.dataset.dstid, this.dataset.colmapid)"
+           value="Convert!"
+           data-srcid="csvdata"
+           data-colmapid="colmap"
+           data-dstid="lstdata"
+           class="btn btn-default">
+  </div>
 </div>
-<div id="convert-go">
-<h3>3. Click convert</h3>
-<input type="button" id="convert"
-       onclick="convertData(this.dataset.srcid, this.dataset.dstid, this.dataset.colmapid)"
-       value="Convert!"
-       data-srcid="csvdata"
-       data-colmapid="colmap"
-       data-dstid="lstdata"
-       class="btn btn-default"><br>
-</div>
-<div id="copy-result">
-<h3>4. Copy the formatted data into WebWork</h3>
-<textarea id="lstdata"
-          class="textdump form-control"
-          rows="10"></textarea>
-<input type="button" id="copybutton" value="Copy to Clipboard"
-       data-clipboard-target="#lstdata"
-       data-tooltip="#copyinfo"
-       class="btn btn-default">
-<span id="copyinfo"></span>
+<div id="copy-result" class="card d-none">
+  <div class="card-body">
+    <h3 class="card-title">3. Copy the formatted data into WebWork</h3>
+    <textarea id="lstdata"
+              class="textdump form-control mb-3"
+              rows="10"></textarea>
+    <input type="button" id="copybutton" value="Copy to Clipboard"
+           data-clipboard-target="#lstdata"
+           data-tooltip="#copyinfo"
+           class="btn btn-default">
+    <span id="copyinfo"></span>
+  </div>
 </div>
 
 
 <script type="text/javascript">
  var clipboard = new Clipboard("#copybutton");
+ clipboard.on('click', function(e) {
+     document.getElementById('copybutton').classList.remove('btn-primary');
+ });
  clipboard.on('success', function(e) {
      var tip = document.querySelector(e.trigger.dataset.tooltip);
      tip.innerHTML = "Copied!";
+     document.getElementById('copybutton').classList.add('btn-success');
  });
  clipboard.on('error', function(e) {
      var tip = document.querySelector(e.trigger.dataset.tooltip);
      tip.innerHTML = "Press &#8984;+C or Ctrl+C to copy!";
+     document.getElementById('copybutton').classList.add('btn-warning');
  });
 </script>
-

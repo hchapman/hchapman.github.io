@@ -17,6 +17,17 @@ defaults:
     values:
       layout: "blog"
       author: "hchapman"
+  -
+    scope:
+      path: "_homework"
+      type: homework
+    values:
+      layout: homework
+
+collections:
+  homework:
+    output: true
+    permalink: /classes/:path/
 
 gems:
   - jekyll-redirect-from

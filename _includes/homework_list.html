@@ -1,0 +1,8 @@
+<ul>
+  {% for hwdoc in site.homework %}
+  {% if hwdoc.class == page.class %}
+  {% assign urllen = hwdoc.url.size | minus: 1 %}
+  <li><a href="{{ hwdoc.url }}">{{ hwdoc.title }}</a> (<a href="{{ hwdoc.url | truncate: urllen, "" }}.pdf">PDF version</a>), due {{ hwdoc.due-date | date: "%A, %B %-d, %Y" }}</li>
+  {% endif %}
+  {% endfor %}
+</ul>

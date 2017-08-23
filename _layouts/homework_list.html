@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/classes/">Teaching</a></li>
+  <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/">{{ page.class-name }}</a></li>
+  <li class="breadcrumb-item active">Homework</li>
+</ol>
+
+<div class="row primary-content">
+  <div class="col-sm-12">
+    <h2>Homework: {{ page.class-name }}</h2>
+    {{ content }}
+    {% include homework_list.html %}
+  </div>
+</div>
