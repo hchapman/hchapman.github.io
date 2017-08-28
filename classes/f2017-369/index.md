@@ -9,8 +9,21 @@ redirect_from:
 
 ## Linear Algebra I (MATH 369): 67553 and 71607
 
-### Course Info
+{% for hw in site.homework %}
+{% if hw.class == page.class %}
+{% capture nowunix %}{{'now' | date: '%s' | plus: 0}}{% endcapture %}
+{% capture duedate %}{{hw.due-date | date: '%s'| plus: 0}}{% endcapture %}
+{% assign nowunix = nowunix | plus: 0 %}
+{% assign duedate = duedate | plus: 0 %}
+{% capture duedelta %}{{nowunix | minus: duedate}}{% endcapture %}
+{% assign duedelta = duedelta | plus: 0 %}
+{% if duedelta < 86400 %}{% if duedelta > -604800 %}
+{:.alert .alert-primary}
+<a href="{{ hw.url }}">{{ hw.title }}</a> is up! It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
+{% endif %}{% endif %}{% endif %}
+{% endfor %}
 
+### Course Info
 + **67553 (A):** MWF 1:00pm &ndash; 1:50pm in Weber 223.
 + **71607 (B):** MWF 3:00pm &ndash; 3:50pm in Engineering B2. 
 + **Instructor:** Dr. Harrison Chapman (hchaps [at] gmail.com)
@@ -18,7 +31,7 @@ redirect_from:
 + **Office hours:** 
     + T 11:00am &ndash; 12:00am,
     + W 10:00am &ndash; 11:00am,
-    + R 10:30am &ndash; 11:30am,
+    + R 2:00pm &ndash; 3:00pm,
     + and by appointment.
 + **Text:**
 [Linear Algebra (available free online)](https://www.math.ucdavis.edu/~linear/linear-guest.pdf) by

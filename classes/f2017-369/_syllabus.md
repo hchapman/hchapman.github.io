@@ -69,6 +69,16 @@ Your final grade in the course will be determined by the following breakdown:
 + **3 Midterm Exams**: 15% Each
 + **Final Exam**: 30%
 
+Finally, your final percentage grade will be scaled according to:
+
+$$
+\text{final percentage} = \frac{\text{homework earned} + \text{test earned}}
+{\text{homework earned} + \text{test available}}
+$$
+
+This means that while homework points will improve your score, missed points on
+homework cannot affect your grade negatively.
+
 #### Attendance
 
 You are expected to attend and participate in every class and to do the weekly
