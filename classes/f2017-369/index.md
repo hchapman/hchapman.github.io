@@ -19,7 +19,8 @@ redirect_from:
 {% assign duedelta = duedelta | plus: 0 %}
 {% if duedelta < 86400 %}{% if duedelta > -604800 %}
 {:.alert .alert-primary}
-<a href="{{ hw.url }}">{{ hw.title }}</a> is up! It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
+<a class="alert-link" href="{{ hw.url }}">{{ hw.title }}</a> is up!
+It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 {% endif %}{% endif %}{% endif %}
 {% endfor %}
 

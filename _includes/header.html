@@ -15,17 +15,21 @@
   </div>
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-    <ul class="navbar-nav-default flex-row">
-      <li class="nav-item">
-        <a class="nav-link {% if page.about %}active{% endif %}" href="/">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {% if page.url contains '/classes/' %}active{% endif %}" href="/classes">Teaching</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {% if page.research %}active{% endif %}" href="/research">Research</a>
-      </li>
-    </ul>
+    <div>
+      <ul class="navbar-nav-default flex-row">
+        <li class="nav-item">
+          <a class="nav-link {% if page.about %}active{% endif %}" href="/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if page.url contains '/classes/' %}active{% endif %}"
+             id="nav-teaching"
+             href="/classes">Teaching</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if page.research %}active{% endif %}" href="/research">Research</a>
+        </li>
+      </ul>
+    </div>
     <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
