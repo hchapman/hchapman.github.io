@@ -54,6 +54,10 @@ Cherney, Denton, Thomas, and Waldron.
 
 +   There
     [is a list of private tutors maintained by the math department](http://www.math.colostate.edu/courses/Tutoring/tutoring.shtml).
+    
++   You can use LaTeX to write your homework without installing anything with a free account at [ShareLaTeX](https://www.sharelatex.com).
+
++   An example LaTeX homework assignment with some notes can be [found here](https://www.sharelatex.com/project/59a6e571cb832f0ec46b419e).
   
 ### Homework
 
