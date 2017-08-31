@@ -7,7 +7,7 @@
 
 **Office:** Weber 223C
 
-**Office hours:** TBD
+**Office hours:** T11-12, W10-11, R2-3, and by appointment.
 
 **Meeting times:** MWF 3pm--3:50pm in Engineering 3B.
 
