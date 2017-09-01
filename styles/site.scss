@@ -30,6 +30,29 @@ h2 + div.blog-whowhen {
     margin-bottom: 5px;
 }
 
+.navbar {
+    @include media-breakpoint-down(xs) {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    .nav-scroll {
+        overflow: hidden;
+        height: 2.5rem;
+
+        .navbar-nav {
+            padding-bottom: 2rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            .nav-link {
+                padding-right: .5rem;
+                padding-left: .5rem;
+            }
+        }
+    }
+}
+
 // Nav Sidebar
 // @author: Harrison Chapman
 // ---------------------------
@@ -38,15 +61,6 @@ h2 + div.blog-whowhen {
     padding-bottom: 10px;
     background-color: #f7f5fa;
     border-radius: 5px;
-}
-
-.navbar-nav-default {
-    @extend .navbar-nav;
-}
-
-.navbar-expand-sm .navbar-nav-default .nav-link {
-    padding-right: .5rem !important;
-    padding-left: .5rem !important;
 }
 
 .nav-sidebar > li > a.nav-header, .nav-sidebar > li > a.nav-header:hover, .nav-sidebar > li > a.nav-header:focus {
