@@ -14,7 +14,8 @@
 
   </div>
 
-    <nav class="navbar navbar-dark bg-dark sticky-top">
+  <div class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark flex-column">
       <div class="nav-scroll">
         <ul class="navbar-nav flex-row">
           <li class="nav-item">
@@ -23,6 +24,7 @@
           <li class="nav-item">
             <a class="nav-link {% if page.url contains '/classes/' %}active{% endif %}"
                id="nav-teaching"
+               data-toggle="collapse" data-target="#teaching-nav" aria-controls="teaching-nav" aria-expanded="false" aria-label="Toggle Class List"
                href="/classes">Teaching</a>
           </li>
           <li class="nav-item">
@@ -37,3 +39,11 @@
         </ul>
       </div>
     </nav>
+    <nav class="navbar navbar-light bg-light collapse bg-light flex-column" id="teaching-nav">
+      <ul class="navbar-nav collapse">
+        <li class="nav-item">
+          <a class="nav-link">Linear Algebra I</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
