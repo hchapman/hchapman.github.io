@@ -121,7 +121,7 @@ ul.nav-primary {
     border-color: #eee;
 }
 div.container {
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
         margin-top: 10px;
         margin-bottom: 10px;
     }
