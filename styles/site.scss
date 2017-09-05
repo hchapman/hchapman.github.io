@@ -17,6 +17,15 @@
     font-family: "Brawler", Georgia, Times, serif;
 }
 
+h1 a {
+    color: $body-color;
+
+    @include hover-focus {
+        text-decoration: none;
+        color: $body-color;
+    }
+}
+
 .disclaimer,.copyright {
     color: #aaa;
     font-size: 80%;
@@ -28,6 +37,14 @@ h2 + div.blog-whowhen {
     font-size: 80%;
     margin-top: -5px;
     margin-bottom: 5px;
+}
+
+header nav {
+    margin-bottom: 0;
+}
+
+header {
+    margin-bottom: 1em;
 }
 
 .navbar {
@@ -49,8 +66,81 @@ h2 + div.blog-whowhen {
                 padding-right: .5rem;
                 padding-left: .5rem;
             }
+
+            .nav-item.subnav-expander .nav-link {
+                font-weight: bold;
+            }
+            .nav-item.subnav-expander .nav-link.collapsed {
+                font-weight: normal;
+            }
+
+            .nav-item:first-child .nav-link {
+                @include media-breakpoint-down(xs) {
+                    padding-left: 0;
+                }
+            }
+
+            .nav-item:last-child .nav-link {
+                @include media-breakpoint-down(xs) {
+                    padding-right: 0;
+                }
+            }
         }
     }
+}
+
+.subnav-container {
+    margin-left: -1.5em;
+    margin-right: -1.5em;
+
+    nav {
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 0;
+        margin-top: -0.5rem;
+    }
+}
+
+.navbar-light .subnav-header {
+    color: $navbar-light-color;
+
+    @include hover-focus {
+        color: $navbar-light-hover-color;
+    }
+}
+
+.navbar-dark .subnav-header {
+    color: $navbar-dark-color;
+
+    @include hover-focus {
+        color: $navbar-dark-hover-color;
+    }
+}
+
+.subnav-header {
+    @include media-breakpoint-up(md) {
+        margin-right: 1rem;
+        margin-left: .5rem;
+    }
+
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+
+    @include hover-focus {
+        text-decoration: none;
+    }
+}
+
+.navbar.collapse {
+    display: none;
+}
+
+.navbar.collapse.show {
+    display: flex;
 }
 
 // Nav Sidebar
@@ -71,6 +161,7 @@ h2 + div.blog-whowhen {
 .nav-sidebar > li {
     margin-top: 1em;
 }
+
 
 .nav-sidebar > li > a.nav-header {
     padding-left: 1em;

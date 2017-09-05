@@ -2,7 +2,7 @@
   <div class='row align-items-center justify-content-around'>
     <!-- Start header -->
     <div class="col-md-6 text-center text-md-left">
-      <h1 class="nameheader">Harrison Chapman</h1>
+      <h1 class="nameheader"><a href="/">Harrison Chapman</a></h1>
     </div>
     <div class="col-md-6 text-center text-md-right d-none d-sm-block">
       <h3>
@@ -14,15 +14,15 @@
 
   </div>
 
-  <div class="sticky-top">
-    <nav class="navbar navbar-dark bg-dark flex-column">
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark flex-row">
       <div class="nav-scroll">
         <ul class="navbar-nav flex-row">
           <li class="nav-item">
             <a class="nav-link {% if page.about %}active{% endif %}" href="/">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/classes/' %}active{% endif %}"
+          <li class="nav-item subnav-expander">
+            <a class="nav-link collapsed {% if page.url contains '/classes/' %}active{% endif %}"
                id="nav-teaching"
                data-toggle="collapse" data-target="#teaching-nav" aria-controls="teaching-nav" aria-expanded="false" aria-label="Toggle Class List"
                href="/classes">Teaching</a>
@@ -39,11 +39,16 @@
         </ul>
       </div>
     </nav>
-    <nav class="navbar navbar-light bg-light collapse bg-light flex-column" id="teaching-nav">
-      <ul class="navbar-nav collapse">
-        <li class="nav-item">
-          <a class="nav-link">Linear Algebra I</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+    <div class="subnav-container collapse" id="teaching-nav">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-column flex-md-row">
+        <ul class="navbar-nav text-center text-md-left">
+          <li class="nav-item">
+            <a class="nav-link" href="/classes/">Teaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link{% if page.class == 'f2017-369' %} active{% endif %}" href="/classes/f2017-369/">Linear Algebra I</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
