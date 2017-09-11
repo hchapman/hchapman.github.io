@@ -89,6 +89,18 @@ header {
     }
 }
 
+.bg-dark {
+    text-shadow: 0 0 3px rgba(0,0,0,.3);
+
+    .btn {
+        text-shadow: none;
+    }
+}
+
+.btn:hover {
+    transform: translate(0px, -1px);
+}
+
 .subnav-container {
     margin-left: -1.5em;
     margin-right: -1.5em;
@@ -246,4 +258,13 @@ div.container {
 .MathJax_Display, .MJXc-display {
     overflow-y: hidden;
     overflow-x: auto;
+}
+
+.carousel.slide {
+    overflow: hidden;
+    border-radius: 0.25rem;
+}
+
+.carousel-indicators {
+    bottom: 0px;
 }
