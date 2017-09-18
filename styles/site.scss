@@ -268,3 +268,29 @@ div.container {
 .carousel-indicators {
     bottom: 0px;
 }
+
+.solution {
+    border-left: 0.25rem solid rgb(255, 0, 0);
+    border-radius: 0.25rem 0.25rem 0 0;
+    background-color: rgb(255, 220, 220);
+    padding: 0.5rem;
+}
+
+.solution.collapse, .solution.collapsing {
+    margin-bottom: 0;
+}
+
+.solution::before {
+    content: "Solution:";
+    font-weight: bold;
+}
+
+button.show-solution {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+button.show-solution.shown {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
