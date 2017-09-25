@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<ol class="breadcrumb">
+<ol class="breadcrumb d-print-none">
   <li class="breadcrumb-item"><a href="/classes/">Teaching</a></li>
   <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/">{{ page.class-name }}</a></li>
   <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/hw/">Homework</a></li>
@@ -13,9 +13,17 @@ layout: default
   <div class="col-sm-12 homework">
     <h2>{{ page.class-name }}: {{ page.title }}</h2>
     <div class="hw-duedate">Due: {{ page.due-date | date: "%A, %B %-d, %Y" }}</div>
-    <div class="mb-3"><a href="../{{ page.assignment }}.pdf">PDF version</a></div>
+    <div class="mb-3 d-print-none"><a href="../{{ page.assignment }}.pdf">PDF version</a></div>
     {{ content }}
   </div>
 </div>
 
 <script type="text/javascript" src="/res/js/hw-solution.js"></script>
+<script type="text/javascript">
+ $(document).ready(function() {
+     // Remove the header on printing
+     $("#name-header").addClass("d-print-none");
+     $("footer").addClass("d-print-none");
+     $("#footer-hr").addClass("d-print-none");
+ });
+</script>

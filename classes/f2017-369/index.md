@@ -63,6 +63,10 @@ Cherney, Denton, Thomas, and Waldron.
 
 {% include homework_list.html %}
 
+### Exam topics
+
++   [Exam 1](exams/1-topics/)
+
 ### Syllabus
 
 {% include_relative _syllabus.md %}
