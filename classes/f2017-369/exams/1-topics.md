@@ -8,6 +8,10 @@ class: f2017-369
 
 ## Exam 1 Topics
 
+Exam 1 will be on Wednesday, October 4 in our normal classroom. No calculators
+or textbooks will be allowed. You are, however, allowed to bring **one page of
+notes (front and back)** of your own creation to reference.
+
 In addition to the review problems listed below, also do review the homework.
 This is not guaranteed to be an absolute list of all topics covered so far, but
 I hope it may help you to guide your study.
