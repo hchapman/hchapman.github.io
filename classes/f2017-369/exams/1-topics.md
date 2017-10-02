@@ -40,7 +40,7 @@ I hope it may help you to guide your study.
     +   **Some extra review problems**: 5.3.1, 5.3.2a, 5.3.6
 
 +   **Chapter 6**:
-    +   Linear transformations: $$L(r\vec u + s\vec v) = sL(\vec u) + rL(\vec v)$$
+    +   Linear transformations: $$L(r\vec u + s\vec v) = rL(\vec u) + sL(\vec v)$$
     +   Is a function linear or not?
     +   Expressing linear transformations as matrices
     +   **Some extra review problems**: 6.5.2, 6.5.3, 6.5.4
