@@ -1,4 +1,18 @@
 entries:
+    CMOMillet2017:
+        type: inproceedings
+        eventtitle: The Geometry and Topology of Knotting and Entanglement in Proteins
+        title: Slipknotting in random knot diagrams
+        address: Oaxaca, Mexico
+        month: '11'
+        note: Invited
+        year: '2017'
+        keywords: conference
+        organization: Casa Matematica Oaxaca (CMO)
+        entrysubtype: external
+        author:
+        -   first: Harrison
+            last: Chapman
     StuFest2017:
         type: inproceedings
         eventtitle: Means, Methods, and Results in the Statistical Mechanics of Polymeric
