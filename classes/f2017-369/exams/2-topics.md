@@ -24,7 +24,7 @@ useful.
 
 +   **Chapter 9**:
     +   Subspaces of a vector space
-    +   Checking whether a set of vectors is a subset or not
+    +   Checking whether a set of vectors is a subspace or not
     +   Span notation, and the span of a set of vectors
     +   How to know if a vector is in a span of other vectors
     
