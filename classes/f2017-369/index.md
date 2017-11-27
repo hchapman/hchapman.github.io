@@ -67,6 +67,7 @@ Cherney, Denton, Thomas, and Waldron.
 
 +   [Exam 1](exams/1-topics/)
 +   [Exam 2](exams/2-topics/)
++   [Exam 3](exams/3-topics/)
 
 ### Syllabus
 
