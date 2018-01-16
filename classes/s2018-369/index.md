@@ -57,6 +57,8 @@ here.](https://warwick.ac.uk/fac/sci/maths/undergrad/ughandbook/content/ma106/el
 +   An example LaTeX homework assignment with some notes can be [found here](https://www.sharelatex.com/project/59a6e571cb832f0ec46b419e).
 
 +   You can use Sage (math software) for free online at [CoCalc](https://cocalc.com/).
+
++   Our class Sage demonstrations [can be found here](https://cocalc.com/projects/234f0df6-9cfe-43e5-a8df-df10a5fcd44c).
   
 ### Homework
 
