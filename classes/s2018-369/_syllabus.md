@@ -45,7 +45,7 @@ violation of the academic honor code and will be treated as such.
 
 We will have three **in-class** midterm exams, *tentatively scheduled* for the
 **second week of February**, the **second week of March**, and the **third week
-of May**. Our final exam will take place in our normal meeting place and is
+of April**. Our final exam will take place in our normal meeting place and is
 scheduled for: Thursday, May 10th from 4:10pm &ndash; 6:10pm.
 
 There are no make-up exams for this course. If you must be absent from
