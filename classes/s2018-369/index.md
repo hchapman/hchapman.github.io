@@ -28,8 +28,9 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 + **Meeting time:** MWF 8:00am &ndash; 8:50am in Weber 202.
 + **Instructor:** Dr. Harrison Chapman (hchaps [at] gmail.com)
 + **Office:** Weber 223C.
-+ **Office hours:** 
-    + TBD
++ **Office hours in Weber 130:** 
+    + Tuesdays 11am &ndash; 12pm,
+    + Wednesdays 10am &ndash; 12pm,
     + and by appointment.
 + **Text:** Not required. Elementary Linear Algebra by Howard Anton (any
 recent-ish edition should be fine) [potentially available online

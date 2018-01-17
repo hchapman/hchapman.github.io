@@ -7,7 +7,11 @@
 
 **Office:** Weber 223C
 
-**Office hours:** TBD, and by appointment.
+**Office hours:** *In Weber 130*; 
+
++ Tuesdays 11am &ndash; 12pm, 
++ Wednesdays 10am &ndash; 12pm, 
++ and by appointment
 
 **Meeting times:** MWF 8am--8:50am in Weber 202.
 
