@@ -60,6 +60,20 @@ here.](https://warwick.ac.uk/fac/sci/maths/undergrad/ughandbook/content/ma106/el
 +   You can use Sage (math software) for free online at [CoCalc](https://cocalc.com/).
 
 +   Our class Sage demonstrations [can be found here](https://cocalc.com/projects/234f0df6-9cfe-43e5-a8df-df10a5fcd44c).
+
+### Software for Linear Algebra
+
+For exams we won't be able to use any calculators or computers, but for your study (and whenever you use linear algebra!) the following tools can work linear algebra calculations for you. There is *no* requirement for the course that you use any of these, but you might find them helpful.
+
++   We'll be using [SageMath](http://www.sagemath.org/) for some in class demonstrations. It's free, but big (5GB?) and you can just use it online at [CoCalc](https://cocalc.com/).
+
++   You can use [Python](https://www.python.org) with [Numpy/Scipy](http://www.numpy.org/) for most things, too.
+
++   The Engineering department is likely to use [MATLAB](https://www.engr.colostate.edu/ens/info/software/matlab.html) a lot, but might cost money. You might be able to find it in their computer labs. [GNU Octave](https://www.gnu.org/software/octave/) is free and similar, but not perfect.
+
++   [Mathematica](https://www.wolfram.com/mathematica/) is an expensive tool that can do linear algebra. [WolframAlpha](http://www.wolframalpha.com/) can do a lot of one-off calculations for you, and is free and online.
+
++   [Maple](https://www.maplesoft.com/products/maple/) and [MAGMA](http://magma.maths.usyd.edu.au/magma/) are other tools that might be able to do linear algebra, but I've never used them.
   
 ### Homework
 
