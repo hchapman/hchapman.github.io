@@ -69,7 +69,7 @@ For exams we won't be able to use any calculators or computers, but for your stu
 
 +   You can use [Python](https://www.python.org) with [Numpy/Scipy](http://www.numpy.org/) for most things, too.
 
-+   The Engineering department is likely to use [MATLAB](https://www.engr.colostate.edu/ens/info/software/matlab.html) a lot, but might cost money. You might be able to find it in their computer labs. [GNU Octave](https://www.gnu.org/software/octave/) is free and similar, but not perfect.
++   The Engineering department is likely to use [MATLAB](https://www.engr.colostate.edu/ens/info/software/matlab.html) a lot. CSU has a [university-wide license and you can download MATLAB here](https://www.mathworks.com/academia/tah-portal/colorado-state-university-40638290.html). You also might be able to find it in their computer labs. [GNU Octave](https://www.gnu.org/software/octave/) is free and similar, but not perfect.
 
 +   [Mathematica](https://www.wolfram.com/mathematica/) is an expensive tool that can do linear algebra. [WolframAlpha](http://www.wolframalpha.com/) can do a lot of one-off calculations for you, and is free and online.
 
