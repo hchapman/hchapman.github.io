@@ -79,6 +79,11 @@ For exams we won't be able to use any calculators or computers, but for your stu
 
 {% include homework_list.html %}
 
+### Exam topics
+
++   [Exam 1](exams/1-topics/)
++   [Exam 2](exams/2-topics/)
+
 ### Syllabus
 
 {% include_relative _syllabus.md %}
