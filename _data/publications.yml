@@ -1,4 +1,53 @@
 entries:
+    ChapmanMarkov:
+        type: article
+        title: A <span class="bibtex-protected">M</span>arkov chain sampler for plane
+            curves
+        year: '2018'
+        month: '3'
+        note: Submitted
+        url: https://www.math.ubc.ca/~andrewr/pubs/pd_markov.pdf
+        abstract: A plane curve is a knot diagram in which each crossing is replaced
+            by a 4-valent vertex, and so are dual to a subset of planar quadrangulations.
+            The aim of this paper is to introduce a new tool for sampling diagrams
+            via sampling of plane curves. At present the most efficient method for
+            sampling diagrams is rejection sampling, however that method is inefficient
+            at even modest sizes. We introduce Markov chains that sample from the
+            space of plane curves using local moves based on Reidemeister moves. By
+            then mapping vertices on those curves to crossings we produce random knot
+            diagrams. Combining this chain with flat histogram methods we achieve
+            an efficient sampler of plane curves and knot diagrams. By analysing data
+            from this chain we are able to estimate the number of knot diagrams of
+            a given size and also compute knotting probabilities and so investigate
+            their asymptotic behaviour.
+        author:
+        -   first: Harrison
+            last: Chapman
+        -   first: Andrew
+            last: Rechnitzer
+        otherauthor:
+        -   first: Andrew
+            last: Rechnitzer
+    ChapmanSlipknots:
+        type: article
+        title: Slipknotting in the knot diagram model
+        year: '2018'
+        month: '3'
+        note: Submitted
+        archivePrefix: arXiv
+        eprint: '1803.07114'
+        abstract: The presence of slipknots in configurations of proteins and DNA
+            has been shown to affect their functionality, or alter it entirely. Historically,
+            polymers are modeled as polygonal chains in space. As an alternative to
+            space curves, we provide a framework for working with subknots inside
+            of knot diagrams via knotoid diagrams. We prove using a pattern theorem
+            for knot diagrams that not only are almost all knot diagrams slipknotted,
+            almost all unknot diagrams are slipknotted. This proves in the random
+            diagram model a conjecture yet unproven in random space curve models.
+            We also discuss conjectures on the enumeration of knotoid diagrams.
+        author:
+        -   first: Harrison
+            last: Chapman
     ChapmanThesis:
         type: phdthesis
         title: A diagrammatic theory of random knots
@@ -73,7 +122,7 @@ entries:
             diagrams with 10 and fewer crossings and classify the diagrams by knot
             type, allowing us to compute exact probabilities for knots in this model.
             As expected, most diagrams with 10 and fewer crossings are unknots (about
-            78\% of the roughly 1.6 billion 10 crossing diagrams). For these crossing
+            78% of the roughly 1.6 billion 10 crossing diagrams). For these crossing
             numbers, the unknot fraction is mostly explained by the prevalence of
             ‘tree-like’ diagrams which are unknots for any assignment of over/under
             information at crossings. The data shows a roughly linear relationship

@@ -2,10 +2,10 @@
   {% if bib[1].type == "article" %}<li id="pub-{{ bib[0] }}">
     <em>{{ bib[1].title }}</em>.<br>
     {% if bib[1].otherauthor %}With {{ bib[1].otherauthor[0].first }} {{ bib[1].otherauthor[0].last }}{% for author in bib[1].otherauthor offset:1 %} and {{ author.first }} {{ author.last }}{% endfor %}.<br>
-    {% endif %}{{ bib[1].journal }} {{ bib[1].volume }} ({{ bib[1].year }}),
+    {% endif %}{% if bib[1].journal %}{{ bib[1].journal }} {{ bib[1].volume }} ({{ bib[1].year }}),
     no. {{ bib[1].number }}, p. {{ bib[1].pages }}.<br>
-    <strong>DOI</strong>: <a href="https://doi.org/{{ bib[1].doi }}">{{ bib[1].doi }}</a><br>
-    <strong>Preprint</strong>: <a href="https://arxiv.org/abs/{{ bib[1].eprint }}">{{ bib[1].archivePrefix }}:{{ bib[1].eprint }}</a><br>
+    {% if bib[1].doi %}<strong>DOI</strong>: <a href="https://doi.org/{{ bib[1].doi }}">{{ bib[1].doi }}</a><br>{% endif %}{% endif %}
+    {% if bib[1].eprint %}<strong>Preprint</strong>: <a href="https://arxiv.org/abs/{{ bib[1].eprint }}">{{ bib[1].archivePrefix }}:{{ bib[1].eprint }}</a><br>{% elsif bib[1].url %}<strong>Preprint</strong>: <a href="{{ bib[1].url }}">Available here</a><br>{% else %}<em>Preprint available upon request.</em><br>{% endif %}
     <a class="show-abstract collapse-toggle collapsed" data-toggle="collapse" href="#abs-{{ bib[0] }}"><strong>Abstract:</strong></a>
     <p class="abstract collapse" id="abs-{{ bib[0] }}">{{ bib[1].abstract }}</p>
   </li>{% elsif bib[1].type == "phdthesis" %}<li>

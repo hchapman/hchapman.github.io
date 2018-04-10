@@ -1,260 +1,301 @@
 entries:
+    PIMSCRGWorkshop2018:
+        type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        title: Monte Carlo sampling of knot diagrams (workshop tutorial)
+        year: '2018'
+        month: '3'
+        organization: University of British Columbia
+        address: Vancouver, BC
+        eventtitle: Approximate Enumeration of Polygons, Polymers and Link Diagrams
+        note: Invited
+        author:
+        -   first: Harrison
+            last: Chapman
+    VancouverBCMarch2018:
+        type: inproceedings
+        entrysubtype: external
+        keywords: seminar
+        organization: University of British Columbia
+        eventtitle: Discrete Math Seminar
+        title: An efficient Markov chain sampler for plane curves
+        address: Vancouver, BC
+        month: '3'
+        year: '2018'
+        note: Invited
+        author:
+        -   first: Harrison
+            last: Chapman
+    CSUPostdoc2018:
+        type: inproceedings
+        entrysubtype: internal
+        keywords: seminar
+        organization: Colorado State University
+        eventtitle: Postdoc Seminar
+        title: Statistical mechanics of knot diagrams
+        address: Fort Collins, CO
+        month: '3'
+        year: '2018'
+        author:
+        -   first: Harrison
+            last: Chapman
     CMOMillet2017:
         type: inproceedings
-        eventtitle: The Geometry and Topology of Knotting and Entanglement in Proteins
+        entrysubtype: external
+        keywords: conference
         title: Slipknotting in random knot diagrams
-        address: Oaxaca, Mexico
+        year: '2017'
         month: '11'
+        organization: Casa Matematica Oaxaca (CMO)
+        address: Oaxaca, Mexico
+        eventtitle: The Geometry and Topology of Knotting and Entanglement in Proteins
         note: Invited
         video: https://www.birs.ca/events/2017/5-day-workshops/17w5032/videos/watch/201711061715-Chapman.html
-        year: '2017'
-        keywords: conference
-        organization: Casa Matematica Oaxaca (CMO)
-        entrysubtype: external
         author:
         -   first: Harrison
             last: Chapman
     StuFest2017:
         type: inproceedings
-        eventtitle: Means, Methods, and Results in the Statistical Mechanics of Polymeric
-            Systems II
+        entrysubtype: external
+        keywords: conference
         title: A <span class="bibtex-protected">S</span>umners-<span class="bibtex-protected">W</span>hittington
             result for knot diagrams
-        address: Toronto, ON
+        year: '2017'
         month: '6'
+        organization: Fields Institute
+        address: Toronto, ON
+        eventtitle: Means, Methods, and Results in the Statistical Mechanics of Polymeric
+            Systems II
         note: Invited
         video: http://www.fields.utoronto.ca/video-archive//event/2336/2017
-        year: '2017'
-        keywords: conference
-        organization: Fields Institute
-        entrysubtype: external
         author:
         -   first: Harrison
             last: Chapman
     Hunter2017:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        title: A <span class="bibtex-protected">M</span>arkov chain sampler for knot
+            diagrams
+        year: '2017'
+        month: '5'
+        organization: Hunter College
+        address: New York, NY
         eventtitle: Special Session on Invariants of Knots, Links, and 3-manifolds
             (<span class="bibtex-protected">AMS</span> Spring Eastern Sectional Meeting
             2017)
-        title: A <span class="bibtex-protected">M</span>arkov chain sampler for knot
-            diagrams
-        address: New York, NY
-        month: '5'
         note: Invited
-        year: '2017'
-        keywords: conference
-        organization: Hunter College
-        entrysubtype: external
         author:
         -   first: Harrison
             last: Chapman
     CharlestonSCMarch2017Slip:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        organization: College of Charleston
         eventtitle: Special Session on Knot Theory and its Applications (<span class="bibtex-protected">AMS</span>
             Spring Southeast Sectional Meeting 2017)
         title: Slipknotting in the Knot Diagram Model
-        year: '2017'
-        month: '3'
-        note: Invited
         address: Charleston, SC
-        keywords: conference
-        organization: College of Charleston
-        entrysubtype: external
+        month: '3'
+        year: '2017'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     AtlantaGAJanuary2017Slip:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
         eventtitle: MAA Invited Paper Session on Random Polygons and Knots (Joint
             Mathematics Meetings 2017)
         title: Slipknotting in the Knot Diagram Model
-        year: '2017'
-        month: '1'
-        note: Invited
         address: Atlanta, GA
-        keywords: conference
-        entrysubtype: external
+        month: '1'
+        year: '2017'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     DemorestGANovember2016Rand:
         type: inproceedings
-        eventtitle: Annual Math and Physics Lecture
-        title: Random knots in physics and biology
-        year: '2016'
-        month: '11'
-        note: Invited
-        address: Demorest, GA
+        entrysubtype: external
         keywords: seminar,lecture
         organization: Piedmont College
-        entrysubtype: external
+        eventtitle: Annual Math and Physics Lecture
+        title: Random knots in physics and biology
+        address: Demorest, GA
+        month: '11'
+        year: '2016'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     VancouverBCJuly2016Asym:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
         eventtitle: 28<span class="bibtex-protected">th</span> International Conference
             on Formal Power Series and Algebraic Combinatorics
-        title: Asymptotic laws for knot diagrams
         eventtitleaddon: FPSAC 2016
-        year: '2016'
-        month: '7'
+        title: Asymptotic laws for knot diagrams
         address: Vancouver, BC
-        keywords: conference
-        entrysubtype: external
+        month: '7'
+        year: '2016'
         author:
         -   first: Harrison
             last: Chapman
     BloomingtonINApril2016Asym:
         type: inproceedings
-        eventtitle: Graduate Student Topology and Geometry Conference 2016
-        title: Asymptotic laws for knot diagrams
-        year: '2016'
-        month: '4'
-        address: Bloomington, IN
+        entrysubtype: external
         keywords: conference
         organization: IU Bloomington
-        entrysubtype: external
+        eventtitle: Graduate Student Topology and Geometry Conference 2016
+        title: Asymptotic laws for knot diagrams
+        address: Bloomington, IN
+        month: '4'
+        year: '2016'
         author:
         -   first: Harrison
             last: Chapman
     SeattleWAJanuary2016A:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
         eventtitle: MAA Session on Mathematical Modeling in the Undergraduate Classroom
             (Joint Mathematics Meetings 2016)
         title: A robotics-based calculus class
-        year: '2016'
-        month: '1'
-        note: Invited
         address: Seattle, WA
-        keywords: conference
-        entrysubtype: external
+        month: '1'
+        year: '2016'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     SeattleWAJanuary2016Asym:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
         eventtitle: AMS Session on General Topics (Joint Mathematics Meetings 2016)
         title: Asymptotic laws for knot diagrams
-        year: '2016'
-        month: '1'
         address: Seattle, WA
-        keywords: conference
-        entrysubtype: external
+        month: '1'
+        year: '2016'
         author:
         -   first: Harrison
             last: Chapman
-    NewOrleansLAOctober2015Asmy:
+    NewOrleansLAOctober2015Asym:
         type: inproceedings
-        eventtitle: Geometry Seminar
-        title: Asmyptotic laws for knot diagrams
-        year: '2015'
-        month: '10'
-        note: Invited
-        address: New Orleans, LA
+        entrysubtype: external
         keywords: seminar
         organization: Tulane University
-        entrysubtype: external
+        eventtitle: Geometry Seminar
+        title: Asymptotic laws for knot diagrams
+        address: New Orleans, LA
+        month: '10'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     FullertonCAOctober2015Asym:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        organization: CSU Fullerton
         eventtitle: Special Session on Algebraic and Combinatorial Structures in Knot
             Theory (AMS Fall Western Sectional Meetings 2015)
         title: Asymptotics of random knot diagrams
-        year: '2015'
-        month: '10'
-        note: Invited
         address: Fullerton, CA
-        keywords: conference
-        organization: CSU Fullerton
-        entrysubtype: external
+        month: '10'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     MemphisTNOctober2015Asym:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        organization: University of Memphis
         eventtitle: Special Session on Topological Combinatorics (AMS Fall Southeastern
             Sectional Meetings 2015)
         title: Asymptotics of random knot diagrams
-        year: '2015'
-        month: '10'
-        note: Invited
         address: Memphis, TN
-        keywords: conference
-        organization: University of Memphis
-        entrysubtype: external
+        month: '10'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
-    VancouverBCSeptember2015Asmy:
+    VancouverBCSeptember2015Asym:
         type: inproceedings
-        eventtitle: Discrete Math Seminar
-        title: Asmyptotic laws for knot diagrams
-        year: '2015'
-        month: '9'
-        note: Invited
-        address: Vancouver, BC
+        entrysubtype: external
         keywords: seminar
         organization: University of British Columbia
-        entrysubtype: external
+        eventtitle: Discrete Math Seminar
+        title: Asymptotic laws for knot diagrams
+        address: Vancouver, BC
+        month: '9'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
-    BurnabyBCSeptember2015Asmy:
+    BurnabyBCSeptember2015Asym:
         type: inproceedings
-        eventtitle: Discrete Math Seminar
-        title: Asmyptotic laws for knot diagrams
-        year: '2015'
-        month: '9'
-        note: Invited
-        address: Burnaby, BC
+        entrysubtype: external
         keywords: seminar
         organization: Simon Fraser University
-        entrysubtype: external
+        eventtitle: Discrete Math Seminar
+        title: Asymptotic laws for knot diagrams
+        address: Burnaby, BC
+        month: '9'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     SaskatoonSKMay2015Knot:
         type: inproceedings
-        eventtitle: PIMS-USASK Graduate Summer School on Applied Combinatorics
-        title: Knot diagrams and blossom trees
-        year: '2015'
-        month: '5'
-        address: Saskatoon, SK
+        entrysubtype: external
         keywords: conference
         organization: University of Saskatchewan
-        entrysubtype: external
+        eventtitle: PIMS-USASK Graduate Summer School on Applied Combinatorics
+        title: Knot diagrams and blossom trees
+        address: Saskatoon, SK
+        month: '5'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
     LasVegasNVApril2015Rand:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
+        organization: University of Nevada
         eventtitle: Special Session on Inverse Problems and Related Mathematical Methods
             in Physics (AMS Spring Western Sectional Meetings)
         title: Random knot diagrams
-        year: '2015'
-        month: '4'
-        note: Invited
         address: Las Vegas, NV
-        keywords: conference
-        organization: University of Nevada
-        entrysubtype: external
+        month: '4'
+        year: '2015'
+        note: Invited
         author:
         -   first: Harrison
             last: Chapman
     NewOrleansLAJanuary2011Pack:
         type: inproceedings
+        entrysubtype: external
+        keywords: conference
         eventtitle: AMS-MAA-SIAM Special Session on Research in Mathematics by Undergraduates
             and Students in Post-Baccalaureate Programs (Joint Mathematics Meetings
             2011)
         title: Packets, Solving Symmetries, and <span class="bibtex-protected">S</span>udoku
-        year: '2011'
-        month: '1'
         address: New Orleans, LA
-        keywords: conference
-        entrysubtype: external
+        month: '1'
+        year: '2011'
         author:
         -   first: Harrison
             last: Chapman
@@ -265,14 +306,14 @@ entries:
             last: Rupert
     ColumbusOHAugust2010Pack:
         type: inproceedings
-        eventtitle: Young Mathematicians Conference
-        title: Packets, Solving Symmetries, and <span class="bibtex-protected">S</span>udoku
-        year: '2010'
-        month: '8'
-        address: Columbus, OH
+        entrysubtype: external
         keywords: conference
         organization: The Ohio State University
-        entrysubtype: external
+        eventtitle: Young Mathematicians Conference
+        title: Packets, Solving Symmetries, and <span class="bibtex-protected">S</span>udoku
+        address: Columbus, OH
+        month: '8'
+        year: '2010'
         author:
         -   first: Harrison
             last: Chapman
@@ -283,186 +324,186 @@ entries:
             last: Rupert
     AthensGAMarch2017A:
         type: inproceedings
+        entrysubtype: internal
+        keywords: seminar
+        organization: University of Georgia
         eventtitle: Geometry Seminar
         title: A <span class="bibtex-protected">M</span>arkov chain <span class="bibtex-protected">M</span>onte
             <span class="bibtex-protected">C</span>arlo sampler for knot diagrams
-        year: '2017'
-        month: '3'
         address: Athens, GA
-        keywords: seminar
-        organization: University of Georgia
-        entrysubtype: internal
+        month: '3'
+        year: '2017'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAAugust2016Patt:
         type: inproceedings
-        eventtitle: Geometry Seminar
-        title: Patterns in knot diagrams
-        year: '2016'
-        month: '8'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Geometry Seminar
+        title: Patterns in knot diagrams
+        address: Athens, GA
+        month: '8'
+        year: '2016'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAOctober2015The:
         type: inproceedings
-        eventtitle: Geometry Seminar
-        title: The quantum harmonic oscillator
-        year: '2015'
-        month: '10'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Geometry Seminar
+        title: The quantum harmonic oscillator
+        address: Athens, GA
+        month: '10'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
-    AthensGASeptember2015Asmy:
+    AthensGASeptember2015Asym:
         type: inproceedings
-        eventtitle: Geometry Seminar
-        title: Asmyptotic laws for knot diagrams
-        year: '2015'
-        month: '9'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Geometry Seminar
+        title: Asymptotic laws for knot diagrams
+        address: Athens, GA
+        month: '9'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
     AthensGASeptember2015How:
         type: inproceedings
-        eventtitle: Graduate Student Seminar
-        title: How to count (a quick glance at analytic combinatorics)
-        year: '2015'
-        month: '9'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Graduate Student Seminar
+        title: How to count (a quick glance at analytic combinatorics)
+        address: Athens, GA
+        month: '9'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAJuly2015Asym:
         type: inproceedings
-        eventtitle: Mock AMS Conference
-        title: Asymptotics of knot and link diagrams
-        year: '2015'
-        month: '7'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: conference
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Mock AMS Conference
+        title: Asymptotics of knot and link diagrams
+        address: Athens, GA
+        month: '7'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAFebruary2015Virt:
         type: inproceedings
-        eventtitle: Graduate Student Seminar
-        title: Virtual Knot Theory
-        year: '2015'
-        month: '2'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Graduate Student Seminar
+        title: Virtual Knot Theory
+        address: Athens, GA
+        month: '2'
+        year: '2015'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAJanuary2014Rand:
         type: inproceedings
-        eventtitle: Geometry Seminar
-        title: Random Planar Diagrams
-        year: '2014'
-        month: '1'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Geometry Seminar
+        title: Random Planar Diagrams
+        address: Athens, GA
+        month: '1'
+        year: '2014'
         author:
         -   first: Harrison
             last: Chapman
     AthensGANovember2014The:
         type: inproceedings
+        entrysubtype: internal
+        keywords: seminar
+        organization: University of Georgia
         eventtitle: Graduate Student Topology Seminar
         title: The <span class="bibtex-protected">P</span>oincaré homolgy sphere as
             the link of a singularity
-        year: '2014'
-        month: '11'
         address: Athens, GA
-        keywords: seminar
-        organization: University of Georgia
-        entrysubtype: internal
+        month: '11'
+        year: '2014'
         author:
         -   first: Harrison
             last: Chapman
     AthensGANovember2014Disc:
         type: inproceedings
-        eventtitle: Research Group on Minimal Surfaces
-        title: Discrete <span class="bibtex-protected">R</span>icci Flow
-        year: '2014'
-        month: '11'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: seminar
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Research Group on Minimal Surfaces
+        title: Discrete <span class="bibtex-protected">R</span>icci Flow
+        address: Athens, GA
+        month: '11'
+        year: '2014'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAJune2014The:
         type: inproceedings
-        eventtitle: Mock AMS Conference
-        title: The Tropical <span class="bibtex-protected">G</span>rassmannian
-        year: '2014'
-        month: '6'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: conference
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Mock AMS Conference
+        title: The Tropical <span class="bibtex-protected">G</span>rassmannian
+        address: Athens, GA
+        month: '6'
+        year: '2014'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAJune2013Hope:
         type: inproceedings
-        eventtitle: Mock AMS Conference
-        title: 'Hope for slackers: Playing games to prove theorems'
-        year: '2013'
-        month: '6'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: conference
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Mock AMS Conference
+        title: 'Hope for slackers: Playing games to prove theorems'
+        address: Athens, GA
+        month: '6'
+        year: '2013'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAJune2012The:
         type: inproceedings
-        eventtitle: Mock AMS Conference
-        title: The Classification of Surfaces
-        year: '2012'
-        month: '6'
-        address: Athens, GA
+        entrysubtype: internal
         keywords: conference
         organization: University of Georgia
-        entrysubtype: internal
+        eventtitle: Mock AMS Conference
+        title: The Classification of Surfaces
+        address: Athens, GA
+        month: '6'
+        year: '2012'
         author:
         -   first: Harrison
             last: Chapman
     AthensGAMarch2012Vino:
         type: inproceedings
+        entrysubtype: internal
+        keywords: seminar
+        organization: University of Georgia
         eventtitle: VIGRE Research Group on Minkowski's Geometry of Numbers
         title: <span class="bibtex-protected">V</span>inogradov's generalization of
             a theorem of <span class="bibtex-protected">A</span>ubry-<span class="bibtex-protected">T</span>hue
-        year: '2012'
-        month: '3'
         address: Athens, GA
-        keywords: seminar
-        organization: University of Georgia
-        entrysubtype: internal
+        month: '3'
+        year: '2012'
         author:
         -   first: Harrison
             last: Chapman

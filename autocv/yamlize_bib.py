@@ -7,7 +7,7 @@ class Writer(YamlWriter):
 
     def _to_dict(self, bib_data):
         def process_person_roles(entry):
-            for role, persons in entry.persons.iteritems():
+            for role, persons in entry.persons.items():
                 yield role, list(process_persons(persons))
 
         def process_person(person):
@@ -21,10 +21,10 @@ class Writer(YamlWriter):
                 yield OrderedDict(process_person(person))
 
         def process_entries(bib_data):
-            for key, entry in bib_data.iteritems():
+            for key, entry in bib_data.items():
                 fields = OrderedDict([('type', entry.original_type)])
                 fields.update({k: v.render_as("html").replace("\\textsuperscript ", "") for
-                               k,v in entry.rich_fields.iteritems()})
+                               k,v in entry.rich_fields.items()})
                 fields.update(process_person_roles(entry))
                 yield key, fields
 
