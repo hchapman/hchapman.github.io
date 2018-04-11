@@ -6,7 +6,8 @@ entries:
         year: '2018'
         month: '3'
         note: Submitted
-        url: https://www.math.ubc.ca/~andrewr/pubs/pd_markov.pdf
+        archivePrefix: arXiv
+        eprint: '1804.03311'
         abstract: A plane curve is a knot diagram in which each crossing is replaced
             by a 4-valent vertex, and so are dual to a subset of planar quadrangulations.
             The aim of this paper is to introduce a new tool for sampling diagrams
@@ -30,7 +31,7 @@ entries:
             last: Rechnitzer
     ChapmanSlipknots:
         type: article
-        title: Slipknotting in the knot diagram model
+        title: Slipknotting in random diagrams
         year: '2018'
         month: '3'
         note: Submitted
