@@ -83,6 +83,7 @@ For exams we won't be able to use any calculators or computers, but for your stu
 
 +   [Exam 1](exams/1-topics/)
 +   [Exam 2](exams/2-topics/)
++   [Exam 3](exams/3-topics/)
 
 ### Syllabus
 
