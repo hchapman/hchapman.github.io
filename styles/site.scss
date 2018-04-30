@@ -269,6 +269,14 @@ div.container {
     bottom: 0px;
 }
 
+.abstract {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    font-size: 85%;
+    color: $gray-800;
+    border-left: 0.25rem solid $gray-300;
+}
+
 .solution {
     border-left: 0.25rem solid rgb(255, 0, 0);
     border-radius: 0.25rem 0.25rem 0 0;
