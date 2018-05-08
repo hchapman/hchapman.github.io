@@ -65,4 +65,4 @@ allowed on this sheet, please send me an email).
     +    Orthogonal and orthonormal bases (6.2)
     +    Gram-Schmidt Process (6.3)
     +    Rank (= dimension of column space) and nullity (= dimension of kernel) (4.8)
-    +    Rank+nullity = #rows (4.8)
+    +    Rank+nullity = #columns (4.8)
