@@ -1,4 +1,18 @@
 entries:
+    OchanomizuMay2018:
+        type: inproceedings
+        entrysubtype: external
+        keywords: seminar
+        organization: Ochanomizu University
+        eventtitle: Deguchi Laboratory Seminar
+        title: 'Random Knot Diagrams: New results on open questions'
+        address: Tokyo, Japan
+        month: '5'
+        year: '2018'
+        note: Invited
+        author:
+        -   first: Harrison
+            last: Chapman
     PIMSCRGWorkshop2018:
         type: inproceedings
         entrysubtype: external
