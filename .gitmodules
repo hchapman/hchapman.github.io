@@ -1,4 +1,4 @@
 [submodule "talks/amssf_markov"]
 	path = talks/amssf_markov
-	url = git@github.com:hchapman/diagram_mcmc_talk
+	url = https://github.com/hchapman/diagram_mcmc_talk.git
 	branch = ams_sf_2018
