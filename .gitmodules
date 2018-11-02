@@ -1,0 +1,3 @@
+[submodule "talks/diagram_mcmc_talk"]
+	path = talks/diagram_mcmc_talk
+	url = git@github.com:hchapman/diagram_mcmc_talk
