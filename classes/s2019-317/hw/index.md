@@ -1,4 +1,3 @@
-
 ---
 layout: homework_list
 class-name: Math 317
