@@ -7,4 +7,4 @@ title: Teaching
 ## Teaching
 
 {:.lead}
-This semester (Fall 2017) I am teaching [Linear Algebra I](f2017-369/).
+This semester (Spring 2019) I am teaching [Math 317](s2019-317/).
