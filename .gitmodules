@@ -2,3 +2,6 @@
 	path = talks/amssf_markov
 	url = https://github.com/hchapman/diagram_mcmc_talk
 	branch = ams_sf_2018
+[submodule "talks/altknots"]
+	path = talks/altknots
+	url = https://github.com/hchapman/altknots_talk
