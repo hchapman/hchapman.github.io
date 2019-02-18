@@ -56,7 +56,7 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
     + Exam 1 will cover all lecture notes up to Friday 2/15/2019 and homework assignments 1-3.
       Book sections that are covered are sections 1--11.
     + [Practice problems](exams/exam1_practice.pdf)
-    + Practice problems solutions (coming soon)
+    + [Practice problems solutions](exams/exam1_practice_solutions.pdf)
 +   Exam 2
 +   Final exam
 
