@@ -39,3 +39,9 @@
 @import "popover";
 @import "carousel";
 @import "utilities";
+
+ul.talks, ul.publications {
+    li {
+        margin-bottom:.5em;
+    }
+}
