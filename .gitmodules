@@ -6,3 +6,6 @@
 	path = talks/altknots
 	url = https://github.com/hchapman/altknots_talk
  
+[submodule "talks/birs_steadystate"]
+	path = talks/birs_steadystate
+	url = https://github.com/hchapman/diagram_mcmc_talk.git
