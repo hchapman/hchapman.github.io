@@ -61,6 +61,7 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
     + Exam 2 will cover all lecture notes up to Friday 3/15/2019 and homework assignments 4-6.
       Book sections that are covered are sections 12, 14--15, 17--20, 23--25.
     + [Practice problems](exams/exam2_practice.pdf)
+    + [Practice problems solutions](exams/exam2_practice_solutions.pdf)
 +   Final exam
 
 ### Syllabus
