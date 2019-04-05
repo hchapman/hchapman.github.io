@@ -1,3 +1,7 @@
+- name: Lake Louise
+  src: /res/img/louise.jpg
+  desc: Lake Louise, AB, Canada, March 2019
+
 - name: Centre Pompidou
   src: /res/img/centrepomp.jpg
   desc: Paris, May 2016

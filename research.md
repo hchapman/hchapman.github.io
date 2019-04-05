@@ -9,10 +9,34 @@ research: true
 ## Current Research
 
 {:.lead}
-My research interests have tended towards the intersection of
+My research interests tend towards the intersection of
 combinatorics, topology and geometry, with a primary focus on random
 knots. I completed my PhD under the direction of <a
 href="http://www.jasoncantarella.com">Jason Cantarella</a>.
+
+<div class="container-fluid">
+<div class="row">
+<figure class="col-md-6 figure text-center">
+<img class="figure-img"
+alt="A random alternating knot"
+src="/res/img/knots/alternating_color.svg">
+<figcaption class="figure-caption text-left">A random alternating knot.
+I have shown that alternating knots are exponentially rare
+in the set of all knots.
+</figcaption>
+</figure>
+
+<figure class="col-md-6 figure text-center">
+<img class="figure-img"
+alt="A random alternating knot"
+src="/res/img/knots/31_color.svg">
+<figcaption class="figure-caption text-left">A random trefoil knot diagram. It 
+is believed that the <em>knotted core</em> of the diagram is small in relation 
+to that of the whole diagram
+</figcaption>
+</figure>
+</div>
+</div>
 
 ### Publications
 
