@@ -32,7 +32,7 @@ alt="A random alternating knot"
 src="/res/img/knots/31_color.svg">
 <figcaption class="figure-caption text-left">A random trefoil knot diagram. It 
 is believed that the <em>knotted core</em> of the diagram is small in relation 
-to that of the whole diagram
+to that of the whole diagram.
 </figcaption>
 </figure>
 </div>
