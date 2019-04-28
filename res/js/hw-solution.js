@@ -3,7 +3,7 @@ $(document).ready(function() {
         var showbutton = document.createElement("button");
         var $self = $(this);
         showbutton.innerHTML = "Show solution";
-        showbutton.classList.add("btn", "btn-outline-danger");
+        showbutton.classList.add("btn", "btn-outline-danger", "d-print-none");
         showbutton.classList.add("show-solution");
         var show = function(b) {
             $self.collapse("show");
