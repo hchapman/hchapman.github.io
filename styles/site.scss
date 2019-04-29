@@ -278,7 +278,9 @@ div.container {
 }
 
 .solution {
-    @extend .d-print-block;
+    @media print {
+        display: block !important;
+    }
     border-left: 0.25rem solid rgb(255, 0, 0);
     border-radius: 0.25rem 0.25rem 0 0;
     background-color: rgb(255, 220, 220);
