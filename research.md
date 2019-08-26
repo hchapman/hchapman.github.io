@@ -37,12 +37,25 @@ to that of the whole diagram.
 </figure>
 </div>
 </div>
-
+     
 ### Publications
 
 Entries are also available in [BibTeX format](/static/hchapman.bib).
 
+{::options parse_block_html="true" /}
+
+<!--<figure class="float-right">
+<img class="figure-img" 
+height="300"
+alt="Cover for Knot Probabilities in Random Diagrams" src="/research/covers/jpa_census_thumb_h450.jpg">
+</figure>
+<figure class="float-right">
+<img class="figure-img" 
+height="300"
+alt="Cover for asymptotic Laws for random knot diagrams" src="/research/covers/jpa_asympt_thumb_h450.jpg">
+</figure>-->
 {% include autopublications.html %}
+
 
 ### Talks
 

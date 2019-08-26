@@ -1,11 +1,14 @@
 ---
 layout: teaching
-title: Advanced Calculus of One Variable (Math 317)
-permalink: /classes/s2019-317/
-class: s2019-317
+title: Advanced Calculus of One Variable (Math 317 F19)
+permalink: /classes/f2019-317/
+class: f2019-317
+redirect_from:
+  - /317/
 ---
 
-## Advanced Calculus of One Variable (Math 317): 13605
+## Advanced Calculus of One Variable
+#### Math 317-002, Fall 2019: CRN 63280
 
 {% for hw in site.homework %}
 {% if hw.class == page.class %}
@@ -23,20 +26,16 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 {% endfor %}
 
 ### Course Info
-+ **Meeting time:** MWF 11:00am &ndash; 11:50am in Engineering E104.
++ **Meeting time:** MWF 1:00pm &ndash; 11:50pm in Military Sciences 105.
 + **Instructor:** Dr. Harrison Chapman (hchaps [at] gmail.com)
 + **Office:** Weber 212.
-+ **Office hours:** In Weber 17.
-    + Mondays 12pm--1pm (w/ Will)
-    + Wednesdays 10am--11am (w/ Harrison)
-    + Wednesdays 1pm--2pm (w/ Will)
-    + Thursdays 2pm--3pm (w/ Harrison)
-+ **Text:** [Elementary Analysis: The Theory of Calculus](http://link.springer.com/book/10.1007/978-1-4614-6271-2) available as a free PDF download from on-campus computers.
++ **Office hours:** TBD.
++ **Text:** [Elementary Analysis: The Theory of Calculus](http://link.springer.com/book/10.1007/978-1-4614-6271-2) available as a free PDF download from on-campus computers and through CSU's library page.
 
 ### Resources
 
 +   The [course syllabus is available as a PDF
-    here](/static/chapman_317_s19_syllabus.pdf).
+    here](chapman_317_f19_syllabus.pdf).
 
 +   The textbook is [free to download from an on-campus computer
     here](http://link.springer.com/book/10.1007/978-1-4614-6271-2).
@@ -51,16 +50,15 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 ### Exam information
 
 +   Exam 1
-    + Exam 1 will cover all lecture notes up to Friday 2/15/2019 and homework assignments 1-3.
-      Book sections that are covered are sections 1--11.
-    + [Practice problems](exams/exam1_practice.pdf)
+    + Exam 1 is tentatively scheduled for October 4
+    + [Practice problems (tentative)](exams/exam1_practice.pdf)
     + [Practice problems solutions](exams/exam1_practice_solutions.pdf)
 +   Exam 2
-    + Exam 2 will cover all lecture notes up to Friday 3/15/2019 and homework assignments 4-6.
-      Book sections that are covered are sections 12, 14--15, 17--20, 23--25.
-    + [Practice problems](exams/exam2_practice.pdf)
+    + Exam 2 is tentatively scheduled for November 8
+    + [Practice problems (tentative)](exams/exam2_practice.pdf)
     + [Practice problems solutions](exams/exam2_practice_solns.pdf)
 +   Final exam
+    + Our final exam will be Tuesday, December 17 from 11:50am--1:50pm in our normal classroom (Military Sciences 105).
 
 ### Syllabus
 

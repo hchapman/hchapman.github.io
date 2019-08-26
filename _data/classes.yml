@@ -1,3 +1,8 @@
+- name: Fall 2019
+  classes:
+    - f2019-317
+    - f2019-301
+
 - name: Spring 2019
   classes:
     - s2019-317
