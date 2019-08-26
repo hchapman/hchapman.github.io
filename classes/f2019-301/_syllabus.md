@@ -35,7 +35,9 @@ homework, but it is by no means required (If you're interested, you might want
 to check out [Overleaf](https://www.overleaf.com/)).
 
 I can't accept late homework (the class moves too quickly), so make sure to turn
-in whatever you have on the due date to maximize credit.
+in whatever you have on the due date to maximize credit. To accommodate for
+unusual circumstances, I will be dropping your lowest-scoring homework from
+grade calculations.
 
 You are **strongly encouraged to work in solving homework problems with your
 classmates**, but the work you turn in **must be your own**, and in particular
