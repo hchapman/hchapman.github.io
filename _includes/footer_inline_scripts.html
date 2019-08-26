@@ -4,5 +4,7 @@
    for (var i = 0; i < lazyImages.length; i++) {
      lazyImages[i].src = lazyImages[i].dataset.src;
    }
+
+   [].forEach.call(document.getElementsByClassName("email-span-a"), function(e) {e.href=e.href.replace("blue","");});
  }, false);
 </script>

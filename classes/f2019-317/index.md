@@ -26,8 +26,8 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 {% endfor %}
 
 ### Course Info
-+ **Meeting time:** MWF 1:00pm &ndash; 11:50pm in Military Sciences 105.
-+ **Instructor:** Dr. Harrison Chapman (hchaps [at] gmail.com)
++ **Meeting time:** MWF 1:00pm &ndash; 1:50pm in Military Sciences 105.
++ **Instructor:** Dr. Harrison Chapman {%- include email_span.html -%}
 + **Office:** Weber 212.
 + **Office hours:** TBD.
 + **Text:** [Elementary Analysis: The Theory of Calculus](http://link.springer.com/book/10.1007/978-1-4614-6271-2) available as a free PDF download from on-campus computers and through CSU's library page.

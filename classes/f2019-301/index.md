@@ -27,7 +27,7 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 
 ### Course Info
 + **Meeting time:** MWF 3:00pm &ndash; 3:50pm in Wagar 132.
-+ **Instructor:** Dr. Harrison Chapman (hchaps [at] gmail.com)
++ **Instructor:** Dr. Harrison Chapman {%- include email_span.html -%}
 + **Office:** Weber 212.
 + **Office hours:** TBD
 + **Text:** [Discrete Mathematics: Elementary and Beyond](https://link.springer.com/10.1007/b97469) available as a free PDF download from on-campus computers and through CSU's library page. ([See also the list of typos, here](https://www.math.colostate.edu/~adams/teaching/TyposMath301.pdf))
