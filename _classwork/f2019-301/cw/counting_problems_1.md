@@ -2,7 +2,7 @@
 title: "Some Counting Problems"
 class-date: 2019-08-28
 class: f2019-301
-class-name: "Math 317"
+class-name: "Math 301"
 ---
 
 1.  7 people want to play rock-paper-scissors (a one-on-one game), so that everyone has played everyone else exactly once. How many matches are played in total?
