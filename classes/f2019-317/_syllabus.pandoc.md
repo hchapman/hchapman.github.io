@@ -7,7 +7,10 @@
 
 **Office:** Weber 212
 
-**Office hours:** TBD
+**Office hours:** In Weber 17:
+
++  Tuesday 1pm--2pm
++  Wednesday 11am--12pm
 
 **Meeting times:** MWF 1pm--1:50pm in Military Sciences 105
 

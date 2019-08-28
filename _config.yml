@@ -23,9 +23,18 @@ defaults:
       type: homework
     values:
       layout: homework
+  -
+    scope:
+      path: "_classwork"
+      type: classwork
+    values:
+      layout: classwork
 
 collections:
   homework:
+    output: true
+    permalink: /classes/:path/
+  classwork:
     output: true
     permalink: /classes/:path/
 

@@ -7,7 +7,10 @@
 
 **Office:** Weber 212
 
-**Office hours:** TBD
+**Office hours:** In Weber 17:
+
++  Tuesday 2pm--3pm
++  Wednesday 10am--11am
 
 **Meeting times:** MWF 3pm--3:50pm in Wagar 132
 

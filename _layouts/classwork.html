@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<ol class="breadcrumb d-print-none">
+  <li class="breadcrumb-item"><a href="/classes/">Teaching</a></li>
+  <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/">{{ page.class-name }}</a></li>
+  <li class="breadcrumb-item"><a href="/classes/{{ page.class }}/cw/">Classwork</a></li>
+  <li class="breadcrumb-item active">{{ page.title }}</li>
+</ol>
+
+<div class="row primary-content">
+  <div class="col-sm-12 homework">
+    <h2>{{ page.class-name }}: {{ page.title }}</h2>
+    <div class="mb-3 hw-duedate">Class date: {{ page.class-date | date: "%A, %B %-d, %Y" }}</div>
+    {{ content }}
+  </div>
+</div>
+
+<script type="text/javascript" src="/res/js/hw-solution.js"></script>
+<script type="text/javascript">
+ $(document).ready(function() {
+     // Remove the header on printing
+     $("#name-header").addClass("d-print-none");
+     $("footer").addClass("d-print-none");
+     $("#footer-hr").addClass("d-print-none");
+ });
+</script>

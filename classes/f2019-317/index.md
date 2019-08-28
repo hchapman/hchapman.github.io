@@ -29,7 +29,9 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 + **Meeting time:** MWF 1:00pm &ndash; 1:50pm in Military Sciences 105.
 + **Instructor:** Dr. Harrison Chapman {%- include email_span.html -%}
 + **Office:** Weber 212.
-+ **Office hours:** TBD.
++ **Office hours:** In Weber 17:
+    + Tuesday 1pm--2pm
+    + Wednesday 11am--12pm
 + **Text:** [Elementary Analysis: The Theory of Calculus](http://link.springer.com/book/10.1007/978-1-4614-6271-2) available as a free PDF download from on-campus computers and through CSU's library page.
 
 ### Resources
@@ -42,6 +44,10 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 
 +   [Overleaf](https://www.overleaf.com/) is one way to write your homework using LaTeX,
     if you are interested.
+  
+### Classwork
+
+{% include classwork_list.html %}
   
 ### Homework
 
