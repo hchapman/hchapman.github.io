@@ -11,9 +11,9 @@ layout: default
 
 <div class="row primary-content">
   <div class="col-sm-12 homework">
-    <h2>{{ page.class-name }}: {{ page.title }}</h2>
-    <div class="hw-duedate">Due: {{ page.due-date | date: "%A, %B %-d, %Y" }}</div>
-    <div class="mb-3 d-print-none"><a href="../{{ page.assignment }}.pdf">PDF version</a></div>
+      <h2>{{ page.class-name }}: {{ page.title }}</h2>
+      <div class="d-print-none d-pp-yes"><a href="#" class="fs-toggle">Toggle fullscreen</a></div>
+    <div class="mb-3 hw-duedate">Due: {{ page.due-date | date: "%A, %B %-d, %Y" }}</div>
     {{ content }}
   </div>
 </div>
@@ -25,5 +25,14 @@ layout: default
      $("#name-header").addClass("d-print-none");
      $("footer").addClass("d-print-none");
      $("#footer-hr").addClass("d-print-none");
+
+     // Make print preview class
+     $(".d-print-none").addClass("d-pp-none");
+     $(".d-pp-yes").removeClass("d-pp-none");
+
+     var fullscreen = false;
+     $(".fs-toggle").on("click", function() {
+         $(".d-pp-none").toggle();
+     });
  });
 </script>
