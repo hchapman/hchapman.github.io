@@ -5,19 +5,14 @@ class: f2019-301
 class-name: "Math 301"
 ---
 
-1.  
-    1.  How many different strings can you make by rearranging the letters of MATHEMATICS? For example, one is THEMMAASTIC.
-    
-    2.  How many different strings can you make by rearranging the letters of DEOXYRIBONUCLEICACID?
+1.  How many different strings can you make by rearranging the letters of MATHEMATICS? For example, one is THEMMAASTIC.
 
 2.  What is the number of ways to color 7 **identical** objects if each color has to be used at least once, when...
-
-    1.  There is only 1 color?
     
-    2.  There are 2 colors?
+    1.  There are 2 colors?
     
-    3.  There are 3 colors?
+    2.  There are 3 colors?
     
-    4.  There are 4 colors?
+    3.  There are \\(k\\) colors?
     
-    5.  There are \\(k\\) colors?
+3.  How many different strings of length 6 made from the alphabet \\(\\{(, )\\}\\) of open and closed parenthesis are valid? For instance, \\(((())())\\) is valid but \\(())((())\\) is not. What about length 8? 10?
