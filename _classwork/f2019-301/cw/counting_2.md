@@ -10,7 +10,7 @@ class-name: "Math 301"
     
     2.  How many different strings can you make by rearranging the letters of DEOXYRIBONUCLEICACID?
 
-2.  What is the number of ways to color 7 **identical* objects if each color has to be used at least once, when...
+2.  What is the number of ways to color 7 **identical** objects if each color has to be used at least once, when...
 
     1.  There is only 1 color?
     
