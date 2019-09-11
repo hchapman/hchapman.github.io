@@ -38,7 +38,7 @@ collections:
     output: true
     permalink: /classes/:path/
 
-gems:
+plugins:
   - jekyll-redirect-from
 whitelist:
   - jekyll-redirect-from
