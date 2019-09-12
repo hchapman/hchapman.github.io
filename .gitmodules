@@ -9,3 +9,6 @@
 [submodule "talks/birs_steadystate"]
 	path = talks/birs_steadystate
 	url = https://github.com/hchapman/diagram_mcmc_talk.git
+[submodule "talks/academic_web"]
+	path = talks/academic_web
+	url = ../academic_web_talk
