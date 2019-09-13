@@ -1,18 +1,17 @@
 ---
-title: "More counting problems"
-class-date: 2019-09-11
+title: "Counting problems and the pigeonhole principle"
+class-date: 2019-09-13
 class: f2019-301
 class-name: "Math 301"
 ---
 
 1.  How many different strings can you make by rearranging the letters of MATHEMATICS? For example, one is THEMMAASTIC.
 
-2.  What is the number of ways to color 7 **identical** objects if each color has to be used at least once, when...
+2.  On an \\(n \times n\\) grid, how many paths connect the lower-left corner to the upper-right corner, if only unit-length up steps and unit-length right steps are allowed? Here are examples for sizes \\(n = 1,2,3\\):
+
+    <figure>
+      <img src="/res/img/classes/StaircaseWalk_950.gif" class="mx-auto d-block">
+      <figcaption class='mx-auto d-block' align="center">(Source: Wolfram MathWorld)</figcaption>
+    </figure>
     
-    1.  There are 2 colors?
-    
-    2.  There are 3 colors?
-    
-    3.  There are \\(k\\) colors?
-    
-3.  How many different strings of length 6 made from the alphabet \\(\\{(, )\\}\\) of open and closed parenthesis are valid? For instance, \\(((())())\\) is valid but \\(())((())\\) is not. What about length 8? 10?
+3.  If 11 numbers are chosen from between 1 and 100, show that two of them have difference less than 10.
