@@ -1,6 +1,7 @@
 <ul>
   {% assign classwork = site.classwork %}
-  {% for cwdoc in classwork | sort cwdoc.class-date %}
+  {% assign sorted = (site.classwork | sort: 'class-date') | reverse %}
+  {% for cwdoc in sorted %}
   {% if cwdoc.class == page.class %}
   {% assign urllen = cwdoc.url.size | minus: 1 %}
   <li><a href="{{ cwdoc.url }}">{{ cwdoc.class-date | date: "%A, %B %d" }}: {{ cwdoc.title }}</a>.</li>
