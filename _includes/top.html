@@ -5,7 +5,7 @@
       <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="theme-color" content="#868e96">
-    <title>{{ page.title }} &bull; Harrison Chapman</title>
+    <title>{{ page.title }}{% if page.layout != 'homework' %} &bull; Harrison Chapman{% else %} &bull; {{ page.class-name }}{% endif %}</title>
     <link rel="icon" type="image/png" href="/res/img/favico.png">
     <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/site.css" />
