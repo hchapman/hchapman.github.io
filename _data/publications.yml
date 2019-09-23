@@ -1,4 +1,14 @@
 entries:
+    ChapmanKnotoidsEncyclopedia:
+        type: incollection
+        title: What is a knotoid?
+        booktitle: A Concise Encyclopedia of Knot Theory
+        year: '2018'
+        month: '4'
+        note: Submitted
+        author:
+        -   first: Harrison
+            last: Chapman
     ChapmanAltKnots:
         type: article
         title: On the structure and scarcity of alternating knots
@@ -22,11 +32,15 @@ entries:
             last: Chapman
     ChapmanMarkov:
         type: article
-        title: A <span class="bibtex-protected">M</span>arkov chain sampler for plane
-            curves
-        year: '2018'
-        month: '3'
-        note: Submitted
+        title: <span class="bibtex-protected">A <span class="bibtex-protected">M</span>arkov
+            chain sampler for plane curves</span>
+        year: '2019'
+        month: '9'
+        journal: Experimental Mathematics
+        pages: 1-31
+        publisher: Taylor &amp; Francis
+        doi: 10.1080/10586458.2019.1660739
+        URL: https://doi.org/10.1080/10586458.2019.1660739
         archivePrefix: arXiv
         eprint: '1804.03311'
         abstract: A plane curve is a knot diagram in which each crossing is replaced
@@ -41,7 +55,7 @@ entries:
             an efficient sampler of plane curves and knot diagrams. By analysing data
             from this chain we are able to estimate the number of knot diagrams of
             a given size and also compute knotting probabilities and so investigate
-            their asymptotic behaviour.
+            their asymptotic behavior.
         author:
         -   first: Harrison
             last: Chapman
@@ -144,9 +158,9 @@ entries:
             diagrams with 10 and fewer crossings and classify the diagrams by knot
             type, allowing us to compute exact probabilities for knots in this model.
             As expected, most diagrams with 10 and fewer crossings are unknots (about
-            78% of the roughly 1.6 billion 10 crossing diagrams). For these crossing
-            numbers, the unknot fraction is mostly explained by the prevalence of
-            ‘tree-like’ diagrams which are unknots for any assignment of over/under
+            78 percent of the roughly 1.6 billion 10 crossing diagrams). For these
+            crossing numbers, the unknot fraction is mostly explained by the prevalence
+            of ‘tree-like’ diagrams which are unknots for any assignment of over/under
             information at crossings. The data shows a roughly linear relationship
             between the log of knot type probability and the log of the frequency
             rank of the knot type, analogous to Zipf’s law for word frequency. The

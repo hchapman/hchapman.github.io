@@ -24,7 +24,7 @@ class Writer(YamlWriter):
             for key, entry in bib_data.items():
                 fields = OrderedDict([('type', entry.original_type)])
                 fields.update({k: v.render_as("html").replace("\\textsuperscript ", "") for
-                               k,v in entry.rich_fields.items()})
+                               k,v in database.RichFieldProxyDict(entry.fields).items()})
                 fields.update(process_person_roles(entry))
                 yield key, fields
 
