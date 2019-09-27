@@ -55,8 +55,22 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 
 ### Exam information
 
+For our two midterm exams, you are allowed pen/pencil/eraser and a notes sheet:
+
++  You may use 1 side for of a standard 8" x 11" piece of paper (or smaller area).
++  The notes sheet may contain any material, including facts, examples, etc.
++  The notes sheet must be handwritten.
++  The notes sheet must be of your own design (not just copied from a friend).
++  Please write your name on the sheet; I will collect and return it with your exam.
++  **If your sheet does not fit these specifications, you may not use it during the exam.**
+
+Exam information follows:
+
 +   Exam 1
-    + Exam 1 is tentatively scheduled for October 4.
+    +  Exam 1 is Friday, October 4.
+    +  Exam 1 will focus on sections 1.1--1.3, 1.5-1.8, 2.1, 2.4, 3.1--3.6, 4.1--4.3.
+    +  Exam 1 will focus on material from Homeworks 1--4.
+    +  [Practice questions can be found here](exams/exam1_practice.pdf)
 +   Exam 2
     + Exam 2 is tentatively scheduled for November 8.
 +   Final exam
