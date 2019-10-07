@@ -71,6 +71,7 @@ Exam information follows:
     +  Exam 1 will focus on sections 1.1--1.3, 1.5-1.8, 2.1, 2.4, 3.1--3.6, 4.1--4.3.
     +  Exam 1 will focus on material from Homeworks 1--4.
     +  [Practice questions can be found here](exams/exam1_practice.pdf)
+    +  Exam 1 Rewrite: Question 2 or 3. **Due by October 18th**.
 +   Exam 2
     + Exam 2 is tentatively scheduled for November 8.
 +   Final exam
