@@ -1,6 +1,6 @@
 ---
 title: "The Euclidean Algorithm"
-class-date: 2019-10-09
+class-date: 2019-10-11
 class: f2019-301
 class-name: "Math 301"
 ---
