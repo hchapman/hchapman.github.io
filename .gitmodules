@@ -12,3 +12,6 @@
 [submodule "talks/academic_web"]
 	path = talks/academic_web
 	url = ../academic_web_talk
+[submodule "talks/knot_top_data"]
+	path = talks/knot_top_data
+	url = https://github.com/hchapman/knot_topology_data_talk.git
