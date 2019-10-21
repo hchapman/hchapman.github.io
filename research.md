@@ -68,7 +68,7 @@ alt="Cover for asymptotic Laws for random knot diagrams" src="/research/covers/j
 ## Previous Research
 
 * In the summer of 2010, I took part in an REU where we tried to answer
-questions about Sudoku (with M. Rupert, mentor E. Arnold): <a
+questions about Sudoku (with N. Rupert, mentor E. Arnold): <a
 href="http://digitalarchive.gsu.edu/caaurj/vol3/iss1/3/">A
 Group-theoretic Approach to Human Solving Strategies in
 Sudoku</a>.
