@@ -73,7 +73,9 @@ Exam information follows:
     + [Practice problems](exams/exam1_practice.pdf)
     + [Practice problems solutions](exams/exam1_practice_solutions.pdf)
 +   Exam 2
-    + Exam 2 is tentatively scheduled for November 8
+    + Exam 2 is Friday, November 8
+    + Exam 2 will focus on sections 12, 14--15, 17--20, 23--25
+    + Exam 2 will focus on homeworks 5--8
     + [Practice problems (tentative)](exams/exam2_practice.pdf)
     + [Practice problems solutions](exams/exam2_practice_solns.pdf)
 +   Final exam
