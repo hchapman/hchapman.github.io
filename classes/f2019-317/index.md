@@ -76,7 +76,7 @@ Exam information follows:
     + Exam 2 is Friday, November 8
     + Exam 2 will focus on sections 12, 14--15, 17--20, 23--25
     + Exam 2 will focus on homeworks 5--8
-    + [Practice problems (tentative)](exams/exam2_practice.pdf)
+    + [Practice problems](exams/exam2_practice.pdf)
     + [Practice problems solutions](exams/exam2_practice_solns.pdf)
 +   Final exam
     + Our final exam will be Tuesday, December 17 from 11:50am--1:50pm in our normal classroom (Military Sciences 105).
