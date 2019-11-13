@@ -78,6 +78,11 @@ Exam information follows:
     + Exam 2 will focus on homeworks 5--8
     + [Practice problems](exams/exam2_practice.pdf)
     + [Practice problems solutions](exams/exam2_practice_solns.pdf)
+    + **Exam 2 question re-write information**:
+      You have the option to re-write either question 3 or 4, and may earn up to 5 points back to that question (capped at the maximum value of the question). To earn back credit, you must, by **Friday, November 22**:
+      1.  *On a blank sheet of paper to be turned in*, you must neatly complete **the entire question**.
+      2.  Schedule a 5-10 minute meeting during which you will explain the solution to your chosen question.
+      3.  Turn in your final, corrected re-write.
 +   Final exam
     + Our final exam will be Tuesday, December 17 from 11:50am--1:50pm in our normal classroom (Military Sciences 105).
 
