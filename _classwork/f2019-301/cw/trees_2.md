@@ -21,7 +21,7 @@ class-name: "Math 301"
     
 3.  Write the Prufer code for the trees on the side whiteboard.
     
-4.  Use a random number generator (ex: Google "random number generator") to draw
+4.  Use a random number generator (ex: Google "roll a die") to draw
     a random labeled tree with 10 vertices. Justify why your tree really is
     random.
 
