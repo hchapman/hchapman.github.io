@@ -57,7 +57,16 @@ It is due {{ hw.due-date | date: "%A, %B %-d, %Y" }}.
 
 For our two midterm exams, you are allowed pen/pencil/eraser and a notes sheet:
 
-+  You may use 1 side for of a standard 8" x 11" piece of paper (or smaller area).
++  You may use 1 side of a standard 8" x 11" piece of paper (or smaller area).
++  The notes sheet may contain any material, including facts, examples, etc.
++  The notes sheet must be handwritten.
++  The notes sheet must be of your own design (not just copied from a friend).
++  Please write your name on the sheet; I will collect and return it with your exam.
++  **If your sheet does not fit these specifications, you may not use it during the exam.**
+
+For our **final exam**, you are allowed pen/pencil/eraser and a notes sheet:
+
++  You may use **2** sides of a standard 8" x 11" piece of paper (or smaller area).
 +  The notes sheet may contain any material, including facts, examples, etc.
 +  The notes sheet must be handwritten.
 +  The notes sheet must be of your own design (not just copied from a friend).
@@ -85,6 +94,11 @@ Exam information follows:
       3.  Turn in your final, corrected re-write.
 +   Final exam
     + Our final exam will be Tuesday, December 17 from 11:50am--1:50pm in our normal classroom (Military Sciences 105).
+    + The final exam is **cumulative**, with extra attention on sections 28, 29, 31, and 32--34.
+    + The final exam will focus on homeworks 9--11
+    + [Practice problems](exams/final_practice.pdf)
+    + [Practice problems solutions](exams/final_practice_solns.pdf)
+
 
 ### Syllabus
 
