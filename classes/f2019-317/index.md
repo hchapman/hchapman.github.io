@@ -95,7 +95,7 @@ Exam information follows:
 +   Final exam
     + Our final exam will be Tuesday, December 17 from 11:50am--1:50pm in our normal classroom (Military Sciences 105).
     + The final exam is **cumulative**, with extra attention on sections 28, 29, 31, and 32--34.
-    + The final exam will focus on homeworks 9--11
+    + The final exam will focus on homeworks 9--12.
     + [Practice problems](exams/final_practice.pdf)
     + [Practice problems solutions](exams/final_practice_solns.pdf)
 

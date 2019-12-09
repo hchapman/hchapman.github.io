@@ -64,6 +64,15 @@ For our two midterm exams, you are allowed pen/pencil/eraser and a notes sheet:
 +  Please write your name on the sheet; I will collect and return it with your exam.
 +  **If your sheet does not fit these specifications, you may not use it during the exam.**
 
+For our **final exam**, you are allowed pen/pencil/eraser and a notes sheet:
+
++  You may use **2** sides of a standard 8" x 11" piece of paper (or smaller area).
++  The notes sheet may contain any material, including facts, examples, etc.
++  The notes sheet must be handwritten.
++  The notes sheet must be of your own design (not just copied from a friend).
++  Please write your name on the sheet; I will collect and return it with your exam.
++  **If your sheet does not fit these specifications, you may not use it during the exam.**
+
 Exam information follows:
 
 +   Exam 1
@@ -80,6 +89,9 @@ Exam information follows:
     +  [An answer key can be found here](exams/exam2_practice_solns.pdf)
 +   Final exam
     + Our final exam will be Wednesday, December 18 from 7:30--9:30am in our normal classroom (Wagar 132).
+    + The final exam is **cumulative**, with extra attention on sections
+      12.1--12.3, 8.1--8.4, 9.1--9.2, 13.1--13.4.
+    + The final exam will focus on homeworks 9--12.
 
 ### Syllabus
 
