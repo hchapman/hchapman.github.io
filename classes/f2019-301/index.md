@@ -92,6 +92,7 @@ Exam information follows:
     + The final exam is **cumulative**, with extra attention on sections
       12.1--12.3, 8.1--8.4, 9.1--9.2, 13.1--13.4.
     + The final exam will focus on homeworks 9--12.
+    + [Practice questions can be found here](exams/final_exam_practice.pdf).
 
 ### Syllabus
 
