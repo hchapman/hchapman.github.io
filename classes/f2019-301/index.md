@@ -93,6 +93,7 @@ Exam information follows:
       12.1--12.3, 8.1--8.4, 9.1--9.2, 13.1--13.4.
     + The final exam will focus on homeworks 9--12.
     + [Practice questions can be found here](exams/final_exam_practice.pdf).
+    + [Practice question solutions can be found here](exams/final_exam_practice_solns.pdf).
 
 ### Syllabus
 
